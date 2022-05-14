@@ -6,8 +6,8 @@ public class UnidadFuncional {
 
     private float superficie;
     private String nroUnidad;
-    private List<Personas> propietarios;
-    private List<Personas> inquilinos;
+    private List<Persona> propietarios;
+    private List<Persona> inquilinos;
     private List<FacturaUnidadFuncional> facturas;
 
     public void crearFactura (double extraordinario, double ordinario) {
@@ -30,19 +30,19 @@ public class UnidadFuncional {
         this.nroUnidad = nroUnidad;
     }
 
-    public List<Personas> getPropietarios() {
+    public List<Persona> getPropietarios() {
         return propietarios;
     }
 
-    public void setPropietarios(List<Personas> propietarios) {
+    public void setPropietarios(List<Persona> propietarios) {
         this.propietarios = propietarios;
     }
 
-    public List<Personas> getInquilinos() {
+    public List<Persona> getInquilinos() {
         return inquilinos;
     }
 
-    public void setInquilinos(List<Personas> inquilinos) {
+    public void setInquilinos(List<Persona> inquilinos) {
         this.inquilinos = inquilinos;
     }
 

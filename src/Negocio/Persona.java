@@ -1,0 +1,59 @@
+package Negocio;
+
+public class Persona {
+
+    private String nombre;
+    private String apellido;
+    private String mail;
+    private int dni;
+    private int telefono;
+    private ModoDeEnvio modoDeEnvio;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public ModoDeEnvio getModoDeEnvio() {
+        return modoDeEnvio;
+    }
+
+    public void setModoDeEnvio(ModoDeEnvio modoDeEnvio) {
+        this.modoDeEnvio = modoDeEnvio;
+    }
+}
