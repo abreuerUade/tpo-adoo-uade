@@ -2,7 +2,7 @@ package Negocio;
 
 import java.util.Date;
 
-public class Gastos {
+public class Gasto {
 
     private Integer monto;
     private String nombre;

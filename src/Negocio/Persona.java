@@ -7,7 +7,7 @@ public class Persona {
     private String mail;
     private int dni;
     private int telefono;
-    private ModoDeEnvio modoDeEnvio;
+    private ServiciosEnvio serviciosEnvio;
 
     public String getNombre() {
         return nombre;
@@ -49,11 +49,11 @@ public class Persona {
         this.telefono = telefono;
     }
 
-    public ModoDeEnvio getModoDeEnvio() {
-        return modoDeEnvio;
+    public ServiciosEnvio getModoDeEnvio() {
+        return serviciosEnvio;
     }
 
-    public void setModoDeEnvio(ModoDeEnvio modoDeEnvio) {
-        this.modoDeEnvio = modoDeEnvio;
+    public void setModoDeEnvio(ServiciosEnvio serviciosEnvio) {
+        this.serviciosEnvio = serviciosEnvio;
     }
 }

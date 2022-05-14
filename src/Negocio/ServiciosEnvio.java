@@ -1,6 +1,6 @@
 package Negocio;
 
-public enum ModoDeEnvio {
+public enum ServiciosEnvio {
 
     SMS,
     EMAIL,
