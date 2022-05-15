@@ -9,7 +9,7 @@ public class Gasto {
     private Date fechaFact;
     private Integer cantCuotas;
     private Integer periodo;
-    private enum Expensas tipoExpensas;
+    private Expensas tipoExpensas;
 
     public Integer getMonto() {
         return monto;

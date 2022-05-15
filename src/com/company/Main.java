@@ -1,8 +1,15 @@
 package com.company;
 
+import GUI.MasterFrame;
+
 public class Main {
 
     public static void main(String[] args) {
-	    System.out.println("Hola");
+        MasterFrame master = new MasterFrame();
+        master.armarMaster();
+        master.mostrarPanelInicio();
+        master.showFrame();
     }
+
+
 }
