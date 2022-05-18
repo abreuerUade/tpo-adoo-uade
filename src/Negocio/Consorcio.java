@@ -13,6 +13,19 @@ public class Consorcio {
     private List<Usuario> admin;
     private LiquidacionGenerica tipoLiquidacion;
 
+    Consorcio (String nombre, String contacto, List<UnidadFuncional> UnidadesFunc,Cuenta cuentaBanco,
+               List<Gasto> gastos, List<Usuario> admin, LiquidacionGenerica tipoLiquidacion  ){
+
+        this.nombre = nombre;
+        this.contacto = contacto;
+        this.cuentaBanco = cuentaBanco;
+        this.UnidadesFunc = UnidadesFunc;
+        this.gastos = gastos;
+        this.admin = admin;
+        this.tipoLiquidacion = tipoLiquidacion;
+
+    }
+
     public void liquidar(UnidadFuncional unidadFuncional) {
 
     }
