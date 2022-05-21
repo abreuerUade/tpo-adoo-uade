@@ -7,28 +7,28 @@ public class UsuarioDTO {
     private String mail;
 
     public String getNombre() {
-
-        return nombre;
+        return this.nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String in_nombre) {
+        this.nombre = in_nombre;
     }
 
     public String getApellido() {
-        return apellido;
+        return this.apellido;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellido(String in_apellido) {
+        this.apellido = in_apellido;
     }
 
     public String getMail() {
-        return mail;
+        return this.mail;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setMail(String in_mail) {
+        this.mail = in_mail;
     }
+
 
 }
