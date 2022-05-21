@@ -1,21 +1,13 @@
-package Negocio;
+package DTO;
 
-import DTO.UsuarioDTO;
-
-public class Usuario {
+public class UsuarioDTO {
 
     private String nombre;
     private String apellido;
     private String mail;
 
-    public Usuario (UsuarioDTO usuarioDTO) {
-        this.nombre = usuarioDTO.getNombre();
-        this.apellido = usuarioDTO.getApellido();
-        this.mail = usuarioDTO.getMail();
-
-    }
-
     public String getNombre() {
+
         return nombre;
     }
 
@@ -39,13 +31,4 @@ public class Usuario {
         this.mail = mail;
     }
 
-    public UsuarioDTO usuarioToDto(){
-        UsuarioDTO usuarioDTO = new UsuarioDTO();
-
-        usuarioDTO.setNombre(this.nombre);
-        usuarioDTO.setApellido(this.apellido);
-        usuarioDTO.setMail(this.mail);
-
-        return usuarioDTO;
-    }
 }
