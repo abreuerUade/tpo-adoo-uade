@@ -6,11 +6,15 @@ import java.util.Date;
 
 public class Gasto {
 
+    private Integer id;
     private Integer monto;
     private String nombre;
     private Date fechaFact;
     private Integer cantCuotas;
     private Integer periodo;
+
+
+
     private Expensas tipoExpensas;
 
     public Gasto (GastoDTO gastoDTO) {
@@ -34,6 +38,22 @@ public class Gasto {
         gastoDTO.setTipoExpensas(this.tipoExpensas);
 
         return gastoDTO;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Expensas getTipoExpensas() {
+        return tipoExpensas;
+    }
+
+    public void setTipoExpensas(Expensas tipoExpensas) {
+        this.tipoExpensas = tipoExpensas;
     }
 
     public Integer getMonto() {
