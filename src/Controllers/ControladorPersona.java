@@ -11,25 +11,22 @@ import java.util.List;
 
 public class ControladorPersona {
 
-    private List<Persona> personas = null;
+    private ArrayList<Persona> personas = null;
     private static ControladorPersona instancia = null;
     public ControladorPersona(){personas = new ArrayList<Persona>();}
-
-    private static ControladorPersona getInstance(){
+    public static ControladorPersona getInstance(){
         if (instancia == null){
             instancia = new ControladorPersona();
         }
-
         return instancia;
     }
 
-    private Persona getPersonabyDNI(int DNI){
+    public Persona getPersonabyDNI(int DNI){
         for(Persona p : personas){
             if (p.getDni() == DNI) {
                 return p;
             }
         }
-
         return null;
     }
 
