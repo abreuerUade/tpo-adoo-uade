@@ -1,5 +1,7 @@
 package Negocio;
 
+import DTO.UnidadFuncionalDTO;
+
 import java.util.List;
 
 public class UnidadFuncional {
@@ -9,6 +11,27 @@ public class UnidadFuncional {
     private List<Persona> propietarios;
     private List<Persona> inquilinos;
     private List<FacturaUnidadFuncional> facturas;
+
+    public UnidadFuncional (UnidadFuncionalDTO unidadFuncionalDTO) {
+
+        this.superficie = unidadFuncionalDTO.getSuperficie();
+        this.nroUnidad = unidadFuncionalDTO.getNroUnidad();
+        this.propietarios = unidadFuncionalDTO.getPropietarios();
+        this.inquilinos = unidadFuncionalDTO.getInquilinos();
+        this.facturas = unidadFuncionalDTO.getFacturas();
+    }
+
+    public UnidadFuncionalDTO unidadFuncToDTO() {
+        UnidadFuncionalDTO unidadFuncionalDTO = new UnidadFuncionalDTO();
+
+        unidadFuncionalDTO.setSuperficie(this.superficie);
+        unidadFuncionalDTO.setNroUnidad(this.nroUnidad);
+        unidadFuncionalDTO.setPropietarios(this.propietarios);
+        unidadFuncionalDTO.setInquilinos(this.inquilinos);
+        unidadFuncionalDTO.setFacturas(this.facturas);
+
+        return unidadFuncionalDTO;
+    }
 
     public void crearFactura (double extraordinario, double ordinario) {
 

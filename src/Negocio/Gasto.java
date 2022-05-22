@@ -1,5 +1,7 @@
 package Negocio;
 
+import DTO.GastoDTO;
+
 import java.util.Date;
 
 public class Gasto {
@@ -10,6 +12,29 @@ public class Gasto {
     private Integer cantCuotas;
     private Integer periodo;
     private Expensas tipoExpensas;
+
+    public Gasto (GastoDTO gastoDTO) {
+
+        this.monto = gastoDTO.getMonto();
+        this.nombre = gastoDTO.getNombre();
+        this.fechaFact = gastoDTO.getFechaFact();
+        this.cantCuotas = gastoDTO.getCantCuotas();
+        this.periodo = gastoDTO.getPeriodo();
+        this.tipoExpensas = gastoDTO.getTipoExpensas();
+    }
+
+    public GastoDTO gastoToDTO() {
+        GastoDTO gastoDTO = new GastoDTO();
+
+        gastoDTO.setMonto(this.monto);
+        gastoDTO.setNombre(this.nombre);
+        gastoDTO.setFechaFact(this.fechaFact);
+        gastoDTO.setCantCuotas(this.cantCuotas);
+        gastoDTO.setPeriodo(this.periodo);
+        gastoDTO.setTipoExpensas(this.tipoExpensas);
+
+        return gastoDTO;
+    }
 
     public Integer getMonto() {
         return monto;

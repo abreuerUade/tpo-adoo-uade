@@ -1,6 +1,8 @@
 package Controllers;
 
-public class ControladorUsuario {
+import DTO.UsuarioDTO;
 
+public class ControladorUsuario {
+    
 
 }

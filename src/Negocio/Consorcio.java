@@ -1,6 +1,8 @@
 package Negocio;
 
 
+import DTO.ConsorcioDTO;
+
 import java.util.List;
 
 public class Consorcio {
@@ -13,18 +15,31 @@ public class Consorcio {
     private List<Usuario> admin;
     private LiquidacionGenerica tipoLiquidacion;
 
-    Consorcio (String nombre, String contacto, List<UnidadFuncional> UnidadesFunc,Cuenta cuentaBanco,
-               List<Gasto> gastos, List<Usuario> admin, LiquidacionGenerica tipoLiquidacion  ){
+    public Consorcio (ConsorcioDTO consorcioDTO) {
 
-        this.nombre = nombre;
-        this.contacto = contacto;
-        this.cuentaBanco = cuentaBanco;
-        this.UnidadesFunc = UnidadesFunc;
-        this.gastos = gastos;
-        this.admin = admin;
-        this.tipoLiquidacion = tipoLiquidacion;
-
+        this.nombre = consorcioDTO.getNombre();
+        this.contacto = consorcioDTO.getContacto();
+        this.cuentaBanco = consorcioDTO.getCuentaBanco();
+        this.UnidadesFunc = consorcioDTO.getUnidadesFunc();
+        this.gastos = consorcioDTO.getGastos();
+        this.admin = consorcioDTO.getAdmin();
+        this.tipoLiquidacion = consorcioDTO.getTipoLiquidacion();
     }
+
+    public ConsorcioDTO consocioToDTO () {
+        ConsorcioDTO consorcioDTO = new ConsorcioDTO();
+
+        consorcioDTO.setNombre(this.nombre);
+        consorcioDTO.setContacto(this.contacto);
+        consorcioDTO.setCuentaBanco(this.cuentaBanco);
+        consorcioDTO.setUnidadesFunc(this.UnidadesFunc);
+        consorcioDTO.setGastos(this.gastos);
+        consorcioDTO.setAdmin(this.admin);
+        consorcioDTO.setTipoLiquidacion(this.tipoLiquidacion);
+
+        return consorcioDTO;
+    }
+
 
     public void liquidar(UnidadFuncional unidadFuncional) {
 
