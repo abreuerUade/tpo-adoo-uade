@@ -11,7 +11,7 @@ public class Main {
         master.mostrarPanelInicio();
         master.showFrame();
         Data.load();
-        System.out.println(ControladorPersona.getInstance().getPersonabyDNI(25634855));
+        System.out.println(ControladorUsuario.getInstance().getUsuarios());
 
     }
 

@@ -11,7 +11,7 @@ public class Data {
         admin.setApellido("root");
         admin.setNombre("root");
         admin.setMail("rr@consorcios.com");
-        //Falta agregar a traves del controler
+        ControladorUsuario.getInstance().crearUsuario(admin);
 
         PersonaDTO persona1 = new PersonaDTO();
         persona1.setDni(25634855);

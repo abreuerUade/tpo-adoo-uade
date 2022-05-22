@@ -4,11 +4,9 @@ import DTO.UsuarioDTO;
 
 
 public class Usuario {
+    private String mail; //Identificador
     private String nombre;
-
     private String apellido;
-    private String mail;
-
 
     public Usuario (UsuarioDTO usuarioDTO) {
 
