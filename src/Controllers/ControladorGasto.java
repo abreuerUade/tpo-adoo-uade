@@ -1,22 +1,16 @@
 package Controllers;
-
 import DTO.GastoDTO;
 import Negocio.Gasto;
-
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorGasto {
 
-    private List<Gasto> gastos = null;
+    private ArrayList<Gasto> gastos = null;
     private static ControladorGasto instancia = null;
-
-    public ControladorGasto() {
+    private ControladorGasto() {
         gastos = new ArrayList<Gasto>();
     }
-
-
     public static ControladorGasto getInstance(){
         if (instancia == null){
             instancia = new ControladorGasto();
