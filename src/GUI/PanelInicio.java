@@ -4,12 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.ref.PhantomReference;
 
 public class PanelInicio extends JPanel {
 
-    private JPanel basePanel;
     private MasterFrame masterFrame;
+    private JPanel panelIz;
+    private JPanel panelDe;
+    private JPanel panelBtn;
+
     private JLabel line1;
     private JLabel line2;
     private JLabel line3;
@@ -23,35 +25,58 @@ public class PanelInicio extends JPanel {
 
     public void armarPanelInicio() {
 
-        GridLayout layout = new GridLayout(6, 1);
-        layout.setVgap(10);
-        basePanel = new JPanel();
-        basePanel.setLayout(layout);
-        this.add(basePanel);
+        ///////////// Panel Base ///////////////////
+
+        this.setLayout(new BorderLayout());
+
+        panelIz = new JPanel();
+        GridLayout leftLayout = new GridLayout(6,1);
+        panelIz.setLayout(leftLayout);
+        panelIz.setPreferredSize(new Dimension(200,500));
+        panelIz.setBackground(Style.GRIS_CLARO);
+
+        panelDe = new JPanel();
+        GridLayout rightLayout = new GridLayout(5,1);
+        panelDe.setLayout(rightLayout);
+        panelDe.setPreferredSize(new Dimension(800,500));
+        panelDe.setBackground(Style.FONDO);
+
+        panelBtn = new JPanel();
+        panelBtn.setBackground(Style.FONDO);
+
+        this.add(panelIz, BorderLayout.WEST);
+        this.add(panelDe, BorderLayout.CENTER);
+        panelDe.add(panelBtn);
+
+
+        //////////////////////////////////////////////////////////////////
 
         line1 = new JLabel("Proceso de Desarrollo de Software");
-        line1.setFont(new Font("Calibri", Font.BOLD, 18));
+        line1.setFont(new Font(Style.FONT, Font.BOLD, 18));
         line1.setHorizontalAlignment(0);
 
         line2 = new JLabel("Administración de Consorcios");
-        line2.setFont(new Font("Calibri", Font.PLAIN, 18));
+        line2.setFont(new Font(Style.FONT, Font.PLAIN, 18));
         line2.setHorizontalAlignment(0);
 
         line3 = new JLabel("TPO - GRUPO 9");
         line3.setHorizontalAlignment(0);
-        line3.setFont(new Font("Calibri", Font.PLAIN, 18));
+        line3.setFont(new Font(Style.FONT, Font.PLAIN, 18));
 
         line4 = new JLabel("UADE");
-        line4.setFont(new Font("Calibri", Font.PLAIN, 18));
+        line4.setFont(new Font(Style.FONT, Font.PLAIN, 18));
         line4.setHorizontalAlignment(0);
 
         inicioButton = new JButton("¡EMPECEMOS!");
+        inicioButton.setPreferredSize(new Dimension(200, 40));
+        inicioButton.setHorizontalAlignment(0);
 
-        basePanel.add(line1);
-        basePanel.add(line2);
-        basePanel.add(line3);
-        basePanel.add(line4);
-        basePanel.add(inicioButton);
+        panelDe.add(line1);
+        panelDe.add(line2);
+        panelDe.add(line3);
+        panelDe.add(line4);
+        panelDe.add(panelBtn);
+        panelBtn.add(inicioButton);
 
         inicioButton.addActionListener(new ActionListener() {
 
@@ -60,6 +85,6 @@ public class PanelInicio extends JPanel {
             }
         });
     }
-
-
 }
+
+

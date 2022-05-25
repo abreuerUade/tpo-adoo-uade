@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PanelGastos extends JPanel {
+public class PanelUnidadesFuncionales extends JPanel {
 
     private MasterFrame masterFrame;
     private JPanel panelIz;
@@ -24,12 +24,12 @@ public class PanelGastos extends JPanel {
     private JTable tabla;
     private JScrollPane scrollPane;
 
-    public PanelGastos (MasterFrame masterFrame){
+    public PanelUnidadesFuncionales (MasterFrame masterFrame){
         this.masterFrame = masterFrame;
 
     }
 
-    public void armarPanelGastos() {
+    public void armarPanelUnidadesFuncionales() {
 
         ///////////// Panel Base ///////////////////
 
@@ -43,7 +43,7 @@ public class PanelGastos extends JPanel {
         panelIz.setBackground(Style.GRIS_CLARO);
 
         panelDe = new JPanel();
-        BorderLayout rightLayout = new BorderLayout(20, 20);
+        BorderLayout rightLayout = new BorderLayout(20,20);
         panelDe.setLayout(rightLayout);
         panelDe.setPreferredSize(new Dimension(800, 500));
         panelDe.setBackground(Style.FONDO);
@@ -54,7 +54,7 @@ public class PanelGastos extends JPanel {
 
         //////////////////////////////////////////////////////////////////
 
-        lblUsuarios = new JLabel("SELECCIONE UN GASTO O DE UNO NUEVO DE ALTA");
+        lblUsuarios = new JLabel("SELECCIONE UNA UNIDAD FUNCIONAL O DE UNA NUEVA DE ALTA");
         lblUsuarios.setFont(new Font(Style.FONT, Font.BOLD, 20));
         lblUsuarios.setHorizontalAlignment(0);
 
@@ -63,17 +63,8 @@ public class PanelGastos extends JPanel {
         lblOpciones.setHorizontalAlignment(0);
 
         btnAlta = new JButton("ALTA");
-        btnAlta.setPreferredSize(new Dimension(180, 40));
-        btnAlta.setHorizontalAlignment(0);
-
         btnBaja = new JButton("BAJA");
-        btnBaja.setPreferredSize(new Dimension(180, 40));
-        btnBaja.setHorizontalAlignment(0);
-
         btnModificar = new JButton("MODIFICAR");
-        btnModificar.setPreferredSize(new Dimension(180, 40));
-        btnModificar.setHorizontalAlignment(0);
-
         btnAtras = new JButton("ATRAS");
         btnSalir = new JButton("SALIR");
 
@@ -86,12 +77,11 @@ public class PanelGastos extends JPanel {
         scrollPane.setBounds(0, 0, 550, 370);
         scrollPane.setOpaque(false);
 
-        contenidoTabla.addColumn("NOMBRE");
-        contenidoTabla.addColumn("MONTO");
-        contenidoTabla.addColumn("FECHA DE FACT");
-        contenidoTabla.addColumn("CUOTAS");
-        contenidoTabla.addColumn("PERIODO");
-        contenidoTabla.addColumn("TIPO DE EXP");
+        contenidoTabla.addColumn("UNIDAD");
+        contenidoTabla.addColumn("PROPIETARIO");
+        contenidoTabla.addColumn("INQUILINO");
+        contenidoTabla.addColumn("SUPERFICIE");
+        contenidoTabla.addColumn("CONTACTO");
 
 
         panelDe.add(lblUsuarios, BorderLayout.NORTH);
@@ -105,7 +95,15 @@ public class PanelGastos extends JPanel {
 
         btnAlta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelAltaGastos();
+                masterFrame.mostrarPanelAltaunidadFuncional();
+            }
+        });
+
+        btnModificar.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                masterFrame.mostrarPanelAltaUsuario();
+
             }
         });
 
