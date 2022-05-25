@@ -13,7 +13,7 @@ public class ControladorPersona {
 
     private ArrayList<Persona> personas = null;
     private static ControladorPersona instancia = null;
-    public ControladorPersona(){personas = new ArrayList<Persona>();}
+    private ControladorPersona(){personas = new ArrayList<Persona>();}
     public static ControladorPersona getInstance(){
         if (instancia == null){
             instancia = new ControladorPersona();
@@ -54,7 +54,7 @@ public class ControladorPersona {
     public void eliminarPersona(PersonaDTO persona){
         if (persona != null) {
             Persona personaARemover = getPersonabyDNI(persona.getDni());
-            personas.remove(personaARemover);
+            personas.remove(getPersonabyDNI(persona.getDni()));
         }
     }
 

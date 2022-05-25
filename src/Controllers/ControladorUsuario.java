@@ -50,10 +50,10 @@ public class ControladorUsuario {
         if (datos!=null){
             Usuario userEdit = getUsuario(datos.getMail());
             if (userEdit!=null){
+                int index = Usuarios.indexOf(userEdit);
                 userEdit.setApellido(datos.getApellido());
                 userEdit.setNombre(datos.getNombre());
-                userEdit.setMail(datos.getMail());
-                Usuarios.set(Usuarios.indexOf(getUsuario(datos.getMail())), userEdit);
+                Usuarios.set(index, userEdit);
             }
         }
     }
