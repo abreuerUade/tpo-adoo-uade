@@ -1,4 +1,6 @@
 package Controllers;
+import Auth.Autenticador;
+import Auth.AuthProvider;
 import Negocio.*;
 import DTO.UsuarioDTO;
 
@@ -42,6 +44,8 @@ public class ControladorUsuario {
                 userNew.setNombre(datos.getNombre());
                 userNew.setMail(datos.getMail());
                 Usuarios.add(userNew);
+                //Creamos las credenciales
+                Autenticador.getInstance().crearCredenciales(datos.getMail());
             }
         }
     }
@@ -63,6 +67,7 @@ public class ControladorUsuario {
             Usuario userDel = getUsuario(datos.getMail());
             if (userDel!=null){
                 Usuarios.remove(getUsuario(datos.getMail()));
+                Autenticador.getInstance().eliminarCredencial(datos.getMail());
             }
         }
     }

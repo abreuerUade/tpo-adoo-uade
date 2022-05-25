@@ -5,7 +5,6 @@ import GUI.MasterFrame;
 import Auth.*;
 
 import java.net.Authenticator;
-import java.security.AuthProvider;
 
 public class Main {
 
@@ -14,8 +13,22 @@ public class Main {
         master.armarMaster();
         master.mostrarPanelInicio();
         master.showFrame();
+        //Cargar DATOS
         Data.load();
-        //System.out.println(ControladorUsuario.getInstance().getUsuarios());
-        System.out.println(Autenticador.getInstance().autenticar("rr@consorcios.com", 123 ));
+
+
+        //TEST Autenticar -- Verificar
+        System.out.println(Autenticador.getInstance().autenticar("rr@consorcios.com", "rr@consorcios.com"));
+        Autenticador.getInstance().editarPassword("rr@consorcios.com","NuevaPAss");
+        System.out.println(Autenticador.getInstance().autenticar("rr@consorcios.com", "NuevaPAss"));
+
+        System.out.println(Autenticador.getInstance().autenticar("admin@consorcios.com", "admin@consorcios.com"));
+        Autenticador.getInstance().eliminarCredencial("admin@consorcios.com");
+        System.out.println(Autenticador.getInstance().autenticar("admin@consorcios.com", "admin@consorcios.com"));
+
+        //AuthProvider autenticador = new Autenticador().autenticar();
+       // System.out.println(autenticador.autenticar("rr@consorcios.com", 123));
+        //System.out.println(Autenticador.getInstance().autenticar("rr@consorcios.com", 123 ));
+
     }
 }
