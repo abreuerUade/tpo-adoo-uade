@@ -37,12 +37,8 @@ public class ControladorUnidadFuncional {
     public void crearUnidadFuncional (UnidadFuncionalDTO datos) {
         if (datos != null) {
             UnidadFuncional ufVerificar = getUnidadFuncional(datos.getNroUnidad());
-            UnidadFuncional ufNew = new UnidadFuncional(datos);
             if (ufVerificar == null) {
-                ufNew.setNroUnidad(datos.getNroUnidad());
-                ufNew.setInquilinos(datos.getInquilinos());
-                ufNew.setPropietarios(datos.getPropietarios());
-                ufNew.setSuperficie(datos.getSuperficie());
+                UnidadFuncional ufNew = new UnidadFuncional(datos);
                 UnidadesFuncionales.add(ufNew);
             }
         }
@@ -52,11 +48,11 @@ public class ControladorUnidadFuncional {
         if (datos != null) {
             UnidadFuncional ufEdit = getUnidadFuncional(datos.getNroUnidad());
             if (ufEdit != null) {
-                ufEdit.setNroUnidad(datos.getNroUnidad());
+                int index = UnidadesFuncionales.indexOf(ufEdit);
                 ufEdit.setInquilinos(datos.getInquilinos());
                 ufEdit.setPropietarios(datos.getPropietarios());
                 ufEdit.setSuperficie(datos.getSuperficie());
-                UnidadesFuncionales.set(UnidadesFuncionales.indexOf(getUnidadFuncional(datos.getNroUnidad())),ufEdit);
+                UnidadesFuncionales.set(index,ufEdit);
             }
         }
     }

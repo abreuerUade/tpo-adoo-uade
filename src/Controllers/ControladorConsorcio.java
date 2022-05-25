@@ -21,9 +21,9 @@ public class ControladorConsorcio {
         }
         return lista;
     }
-    private Consorcio getConsorcio(String nombre){
+    private Consorcio getConsorcio(int id){
         for (Consorcio c:Consorcios){
-            if (c.getNombre().equals(nombre)){
+            if (c.getId() == id){
                 return c;
             }
         }
@@ -31,24 +31,18 @@ public class ControladorConsorcio {
     }
     public void crearConsorcio (ConsorcioDTO datos){
         if (datos!=null){
-            Consorcio consorcioVerificar = getConsorcio(datos.getNombre());
-            Consorcio consorcioNew = new Consorcio(datos);
+            Consorcio consorcioVerificar = getConsorcio(datos.getId());
             if (consorcioVerificar == null){
-                consorcioNew.setNombre(datos.getNombre());
-                consorcioNew.setContacto(datos.getContacto());
-                consorcioNew.setCuentaBanco(datos.getCuentaBanco());
-                consorcioNew.setAdmin(datos.getAdmin());
-                consorcioNew.setGastos(datos.getGastos());
-                consorcioNew.setUnidadesFunc(datos.getUnidadesFunc());
-                consorcioNew.setTipoLiquidacion(datos.getTipoLiquidacion());
+                Consorcio consorcioNew = new Consorcio(datos);
                 Consorcios.add(consorcioNew);
             }
         }
     }
     public void editarConsorcio (ConsorcioDTO datos){
         if (datos != null){
-            Consorcio consorcioEdit = getConsorcio(datos.getNombre());
+            Consorcio consorcioEdit = getConsorcio(datos.getId());
             if (consorcioEdit != null){
+                int index = Consorcios.indexOf(consorcioEdit);
                 consorcioEdit.setNombre(datos.getNombre());
                 consorcioEdit.setContacto(datos.getContacto());
                 consorcioEdit.setCuentaBanco(datos.getCuentaBanco());
@@ -56,15 +50,15 @@ public class ControladorConsorcio {
                 consorcioEdit.setGastos(datos.getGastos());
                 consorcioEdit.setUnidadesFunc(datos.getUnidadesFunc());
                 consorcioEdit.setTipoLiquidacion(datos.getTipoLiquidacion());
-                Consorcios.set(Consorcios.indexOf(getConsorcio(datos.getNombre())),consorcioEdit);
+                Consorcios.set(index,consorcioEdit);
             }
         }
     }
     public void eliminarConsorcio (ConsorcioDTO datos){
         if (datos != null){
-            Consorcio consorcioRemove = getConsorcio(datos.getNombre());
+            Consorcio consorcioRemove = getConsorcio(datos.getId());
             if (consorcioRemove != null){
-                Consorcios.remove(getConsorcio(datos.getNombre()));
+                Consorcios.remove(getConsorcio(datos.getId()));
             }
         }
     }

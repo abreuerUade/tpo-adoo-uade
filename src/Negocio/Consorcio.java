@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Consorcio {
 
+
+    private int id;
     private String nombre;
     private String contacto;
     private Cuenta cuentaBanco;
@@ -28,7 +30,7 @@ public class Consorcio {
 
     public ConsorcioDTO consocioToDTO () {
         ConsorcioDTO consorcioDTO = new ConsorcioDTO();
-
+        consorcioDTO.setId(this.id);
         consorcioDTO.setNombre(this.nombre);
         consorcioDTO.setContacto(this.contacto);
         consorcioDTO.setCuentaBanco(this.cuentaBanco);
@@ -47,6 +49,10 @@ public class Consorcio {
 
     public void cambiarCriterio (LiquidacionGenerica liquidacionGenerica) {
 
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getNombre() {

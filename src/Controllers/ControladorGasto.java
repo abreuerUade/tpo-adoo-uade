@@ -49,7 +49,7 @@ public class ControladorGasto {
     public void eliminarGasto(GastoDTO gasto){
         if (gasto != null) {
             Gasto gastoARemover = getGastoById(gasto.getId());
-            gastos.remove(gastoARemover);
+            gastos.remove(getGastoById(gasto.getId()));
         }
     }
 

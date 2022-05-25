@@ -6,6 +6,8 @@ import java.util.List;
 
 public class ConsorcioDTO {
 
+
+    private int id;
     private String nombre;
     private String contacto;
     private Cuenta cuentaBanco;
@@ -13,6 +15,15 @@ public class ConsorcioDTO {
     private List<Gasto> gastos;
     private List<Usuario> admin;
     private LiquidacionGenerica tipoLiquidacion;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNombre() {
         return nombre;
