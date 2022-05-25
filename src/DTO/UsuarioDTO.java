@@ -30,5 +30,4 @@ public class UsuarioDTO {
         this.mail = in_mail;
     }
 
-
 }

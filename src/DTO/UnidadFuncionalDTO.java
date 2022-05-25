@@ -7,7 +7,7 @@ import java.util.List;
 
 public class UnidadFuncionalDTO {
     private float superficie;
-    private String nroUnidad;
+    private Integer nroUnidad;
     private List<Persona> propietarios;
     private List<Persona> inquilinos;
     private List<FacturaUnidadFuncional> facturas;
@@ -20,11 +20,11 @@ public class UnidadFuncionalDTO {
         this.superficie = superficie;
     }
 
-    public String getNroUnidad() {
+    public Integer getNroUnidad() {
         return nroUnidad;
     }
 
-    public void setNroUnidad(String nroUnidad) {
+    public void setNroUnidad(Integer nroUnidad) {
         this.nroUnidad = nroUnidad;
     }
 

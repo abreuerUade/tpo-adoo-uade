@@ -5,12 +5,23 @@ import Negocio.Expensas;
 import java.util.Date;
 
 public class GastoDTO {
+
+
+    private Integer id;
     private Integer monto;
     private String nombre;
     private Date fechaFact;
     private Integer cantCuotas;
     private Integer periodo;
     private Expensas tipoExpensas;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getMonto() {
         return monto;

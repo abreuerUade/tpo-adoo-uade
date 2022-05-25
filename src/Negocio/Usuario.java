@@ -4,11 +4,9 @@ import DTO.UsuarioDTO;
 
 
 public class Usuario {
+    private String mail; //Identificador
     private String nombre;
     private String apellido;
-    private String mail;
-    private String password;
-
 
     public Usuario (UsuarioDTO usuarioDTO) {
 
@@ -50,13 +48,5 @@ public class Usuario {
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }
