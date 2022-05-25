@@ -1,10 +1,15 @@
 package GUI;
 
+import Controllers.ControladorUsuario;
+import DTO.UsuarioDTO;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.SocketOption;
+import java.util.ArrayList;
 
 public class PanelUsuarios extends JPanel {
 
@@ -80,6 +85,19 @@ public class PanelUsuarios extends JPanel {
         contenidoTabla.addColumn("NOMBRE");
         contenidoTabla.addColumn("APELLIDO");
         contenidoTabla.addColumn("EMAIL");
+
+        ArrayList<UsuarioDTO> usuarios = ControladorUsuario.getInstance().getUsuarios();
+
+        for (UsuarioDTO u : usuarios){
+
+            Object [] row = new Object[3];
+            row[0] = u.getNombre();
+            row[1] = u.getApellido();
+            row[2] = u.getMail();
+
+            contenidoTabla.addRow(row);
+        }
+
         
 
         panelDe.add(lblUsuarios, BorderLayout.NORTH);

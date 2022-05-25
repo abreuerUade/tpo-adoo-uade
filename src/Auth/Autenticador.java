@@ -48,9 +48,9 @@ public class Autenticador implements AuthProvider  {
     public boolean autenticar(String mail, String password){
         boolean flag = false;
         if (getCredencial(mail)!=null){
-            if (getCredencial(mail).getPassword() == password) {
+            if (getCredencial(mail).getPassword().equals(password)) {
                 flag = true;
-                return flag;
+
             }
         }
         return flag;

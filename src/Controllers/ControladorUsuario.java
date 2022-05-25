@@ -21,6 +21,7 @@ public class ControladorUsuario {
     public ArrayList<UsuarioDTO> getUsuarios() {
         ArrayList<UsuarioDTO> lista = new ArrayList<UsuarioDTO>();
         for (Usuario u:this.Usuarios) {
+
             lista.add(u.usuarioToDto());
         }
         return lista;

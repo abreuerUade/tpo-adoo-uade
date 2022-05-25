@@ -9,6 +9,8 @@ import java.net.Authenticator;
 public class Main {
 
     public static void main(String[] args) {
+        Data.load();
+
         MasterFrame master = new MasterFrame();
         master.armarMaster();
         master.mostrarPanelInicio();
@@ -19,8 +21,8 @@ public class Main {
 
         //TEST Autenticar -- Verificar
         System.out.println(Autenticador.getInstance().autenticar("rr@consorcios.com", "rr@consorcios.com"));
-        Autenticador.getInstance().editarPassword("rr@consorcios.com","NuevaPAss");
-        System.out.println(Autenticador.getInstance().autenticar("rr@consorcios.com", "NuevaPAss"));
+        Autenticador.getInstance().editarPassword("rr@consorcios.com","123");
+        System.out.println(Autenticador.getInstance().autenticar("rr@consorcios.com", "123"));
 
         System.out.println(Autenticador.getInstance().autenticar("admin@consorcios.com", "admin@consorcios.com"));
         Autenticador.getInstance().eliminarCredencial("admin@consorcios.com");
@@ -30,5 +32,14 @@ public class Main {
        // System.out.println(autenticador.autenticar("rr@consorcios.com", 123));
         //System.out.println(Autenticador.getInstance().autenticar("rr@consorcios.com", 123 ));
 
+
+        // Test usuarios
+
+        System.out.println(ControladorUsuario.getInstance().getUsuarios());
+
     }
+
+
+
+
 }

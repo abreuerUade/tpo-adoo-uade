@@ -19,6 +19,12 @@ public class Data {
         admin2.setMail("admin@consorcios.com");
         ControladorUsuario.getInstance().crearUsuario(admin2);
 
+        UsuarioDTO admin3 = new UsuarioDTO();
+        admin3.setApellido("test");
+        admin3.setNombre("test");
+        admin3.setMail("test");
+        ControladorUsuario.getInstance().crearUsuario(admin3);
+
         PersonaDTO persona1 = new PersonaDTO();
         persona1.setDni(25634855);
         persona1.setApellido("Perez");

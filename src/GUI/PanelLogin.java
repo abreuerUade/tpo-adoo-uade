@@ -1,5 +1,7 @@
 package GUI;
 
+import Auth.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -95,7 +97,15 @@ public class PanelLogin extends JPanel {
         btnLogin.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelPrincipal();
+                String mail = txtUser.getText();
+                String pass = String.copyValueOf(passField.getPassword());
+                //Autenticador.getInstance().autenticar(mail, pass);
+                if(Autenticador.getInstance().autenticar(mail, pass)) {
+                    masterFrame.mostrarPanelPrincipal();
+                }
+
+
+
             }
         });
 
