@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class ControladorUnidadFuncional {
     private ArrayList<UnidadFuncional> UnidadesFuncionales = null;
+    // Instaciar una sola vez el controlador (singleton)
     private static ControladorUnidadFuncional instancia = null;
-    // Instaciar una sola vez el controlador.
     private ControladorUnidadFuncional() {UnidadesFuncionales = new ArrayList<UnidadFuncional>();}
     public static ControladorUnidadFuncional getInstance() {
         if (instancia == null){
@@ -51,7 +51,7 @@ public class ControladorUnidadFuncional {
     public void editarUnidadFuncional (UnidadFuncionalDTO datos) {
         if (datos != null) {
             UnidadFuncional ufEdit = getUnidadFuncional(datos.getNroUnidad());
-            if (!(ufEdit == null)) {
+            if (ufEdit != null) {
                 ufEdit.setNroUnidad(datos.getNroUnidad());
                 ufEdit.setInquilinos(datos.getInquilinos());
                 ufEdit.setPropietarios(datos.getPropietarios());

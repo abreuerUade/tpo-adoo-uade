@@ -66,7 +66,6 @@ public class ControladorGasto {
                 gastoModif.setNombre(gasto.getNombre());
                 gastoModif.setPeriodo(gasto.getPeriodo());
                 gastoModif.setTipoExpensas(gasto.getTipoExpensas());
-
                 gastos.set(index, gastoModif);
             }
         }
