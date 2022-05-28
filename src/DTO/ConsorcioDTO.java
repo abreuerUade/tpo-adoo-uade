@@ -2,6 +2,7 @@ package DTO;
 
 import Negocio.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConsorcioDTO {
@@ -11,6 +12,7 @@ public class ConsorcioDTO {
     private String nombre;
     private String contacto;
     private Cuenta cuentaBanco;
+    private String barrio;
     private List<UnidadFuncional> UnidadesFunc;
     private List<Gasto> gastos;
     private List<Usuario> admin;
@@ -80,4 +82,41 @@ public class ConsorcioDTO {
     public void setTipoLiquidacion(LiquidacionGenerica tipoLiquidacion) {
         this.tipoLiquidacion = tipoLiquidacion;
     }
+
+    public String getBarrio() {
+        return barrio;
+    }
+
+    public void setBarrio(String barrio) {
+        this.barrio = barrio;
+    }
+
+    public void addUnidadFuncional(UnidadFuncional unidadFuncional){
+        if(this.UnidadesFunc == null){
+            this.UnidadesFunc = new ArrayList<UnidadFuncional>();
+        }
+        this.UnidadesFunc.add(unidadFuncional);
+    }
+
+    public void removeUnidadFuncional(UnidadFuncional unidadFuncional){
+        this.UnidadesFunc.remove(unidadFuncional);
+    }
+
+    public void addGasto(Gasto gasto){
+        if(this.gastos == null){
+            this.gastos = new ArrayList<Gasto>();
+        }
+        this.gastos.add(gasto);
+    }
+
+    public void removeGasto(Gasto gasto){
+        this.gastos.remove(gasto);
+    }
+
+    public void addUsuario(Usuario usuario){
+        if(this.admin == null){
+            this.admin = new ArrayList<Usuario>();
+        }
+    }
+
 }

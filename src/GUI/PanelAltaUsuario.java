@@ -1,5 +1,9 @@
 package GUI;
 
+import Auth.Autenticador;
+import Controllers.ControladorUsuario;
+import DTO.UsuarioDTO;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -41,10 +45,22 @@ public class PanelAltaUsuario extends JPanel {
 
     }
 
+    public void cargarCampos(UsuarioDTO usuario) {
+        if(usuario != null){
+            txtNombre.setText(usuario.getNombre());
+            txtApellido.setText(usuario.getApellido());
+            txtMail.setText(usuario.getMail());
+            txtMail.setEnabled(false);
+        }
+
+
+
+    }
+
 
 
     public void armarPanelAltaUsuario() {
-
+        this.removeAll();
         ///////////// Panel Base ///////////////////
 
         this.setLayout(new BorderLayout());
@@ -98,20 +114,20 @@ public class PanelAltaUsuario extends JPanel {
         lblConfirmarContraseña.setFont(new Font(Style.FONT, Font.PLAIN, 18));
         lblConfirmarContraseña.setHorizontalAlignment(alignL);
 
-        txtNombre = new JTextField();
+        txtNombre = new JTextField("");
         txtNombre.setHorizontalAlignment(alignR);
         txtNombre.setPreferredSize(new Dimension(200,40));
 
-        txtApellido = new JTextField();
+        txtApellido = new JTextField("");
         txtApellido.setHorizontalAlignment(alignR);
 
-        txtMail = new JTextField();
+        txtMail = new JTextField("");
         txtMail.setHorizontalAlignment(alignR);
 
-        pssContra = new JPasswordField();
+        pssContra = new JPasswordField("");
         pssContra.setHorizontalAlignment(alignR);
 
-        pssConfirm = new JPasswordField();
+        pssConfirm = new JPasswordField("");
         pssConfirm.setHorizontalAlignment(alignR);
 
         panelForm.add(lblNombre);
@@ -160,6 +176,38 @@ public class PanelAltaUsuario extends JPanel {
         panelIz.add(btnAtras);
         panelIz.add(btnSalir);
 
+        btnGuardar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                UsuarioDTO nuevoUsuario = new UsuarioDTO();
+                String pass = String.copyValueOf(pssContra.getPassword());
+                String confPass = String.copyValueOf(pssConfirm.getPassword());
+
+                if(pass.equals(confPass)) {
+                    nuevoUsuario.setNombre(txtNombre.getText());
+                    nuevoUsuario.setApellido(txtApellido.getText());
+                    nuevoUsuario.setMail(txtMail.getText());
+
+
+                    if(ControladorUsuario.getInstance().verificarUsuarioBoolean(txtMail.getText())){
+                        ControladorUsuario.getInstance().eliminarUsuario(nuevoUsuario);
+                    }
+                        ControladorUsuario.getInstance().crearUsuario(nuevoUsuario);
+
+                    Autenticador.getInstance().editarPassword(txtMail.getText(), pass);
+
+
+
+                    masterFrame.mostrarPanelUsuarios();
+                }
+                else {
+                    JOptionPane.showMessageDialog(masterFrame,"Las contraseñas no coinciden.");
+                }
+
+
+            }
+        });
+
         btnAtras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 masterFrame.mostrarPanelUsuarios();
@@ -174,15 +222,5 @@ public class PanelAltaUsuario extends JPanel {
         });
 
     }
-    public void setTxtNombre(JTextField txtNombre) {
-        this.txtNombre = txtNombre;
-    }
 
-    public void setTxtApellido(JTextField txtApellido) {
-        this.txtApellido = txtApellido;
-    }
-
-    public void setTxtMail(JTextField txtMail) {
-        this.txtMail = txtMail;
-    }
 }

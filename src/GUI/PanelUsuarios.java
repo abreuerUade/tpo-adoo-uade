@@ -2,6 +2,7 @@ package GUI;
 
 import Controllers.ControladorUsuario;
 import DTO.UsuarioDTO;
+import Data.Data;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -35,7 +36,7 @@ public class PanelUsuarios extends JPanel {
     }
 
     public void armarPanelUsuarios() {
-
+        this.removeAll();
         ///////////// Panel Base ///////////////////
 
         this.setLayout(new BorderLayout());
@@ -87,7 +88,7 @@ public class PanelUsuarios extends JPanel {
         contenidoTabla.addColumn("EMAIL");
 
         ArrayList<UsuarioDTO> usuarios = ControladorUsuario.getInstance().getUsuarios();
-
+        System.out.println(ControladorUsuario.getInstance().getUsuarios());
         for (UsuarioDTO u : usuarios){
 
             Object [] row = new Object[3];
@@ -115,10 +116,46 @@ public class PanelUsuarios extends JPanel {
             }
         });
 
+        btnBaja.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                UsuarioDTO usuarioDTO = new UsuarioDTO();
+                usuarioDTO.setNombre((String) tabla.getValueAt(tabla.getSelectedRow(),0));
+                usuarioDTO.setApellido((String) tabla.getValueAt(tabla.getSelectedRow(),1));
+                usuarioDTO.setMail((String) tabla.getValueAt(tabla.getSelectedRow(),2));
+
+                int res = JOptionPane.showOptionDialog(new JFrame(), "Seguro que desea elimiar al usuario?","Aviso",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                        new Object[] { "Yes", "No" }, JOptionPane.YES_OPTION);
+                if (res == JOptionPane.YES_OPTION) {
+                    try {
+                        ControladorUsuario.getInstance().eliminarUsuario(usuarioDTO);
+                        masterFrame.mostrarPanelUsuarios();
+                    }
+                    catch (Exception exception){
+                        JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un usuario.");
+                    }
+                }
+            }
+        });
+
         btnModificar.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelAltaUsuario();
+                UsuarioDTO usuarioDTO = new UsuarioDTO();
+                try {
+                    usuarioDTO.setNombre((String) tabla.getValueAt(tabla.getSelectedRow(),0));
+                    usuarioDTO.setApellido((String) tabla.getValueAt(tabla.getSelectedRow(),1));
+                    usuarioDTO.setMail((String) tabla.getValueAt(tabla.getSelectedRow(),2));
+
+                    masterFrame.mostrarPanelAltaUsuario(usuarioDTO);
+
+                    //ControladorUsuario.getInstance().eliminarUsuario(usuarioDTO);
+
+                }
+                catch (Exception exception){
+                    JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un usuario.");
+                }
+
 
             }
         });

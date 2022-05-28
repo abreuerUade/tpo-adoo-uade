@@ -109,7 +109,7 @@ public class PanelUnidadesFuncionales extends JPanel {
 
         btnAtras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelPrincipal();
+                //masterFrame.mostrarPanelAltaConsorcio();
             }
         });
 

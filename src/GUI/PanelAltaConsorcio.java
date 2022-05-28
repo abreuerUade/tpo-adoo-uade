@@ -1,5 +1,9 @@
 package GUI;
 
+import Controllers.ControladorConsorcio;
+import DTO.ConsorcioDTO;
+import Negocio.Cuenta;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,13 +26,13 @@ public class PanelAltaConsorcio extends JPanel {
     private JLabel lblAlta;
     private JPanel panelForm;
     private JLabel lblDireccion;
-    private JLabel lblUnidades;
     private JLabel lblBarrio;
+    private JLabel lblProp;
     private JLabel lblCBU;
 
     private JTextField txtDireccion;
-    private JTextField txtUnidades;
     private JTextField txtBarrio;
+    private JTextField txtProp;
     private JTextField txtCBU;
 
     private JPanel panelBotones;
@@ -42,7 +46,18 @@ public class PanelAltaConsorcio extends JPanel {
 
     }
 
-    public void armarPanelAltaConsorcio() {
+    public void cargarCampos(ConsorcioDTO consorcioDTO){
+        if(consorcioDTO != null){
+            txtDireccion.setText(consorcioDTO.getNombre());
+            txtBarrio.setText(consorcioDTO.getBarrio());
+            txtProp.setText(consorcioDTO.getCuentaBanco().getPropietario());
+            txtCBU.setText(consorcioDTO.getCuentaBanco().getCBU());
+        }
+
+
+    }
+
+    public void armarPanelAltaConsorcio(ConsorcioDTO consorcio) {
 
         ///////////// Panel Base ///////////////////
 
@@ -82,13 +97,13 @@ public class PanelAltaConsorcio extends JPanel {
         lblDireccion.setFont(new Font(Style.FONT, Font.PLAIN, 18));
         lblDireccion.setHorizontalAlignment(alignL);
 
-        lblUnidades = new JLabel("Cantidad de unidades funcionales:   ");
-        lblUnidades.setFont(new Font(Style.FONT, Font.PLAIN, 18));
-        lblUnidades.setHorizontalAlignment(alignL);
-
         lblBarrio = new JLabel("Barrio:   ");
         lblBarrio.setFont(new Font(Style.FONT, Font.PLAIN, 18));
         lblBarrio.setHorizontalAlignment(alignL);
+
+        lblProp = new JLabel("Propietario de Cuenta:    ");
+        lblProp.setFont(new Font(Style.FONT, Font.PLAIN, 18));
+        lblProp.setHorizontalAlignment(alignL);
 
         lblCBU = new JLabel("CBU:    ");
         lblCBU.setFont(new Font(Style.FONT, Font.PLAIN, 18));
@@ -98,11 +113,11 @@ public class PanelAltaConsorcio extends JPanel {
         txtDireccion.setHorizontalAlignment(alignR);
         txtDireccion.setPreferredSize(new Dimension(200, 40));
 
-        txtUnidades = new JTextField();
-        txtUnidades.setHorizontalAlignment(alignR);
-
         txtBarrio = new JTextField();
         txtBarrio.setHorizontalAlignment(alignR);
+
+        txtProp = new JTextField();
+        txtProp.setHorizontalAlignment(alignR);
 
         txtCBU = new JPasswordField();
         txtCBU.setHorizontalAlignment(alignR);
@@ -110,10 +125,10 @@ public class PanelAltaConsorcio extends JPanel {
 
         panelForm.add(lblDireccion);
         panelForm.add(txtDireccion);
-        panelForm.add(lblUnidades);
-        panelForm.add(txtUnidades);
         panelForm.add(lblBarrio);
         panelForm.add(txtBarrio);
+        panelForm.add(lblProp);
+        panelForm.add(txtProp);
         panelForm.add(lblCBU);
         panelForm.add(txtCBU);
 
@@ -150,15 +165,55 @@ public class PanelAltaConsorcio extends JPanel {
         panelIz.add(btnAtras);
         panelIz.add(btnSalir);
 
+
+
+        btnGuardar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ConsorcioDTO nuevo = new ConsorcioDTO();
+
+                nuevo.setNombre(txtDireccion.getText());
+                nuevo.setBarrio(txtBarrio.getText());
+                nuevo.setCuentaBanco(new Cuenta(txtProp.getText(),txtCBU.getText()));
+
+                nuevo.setId((int) ControladorConsorcio.getInstance().getConsorcios().size()+1);
+
+
+                try{
+                    ControladorConsorcio.getInstance().crearConsorcio(nuevo);
+                    masterFrame.mostrarPanelPrincipal();
+                }
+                catch (Error error){
+                    JOptionPane.showMessageDialog(masterFrame,"Se ha ha producido un error.");
+                }
+
+
+
+            }
+        });
+
         btnGastos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelGastos();
+
+                if(consorcio != null){
+                    masterFrame.mostrarPanelGastos();
+                }
+                else {
+                    JOptionPane.showMessageDialog(masterFrame,"Primero debe crear un consorcio.");
+                }
+
             }
         });
 
         btnUnidades.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelUnidadesFuncionales();
+                if(consorcio != null){
+                    masterFrame.mostrarPanelUnidadesFuncionales();
+                }
+                else {
+                    JOptionPane.showMessageDialog(masterFrame,"Primero debe crear un consorcio.");
+                }
+
+
             }
         });
 
@@ -173,5 +228,7 @@ public class PanelAltaConsorcio extends JPanel {
                 masterFrame.mostrarPanelLogin();
             }
         });
+
+
     }
 }

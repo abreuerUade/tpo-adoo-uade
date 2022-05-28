@@ -1,12 +1,18 @@
 package Negocio;
 
+
 public class Cuenta {
 
     private String propietario;
-    private int CBU;
+    private String CBU;
 
-    public double obtenerSaldo() {
-        return 0;
+    public Cuenta(String propietario, String CBU) {
+        this.propietario = propietario;
+        this.CBU = CBU;
+    }
+
+    public String obtenerSaldo() {
+        return "";
     }
 
     public String getPropietario() {
@@ -17,11 +23,11 @@ public class Cuenta {
         this.propietario = propietario;
     }
 
-    public int getCBU() {
+    public String getCBU() {
         return CBU;
     }
 
-    public void setCBU(int CBU) {
+    public void setCBU(String CBU) {
         this.CBU = CBU;
     }
 }

@@ -12,6 +12,7 @@ public class Consorcio {
     private String nombre;
     private String contacto;
     private Cuenta cuentaBanco;
+    private String barrio;
     private List<UnidadFuncional> UnidadesFunc;
     private List<Gasto> gastos;
     private List<Usuario> admin;
@@ -19,9 +20,11 @@ public class Consorcio {
 
     public Consorcio (ConsorcioDTO consorcioDTO) {
 
+        this.id = consorcioDTO.getId();
         this.nombre = consorcioDTO.getNombre();
         this.contacto = consorcioDTO.getContacto();
         this.cuentaBanco = consorcioDTO.getCuentaBanco();
+        this.barrio = consorcioDTO.getBarrio();
         this.UnidadesFunc = consorcioDTO.getUnidadesFunc();
         this.gastos = consorcioDTO.getGastos();
         this.admin = consorcioDTO.getAdmin();
@@ -32,6 +35,7 @@ public class Consorcio {
         ConsorcioDTO consorcioDTO = new ConsorcioDTO();
         consorcioDTO.setId(this.id);
         consorcioDTO.setNombre(this.nombre);
+        consorcioDTO.setBarrio(this.barrio);
         consorcioDTO.setContacto(this.contacto);
         consorcioDTO.setCuentaBanco(this.cuentaBanco);
         consorcioDTO.setUnidadesFunc(this.UnidadesFunc);
@@ -49,6 +53,18 @@ public class Consorcio {
 
     public void cambiarCriterio (LiquidacionGenerica liquidacionGenerica) {
 
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getBarrio() {
+        return barrio;
+    }
+
+    public void setBarrio(String barrio) {
+        this.barrio = barrio;
     }
 
     public int getId() {

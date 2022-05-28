@@ -1,5 +1,7 @@
 package GUI;
 
+import Negocio.Persona;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,16 +22,14 @@ public class PanelAltaUnidadFuncional extends JPanel {
     // Panel Derecho
     private JLabel lblAlta;
     private JPanel panelForm;
-    private JLabel lblNombre;
-    private JLabel lblApellido;
-    private JLabel lblMail;
-    private JLabel lblContraseña;
-    private JLabel lblConfirmarContraseña;
-    private JTextField txtNombre;
-    private JTextField txtApellido;
-    private JTextField txtMail;
-    private JPasswordField pssContra;
-    private JPasswordField pssConfirm;
+    private JLabel lblUnidad;
+    private JLabel lblSuperficie;
+    private JLabel lblPropietarios;
+    private JLabel lblInquilinos;
+    private JTextField txtUnidad;
+    private JTextField txtSup;
+    private JComboBox<String> cmbProp;
+    private JComboBox<String> cmbInqui;
     private JPanel panelBotones;
     private JButton btnGuardar;
 
@@ -67,7 +67,7 @@ public class PanelAltaUnidadFuncional extends JPanel {
         //////////////////////////////////////////////////////////////////
 
 
-        lblAlta = new JLabel("ALTA DE USUARIO");
+        lblAlta = new JLabel("ALTA DE UNIDAD FUNCIONAL");
         lblAlta.setFont(new Font(Style.FONT, Font.BOLD, 20));
         lblAlta.setHorizontalAlignment(0);
         lblAlta.setVerticalAlignment(0);
@@ -76,52 +76,41 @@ public class PanelAltaUnidadFuncional extends JPanel {
         panelForm.setLayout(new GridLayout(5,5,5,20));
         panelForm.setBackground(Style.FONDO);
 
-        lblNombre = new JLabel("Nombre:   ");
-        lblNombre.setFont(new Font(Style.FONT, Font.PLAIN, 18));
-        lblNombre.setHorizontalAlignment(alignL);
+        lblUnidad = new JLabel("Unidad:   ");
+        lblUnidad.setFont(new Font(Style.FONT, Font.PLAIN, 18));
+        lblUnidad.setHorizontalAlignment(alignL);
 
-        lblApellido = new JLabel("Apellido:   ");
-        lblApellido.setFont(new Font(Style.FONT, Font.PLAIN, 18));
-        lblApellido.setHorizontalAlignment(alignL);
+        lblSuperficie = new JLabel("Superficie:   ");
+        lblSuperficie.setFont(new Font(Style.FONT, Font.PLAIN, 18));
+        lblSuperficie.setHorizontalAlignment(alignL);
 
-        lblMail = new JLabel("Mail:   ");
-        lblMail.setFont(new Font(Style.FONT, Font.PLAIN, 18));
-        lblMail.setHorizontalAlignment(alignL);
+        lblPropietarios = new JLabel("Propietarios:   ");
+        lblPropietarios.setFont(new Font(Style.FONT, Font.PLAIN, 18));
+        lblPropietarios.setHorizontalAlignment(alignL);
 
-        lblContraseña = new JLabel("Contraseña:    ");
-        lblContraseña.setFont(new Font(Style.FONT, Font.PLAIN, 18));
-        lblContraseña.setHorizontalAlignment(alignL);
+        lblInquilinos = new JLabel("Inquilinos:    ");
+        lblInquilinos.setFont(new Font(Style.FONT, Font.PLAIN, 18));
+        lblInquilinos.setHorizontalAlignment(alignL);
 
-        lblConfirmarContraseña = new JLabel("Confirmar Contraseña:    ");
-        lblConfirmarContraseña.setFont(new Font(Style.FONT, Font.PLAIN, 18));
-        lblConfirmarContraseña.setHorizontalAlignment(alignL);
+        txtUnidad = new JTextField();
+        txtUnidad.setHorizontalAlignment(alignR);
+        txtUnidad.setPreferredSize(new Dimension(200,40));
 
-        txtNombre = new JTextField();
-        txtNombre.setHorizontalAlignment(alignR);
-        txtNombre.setPreferredSize(new Dimension(200,40));
+        txtSup = new JTextField();
+        txtSup.setHorizontalAlignment(alignR);
 
-        txtApellido = new JTextField();
-        txtApellido.setHorizontalAlignment(alignR);
+        cmbProp = new JComboBox<String>();
 
-        txtMail = new JTextField();
-        txtMail.setHorizontalAlignment(alignR);
+        cmbInqui = new JComboBox<String>();
 
-        pssContra = new JPasswordField();
-        pssContra.setHorizontalAlignment(alignR);
-
-        pssConfirm = new JPasswordField();
-        pssConfirm.setHorizontalAlignment(alignR);
-
-        panelForm.add(lblNombre);
-        panelForm.add(txtNombre);
-        panelForm.add(lblApellido);
-        panelForm.add(txtApellido);
-        panelForm.add(lblMail);
-        panelForm.add(txtMail);
-        panelForm.add(lblContraseña);
-        panelForm.add(pssContra);
-        panelForm.add(lblConfirmarContraseña);
-        panelForm.add(pssConfirm);
+        panelForm.add(lblUnidad);
+        panelForm.add(txtUnidad);
+        panelForm.add(lblSuperficie);
+        panelForm.add(txtSup);
+        panelForm.add(lblPropietarios);
+        panelForm.add(cmbProp);
+        panelForm.add(lblInquilinos);
+        panelForm.add(cmbInqui);
 
         panelBotones = new JPanel();
 
@@ -136,8 +125,7 @@ public class PanelAltaUnidadFuncional extends JPanel {
         lblOpciones.setFont(new Font(Style.FONT, Font.BOLD, 18));
         lblOpciones.setHorizontalAlignment(0);
 
-        btnAlta = new JButton("");
-        btnAlta.setVisible(false);
+        btnAlta = new JButton("PERSONAS");
 
         btnBaja = new JButton("");
         btnBaja.setVisible(false);
@@ -160,7 +148,7 @@ public class PanelAltaUnidadFuncional extends JPanel {
 
         btnAtras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelUsuarios();
+                masterFrame.mostrarPanelUnidadesFuncionales();
             }
         });
 

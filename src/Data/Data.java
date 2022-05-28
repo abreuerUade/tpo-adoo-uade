@@ -2,6 +2,7 @@ package Data;
 import DTO.*;
 import static Negocio.ServiciosEnvio.*;
 import Controllers.*;
+import Negocio.Cuenta;
 
 
 public class Data {
@@ -60,5 +61,12 @@ public class Data {
         persona4.setMail("jmartinez@gmail.com");
         persona4.setServiciosEnvio(SMS);
         ControladorPersona.getInstance().crearPersona(persona4);
+
+        ConsorcioDTO cons = new ConsorcioDTO();
+        cons.setNombre("Lima 474");
+        cons.setCuentaBanco(new Cuenta(persona1.getNombre() + persona1.getApellido(),"2234523452357477472"));
+        cons.setBarrio("CABA");
+        cons.setId(1);
+        ControladorConsorcio.getInstance().crearConsorcio(cons);
     }
 }

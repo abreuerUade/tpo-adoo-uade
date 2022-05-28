@@ -1,5 +1,8 @@
 package GUI;
 
+import DTO.ConsorcioDTO;
+import DTO.UsuarioDTO;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -27,39 +30,21 @@ public class MasterFrame extends JFrame {
         frame.setTitle("Administrador de Consorcios");
 
         panelInicio = new PanelInicio(this);
-        panelInicio.armarPanelInicio();
-
         panelLogin = new PanelLogin(this);
-        panelLogin.armarPanelLogin();
-
         panelPrincipal = new PanelPrincipal(this);
-        panelPrincipal.armarPanelPrincipal();
-
         panelGastos = new PanelGastos(this);
-        panelGastos.armarPanelGastos();
-
         panelUsuarios = new PanelUsuarios(this);
-        panelUsuarios.armarPanelUsuarios();
-
         panelAltaUsuario = new PanelAltaUsuario(this);
-        panelAltaUsuario.armarPanelAltaUsuario();
-
         panelAltaConsorcio = new PanelAltaConsorcio(this);
-        panelAltaConsorcio.armarPanelAltaConsorcio();
-
         panelAltaGastos = new PanelAltaGastos(this);
-        panelAltaGastos.armarPanelAltaGastos();
-
         panelUnidadesFuncionales = new PanelUnidadesFuncionales(this);
-        panelUnidadesFuncionales.armarPanelUnidadesFuncionales();
-
         panelAltaUnidadFuncional = new PanelAltaUnidadFuncional(this);
-        panelAltaUnidadFuncional.armarPanelAltaUnidadFuncional();
 
     }
 
     public void mostrarPanelInicio(){
         frame.getContentPane().removeAll();
+        panelInicio.armarPanelInicio();
         frame.getContentPane().add(panelInicio);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
@@ -68,6 +53,7 @@ public class MasterFrame extends JFrame {
 
     public void mostrarPanelLogin() {
         frame.getContentPane().removeAll();
+        panelLogin.armarPanelLogin();
         frame.getContentPane().add(panelLogin);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
@@ -76,6 +62,7 @@ public class MasterFrame extends JFrame {
 
     public void mostrarPanelPrincipal() {
         frame.getContentPane().removeAll();
+        panelPrincipal.armarPanelPrincipal();
         frame.getContentPane().add(panelPrincipal);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
@@ -85,6 +72,7 @@ public class MasterFrame extends JFrame {
 
     public void mostrarPanelGastos() {
         frame.getContentPane().removeAll();
+        panelGastos.armarPanelGastos();
         frame.getContentPane().add(panelGastos);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
@@ -93,6 +81,7 @@ public class MasterFrame extends JFrame {
 
     public void mostrarPanelUsuarios() {
         frame.getContentPane().removeAll();
+        panelUsuarios.armarPanelUsuarios();
         frame.getContentPane().add(panelUsuarios);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
@@ -101,23 +90,38 @@ public class MasterFrame extends JFrame {
 
     public void mostrarPanelAltaUsuario() {
         frame.getContentPane().removeAll();
+        panelAltaUsuario.armarPanelAltaUsuario();
         frame.getContentPane().add(panelAltaUsuario);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
 
     }
 
-
-    public void mostrarPanelAltaConsorcio() {
+    public void mostrarPanelAltaUsuario(UsuarioDTO usuario) {
         frame.getContentPane().removeAll();
-        frame.getContentPane().add(panelAltaConsorcio);
+        panelAltaUsuario.armarPanelAltaUsuario();
+        frame.getContentPane().add(panelAltaUsuario);
+        panelAltaUsuario.cargarCampos(usuario);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
 
     }
 
+
+    public void mostrarPanelAltaConsorcio(ConsorcioDTO consorcio) {
+        frame.getContentPane().removeAll();
+        panelAltaConsorcio.armarPanelAltaConsorcio(consorcio);
+        frame.getContentPane().add(panelAltaConsorcio);
+        panelAltaConsorcio.cargarCampos(consorcio);
+        frame.getContentPane().validate();
+        frame.getContentPane().repaint();
+
+    }
+
+
     public void mostrarPanelAltaGastos() {
         frame.getContentPane().removeAll();
+        panelAltaGastos.armarPanelAltaGastos();
         frame.getContentPane().add(panelAltaGastos);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
@@ -126,6 +130,7 @@ public class MasterFrame extends JFrame {
 
     public void mostrarPanelUnidadesFuncionales() {
         frame.getContentPane().removeAll();
+        panelUnidadesFuncionales.armarPanelUnidadesFuncionales();
         frame.getContentPane().add(panelUnidadesFuncionales);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
@@ -134,6 +139,7 @@ public class MasterFrame extends JFrame {
 
     public void mostrarPanelAltaunidadFuncional() {
         frame.getContentPane().removeAll();
+        panelAltaUnidadFuncional.armarPanelAltaUnidadFuncional();
         frame.getContentPane().add(panelAltaUnidadFuncional);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();

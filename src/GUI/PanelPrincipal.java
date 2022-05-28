@@ -1,14 +1,20 @@
 package GUI;
 
+import Controllers.ControladorConsorcio;
+import Controllers.ControladorUsuario;
+import DTO.ConsorcioDTO;
+import DTO.UsuarioDTO;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class PanelPrincipal extends JPanel {
 
-    private MasterFrame masterFrame;
+    private final MasterFrame masterFrame;
     private JPanel panelIz;
     private JPanel panelDe;
 
@@ -30,7 +36,7 @@ public class PanelPrincipal extends JPanel {
     }
 
     public void armarPanelPrincipal() {
-
+        this.removeAll();
         ///////////// Panel Base ///////////////////
 
         this.setLayout(new BorderLayout());
@@ -94,7 +100,19 @@ public class PanelPrincipal extends JPanel {
         contenidoTabla.addColumn("ID");
         contenidoTabla.addColumn("DIRECCION");
         contenidoTabla.addColumn("BARRIO");
-        contenidoTabla.addColumn("ADMINISTRADOR");
+
+
+        ArrayList<ConsorcioDTO> consorcios = ControladorConsorcio.getInstance().getConsorcios();
+
+        for (ConsorcioDTO c : consorcios){
+
+            Object [] row = new Object[3];
+            row[0] = c.getId();
+            row[1] = c.getNombre();
+            row[2] = c.getBarrio();
+
+            contenidoTabla.addRow(row);
+        }
 
         panelDe.add(lblConsorcio, BorderLayout.NORTH);
         panelDe.add(scrollPane, BorderLayout.CENTER);
@@ -107,7 +125,49 @@ public class PanelPrincipal extends JPanel {
 
         btnAlta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelAltaConsorcio();
+                ConsorcioDTO nuevo = null;
+
+                masterFrame.mostrarPanelAltaConsorcio(nuevo);
+            }
+
+
+
+        });
+
+        btnBaja.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ConsorcioDTO consorcioDTO = new ConsorcioDTO();
+                consorcioDTO.setId((int) tabla.getValueAt(tabla.getSelectedRow(),0));
+
+                int res = JOptionPane.showOptionDialog(new JFrame(), "Seguro que desea elimiar al consorcio? \n Se perderán todos los datos del mismo","Aviso",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                        new Object[] { "Yes", "No" }, JOptionPane.YES_OPTION);
+                if (res == JOptionPane.YES_OPTION) {
+                    try {
+                        ControladorConsorcio.getInstance().eliminarConsorcio(consorcioDTO);
+                        masterFrame.mostrarPanelPrincipal();
+                    }
+                    catch (Exception exception){
+                        JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un usuario.");
+                    }
+                }
+            }
+        });
+
+        btnModificar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ConsorcioDTO c;
+                try {
+                    int id = (int) tabla.getValueAt(tabla.getSelectedRow(),0);
+                    c = ControladorConsorcio.getInstance().getConsorcios().get(id-1);
+
+
+                    masterFrame.mostrarPanelAltaConsorcio(c);
+                }
+                catch (Exception exception){
+                    JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un consorcio.");
+                }
+
             }
         });
 
