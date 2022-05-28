@@ -16,7 +16,7 @@ public class Main {
         master.mostrarPanelInicio();
         master.showFrame();
         //Cargar DATOS
-
+        Data.load();
 
 
         //TEST Autenticar -- Verificar
@@ -35,7 +35,7 @@ public class Main {
 
         // Test usuarios
 
-        //System.out.println(ControladorUsuario.getInstance().getUsuarios());
+        System.out.println(ControladorUsuario.getInstance().getUsuarios());
 
     }
 
