@@ -1,8 +1,12 @@
 package Controllers;
 
 import DTO.ConsorcioDTO;
+import DTO.GastoDTO;
 import Negocio.Consorcio;
+import Negocio.Gasto;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorConsorcio {
     private ArrayList<Consorcio> Consorcios = null;
@@ -29,6 +33,19 @@ public class ControladorConsorcio {
         }
         return null;
     }
+
+    public void agregarGasto(GastoDTO gasto, int id){
+        Consorcio consorcio = getConsorcio(id);
+
+        List<Gasto> gastos = consorcio.getGastos();
+
+        Gasto nuevoGasto = new Gasto(gasto);
+        gastos.add(nuevoGasto);
+
+        consorcio.setGastos(gastos);
+
+    }
+
     public void crearConsorcio (ConsorcioDTO datos){
         if (datos!=null){
             Consorcio consorcioVerificar = getConsorcio(datos.getId());
