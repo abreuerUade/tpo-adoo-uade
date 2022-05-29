@@ -25,6 +25,11 @@ public class PanelPrincipal extends JPanel {
     private JButton btnModificar;
     private JButton btnUsuario;
     private JButton btnSalir;
+    private JButton btnUF;
+    private JButton btnPersonas;
+    private JButton btnGastos;
+    private JButton btnLiquidar;
+    private JPanel panelbotones;
 
     private DefaultTableModel contenidoTabla;
     private JTable tabla;
@@ -69,24 +74,10 @@ public class PanelPrincipal extends JPanel {
         lblOpciones.setHorizontalAlignment(0);
 
         btnAlta = new JButton("ALTA");
-        btnAlta.setPreferredSize(new Dimension(180, 40));
-        btnAlta.setHorizontalAlignment(0);
-
         btnBaja = new JButton("BAJA");
-        btnBaja.setPreferredSize(new Dimension(180, 40));
-        btnBaja.setHorizontalAlignment(0);
-
         btnModificar = new JButton("MODIFICAR");
-        btnModificar.setPreferredSize(new Dimension(180, 40));
-        btnModificar.setHorizontalAlignment(0);
-
         btnUsuario = new JButton("USUARIOS");
-        btnUsuario.setPreferredSize(new Dimension(180, 40));
-        btnUsuario.setHorizontalAlignment(0);
-
         btnSalir = new JButton("SALIR");
-        btnSalir.setPreferredSize(new Dimension(180, 40));
-        btnSalir.setHorizontalAlignment(0);
 
         ////////////// Tabla ////////////////
 
@@ -114,8 +105,35 @@ public class PanelPrincipal extends JPanel {
             contenidoTabla.addRow(row);
         }
 
+        panelbotones = new JPanel();
+        panelbotones.setBackground(Style.FONDO);
+        FlowLayout flowLayout = new FlowLayout();
+        flowLayout.setHgap(30);
+        panelbotones.setLayout(flowLayout);
+
+
+        btnUF = new JButton("UNIDADES FUNC.");
+        btnUF.setPreferredSize(new Dimension(140, 40));
+
+        btnPersonas = new JButton("PERSONAS");
+        btnPersonas.setPreferredSize(new Dimension(140, 40));
+
+        btnGastos = new JButton("GASTOS");
+        btnGastos.setPreferredSize(new Dimension(140, 40));
+
+        btnLiquidar = new JButton("LIQUIDAR");
+        btnLiquidar.setPreferredSize(new Dimension(140, 40));
+        btnLiquidar.setBackground(Style.ROJO);
+        btnLiquidar.setForeground(Style.FONT_WHITE);
+
+        panelbotones.add(btnUF);
+        panelbotones.add(btnPersonas);
+        panelbotones.add(btnGastos);
+        panelbotones.add(btnLiquidar);
+
         panelDe.add(lblConsorcio, BorderLayout.NORTH);
         panelDe.add(scrollPane, BorderLayout.CENTER);
+        panelDe.add(panelbotones, BorderLayout.SOUTH);
         panelIz.add(lblOpciones);
         panelIz.add(btnAlta);
         panelIz.add(btnBaja);
@@ -181,6 +199,18 @@ public class PanelPrincipal extends JPanel {
 
             public void actionPerformed(ActionEvent e) {
                 masterFrame.mostrarPanelLogin();
+            }
+        });
+
+        btnUF.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                masterFrame.mostrarPanelUnidadesFuncionales();
+            }
+        });
+
+        btnPersonas.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                masterFrame.mostrarPanelPersonas();
             }
         });
         

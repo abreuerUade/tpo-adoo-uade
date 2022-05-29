@@ -146,7 +146,11 @@ public class PanelAltaConsorcio extends JPanel {
         lblOpciones.setHorizontalAlignment(0);
 
         btnGastos = new JButton("GASTOS");
+        btnGastos.setVisible(false);
+
         btnUnidades = new JButton("UNIDADES FUNCIONALES");
+        btnUnidades.setVisible(false);
+
         btnModificar = new JButton("");
         btnModificar.setPreferredSize(new Dimension(180, 40));
         btnModificar.setHorizontalAlignment(0);

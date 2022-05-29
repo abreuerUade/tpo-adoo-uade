@@ -19,6 +19,7 @@ public class MasterFrame extends JFrame {
     PanelAltaGastos panelAltaGastos;
     PanelUnidadesFuncionales panelUnidadesFuncionales;
     PanelAltaUnidadFuncional panelAltaUnidadFuncional;
+    PanelPersonas panelPersonas;
 
 
     public void armarMaster() {
@@ -39,6 +40,7 @@ public class MasterFrame extends JFrame {
         panelAltaGastos = new PanelAltaGastos(this);
         panelUnidadesFuncionales = new PanelUnidadesFuncionales(this);
         panelAltaUnidadFuncional = new PanelAltaUnidadFuncional(this);
+        panelPersonas = new PanelPersonas(this);
 
     }
 
@@ -141,6 +143,15 @@ public class MasterFrame extends JFrame {
         frame.getContentPane().removeAll();
         panelAltaUnidadFuncional.armarPanelAltaUnidadFuncional();
         frame.getContentPane().add(panelAltaUnidadFuncional);
+        frame.getContentPane().validate();
+        frame.getContentPane().repaint();
+
+    }
+
+    public void mostrarPanelPersonas(ConsorcioDTO consorcioDTO) {
+        frame.getContentPane().removeAll();
+        panelPersonas.armarPanelPersonas(consorcioDTO);
+        frame.getContentPane().add(panelPersonas);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
 

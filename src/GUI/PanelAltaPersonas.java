@@ -1,2 +1,4 @@
-package GUI;public class PanelAltaPersonas {
+package GUI;
+
+public class PanelAltaPersonas {
 }

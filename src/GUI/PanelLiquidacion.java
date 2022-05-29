@@ -1,2 +1,4 @@
-package GUI;public class PanelLiquidacion {
+package GUI;
+
+public class PanelLiquidacion {
 }

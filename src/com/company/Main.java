@@ -16,7 +16,7 @@ public class Main {
         master.mostrarPanelInicio();
         master.showFrame();
         //Cargar DATOS
-        Data.load();
+
 
 
         //TEST Autenticar -- Verificar
