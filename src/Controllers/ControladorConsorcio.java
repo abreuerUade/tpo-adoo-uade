@@ -1,7 +1,6 @@
 package Controllers;
 
 import DTO.ConsorcioDTO;
-import DTO.PersonaDTO;
 import Negocio.Consorcio;
 import java.util.ArrayList;
 
