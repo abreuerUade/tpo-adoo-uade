@@ -84,6 +84,23 @@ public class ControladorUnidadFuncional {
 
     }
 
+    public void eliminarInquilino(PersonaDTO inquilino, Integer nro_u) {
+        if(inquilino != null) {
+            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
+            ArrayList<Persona> inquilinos = unidadFuncional.getInquilinos();
+
+            for(Persona i : inquilinos){
+                if(inquilino.getDni() == i.getDni()) {
+                    inquilinos.remove(inquilinos.indexOf(i));
+                }
+                break;
+            }
+
+            unidadFuncional.setInquilinos(inquilinos);
+
+        }
+    }
+
     public void agregarPropietario(PersonaDTO propietario, Integer nro_u) {
         if(propietario != null) {
             UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
@@ -99,6 +116,23 @@ public class ControladorUnidadFuncional {
 
     }
 
+    public void eliminarPropietario(PersonaDTO propietario, Integer nro_u) {
+        if(propietario != null) {
+            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
+            ArrayList<Persona> propietarios = unidadFuncional.getPropietarios();
+
+            for(Persona i : propietarios){
+                if(propietario.getDni() == i.getDni()) {
+                    propietarios.remove(propietarios.indexOf(i));
+                }
+                break;
+            }
+
+            unidadFuncional.setPropietarios(propietarios);
+
+        }
+    }
+
     public void agregarFactura(FacturaUnidadFuncional factura, Integer nro_u) {
         if(factura != null) {
             UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
@@ -109,6 +143,22 @@ public class ControladorUnidadFuncional {
             unidadFuncional.setFacturas(facturas);
         }
 
+    }
+
+    public void eliminarFactura(FacturaUnidadFuncional factura, Integer nro_u) {
+        if(factura != null) {
+            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
+            ArrayList<FacturaUnidadFuncional> facturas = unidadFuncional.getFacturas();
+
+            for(FacturaUnidadFuncional f : facturas){
+                if(f.getCodigoFactura() == factura.getCodigoFactura()) {
+                    facturas.remove(facturas.indexOf(f));
+                }
+                break;
+            }
+
+            unidadFuncional.setFacturas(facturas);
+        }
 
     }
 

@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class FacturaUnidadFuncional {
 
+    private int codigoFactura;
     private float montoExtraordinario;
     private float montoOrdinario;
     private boolean pago;
@@ -11,6 +12,14 @@ public class FacturaUnidadFuncional {
 
     public void confirmarPago() {
 
+    }
+
+    public int getCodigoFactura() {
+        return codigoFactura;
+    }
+
+    public void setCodigoFactura(int codigoFactura) {
+        this.codigoFactura = codigoFactura;
     }
 
     public float getMontoExtraordinario() {
