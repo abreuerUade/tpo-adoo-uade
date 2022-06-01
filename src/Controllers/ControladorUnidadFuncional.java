@@ -1,4 +1,6 @@
 package Controllers;
+import DTO.PersonaDTO;
+import Negocio.Persona;
 import Negocio.UnidadFuncional;
 import DTO.UnidadFuncionalDTO;
 import java.util.ArrayList;
@@ -64,6 +66,36 @@ public class ControladorUnidadFuncional {
                 UnidadesFuncionales.remove(getUnidadFuncional(datos.getNroUnidad()));
             }
         }
+    }
+
+    public void agregarInquilino(PersonaDTO inquilino, Integer nro_u) {
+        if(inquilino != null) {
+            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
+            ArrayList<Persona> inquilinos = unidadFuncional.getInquilinos();
+            Persona nuevoInquilino = new Persona(inquilino);
+
+            inquilinos.add(nuevoInquilino);
+
+            unidadFuncional.setInquilinos(inquilinos);
+
+        }
+
+
+    }
+
+    public void agregarPropietario(PersonaDTO propietario, Integer nro_u) {
+        if(propietario != null) {
+            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
+            ArrayList<Persona> propietarios = unidadFuncional.getPropietarios();
+            Persona nuevoPropietario = new Persona(propietario);
+
+            propietarios.add(nuevoPropietario);
+
+            unidadFuncional.setInquilinos(propietarios);
+
+        }
+
+
     }
 
 }

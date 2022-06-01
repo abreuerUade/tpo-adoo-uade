@@ -47,6 +47,18 @@ public class ControladorConsorcio {
 
     }
 
+    public void eliminarGasto(GastoDTO gasto, int id_consorcio) {
+        Consorcio consorcio = getConsorcio(id_consorcio);
+        ArrayList<Gasto> gastos = consorcio.getGastos();
+
+        for(Gasto g : gastos) {
+            if (gasto.getId() == g.getId()) {
+                gastos.remove(g);
+            }
+            break;
+        }
+    }
+
     public void crearConsorcio (ConsorcioDTO datos){
         if (datos!=null){
             Consorcio consorcioVerificar = getConsorcio(datos.getId());
