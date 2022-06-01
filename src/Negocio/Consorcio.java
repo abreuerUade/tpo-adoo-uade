@@ -3,6 +3,8 @@ package Negocio;
 
 import DTO.ConsorcioDTO;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Consorcio {
@@ -13,9 +15,9 @@ public class Consorcio {
     private String contacto;
     private Cuenta cuentaBanco;
     private String barrio;
-    private List<UnidadFuncional> UnidadesFunc;
-    private List<Gasto> gastos;
-    private List<Usuario> admin;
+    private ArrayList<UnidadFuncional> UnidadesFunc;
+    private ArrayList<Gasto> gastos;
+    private ArrayList<Usuario> admin;
     private LiquidacionGenerica tipoLiquidacion;
 
     public Consorcio (ConsorcioDTO consorcioDTO) {
@@ -95,27 +97,27 @@ public class Consorcio {
         this.cuentaBanco = cuantaBanco;
     }
 
-    public List<UnidadFuncional> getUnidadesFunc() {
+    public ArrayList<UnidadFuncional> getUnidadesFunc() {
         return UnidadesFunc;
     }
 
-    public void setUnidadesFunc(List<UnidadFuncional> unidadesFunc) {
+    public void setUnidadesFunc(ArrayList<UnidadFuncional> unidadesFunc) {
         UnidadesFunc = unidadesFunc;
     }
 
-    public List<Gasto> getGastos() {
+    public ArrayList<Gasto> getGastos() {
         return gastos;
     }
 
-    public void setGastos(List<Gasto> gastos) {
+    public void setGastos(ArrayList<Gasto> gastos) {
         this.gastos = gastos;
     }
 
-    public List<Usuario> getAdmin() {
+    public ArrayList<Usuario> getAdmin() {
         return admin;
     }
 
-    public void setAdmin(List<Usuario> admin) {
+    public void setAdmin(ArrayList<Usuario> admin) {
         this.admin = admin;
     }
 

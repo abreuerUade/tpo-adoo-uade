@@ -210,7 +210,20 @@ public class PanelPrincipal extends JPanel {
 
         btnPersonas.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelPersonas();
+                ConsorcioDTO consorcioDTO;
+
+
+                try{
+                    int selected = (int) tabla.getValueAt(tabla.getSelectedRow(),0);
+                    consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(selected);
+                    masterFrame.mostrarPanelPersonas(consorcioDTO);
+                }
+                catch (Exception exception){
+                    JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un consorcio.");
+                }
+
+
+
             }
         });
         

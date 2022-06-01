@@ -1,8 +1,13 @@
 package Controllers;
 
 import DTO.ConsorcioDTO;
+import DTO.GastoDTO;
 import Negocio.Consorcio;
+import Negocio.Gasto;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorConsorcio {
     private ArrayList<Consorcio> Consorcios = null;
@@ -29,6 +34,19 @@ public class ControladorConsorcio {
         }
         return null;
     }
+
+    public void agregarGasto(GastoDTO gasto, int id){
+        Consorcio consorcio = getConsorcio(id);
+
+        ArrayList<Gasto> gastos = consorcio.getGastos();
+
+        Gasto nuevoGasto = new Gasto(gasto);
+        gastos.add(nuevoGasto);
+
+        consorcio.setGastos(gastos);
+
+    }
+
     public void crearConsorcio (ConsorcioDTO datos){
         if (datos!=null){
             Consorcio consorcioVerificar = getConsorcio(datos.getId());
@@ -54,6 +72,9 @@ public class ControladorConsorcio {
             }
         }
     }
+
+
+
     public void eliminarConsorcio (ConsorcioDTO datos){
         if (datos != null){
             Consorcio consorcioRemove = getConsorcio(datos.getId());
@@ -61,6 +82,15 @@ public class ControladorConsorcio {
                 Consorcios.remove(getConsorcio(datos.getId()));
             }
         }
+    }
+
+    public ConsorcioDTO getConsorcioDTO(int id){
+        for (Consorcio c:Consorcios){
+            if (c.getId() == id){
+                return c.consocioToDTO();
+            }
+        }
+        return null;
     }
 
 }

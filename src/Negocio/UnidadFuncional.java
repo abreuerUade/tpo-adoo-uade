@@ -1,16 +1,16 @@
 package Negocio;
 
+import DTO.PersonaDTO;
 import DTO.UnidadFuncionalDTO;
-
-import java.util.List;
+import java.util.ArrayList;
 
 public class UnidadFuncional {
 
     private float superficie;
     private Integer nroUnidad;
-    private List<Persona> propietarios;
-    private List<Persona> inquilinos;
-    private List<FacturaUnidadFuncional> facturas;
+    private ArrayList<Persona> propietarios;
+    private ArrayList<Persona> inquilinos;
+    private ArrayList<FacturaUnidadFuncional> facturas;
 
     public UnidadFuncional (UnidadFuncionalDTO unidadFuncionalDTO) {
 
@@ -20,6 +20,7 @@ public class UnidadFuncional {
         this.inquilinos = unidadFuncionalDTO.getInquilinos();
         this.facturas = unidadFuncionalDTO.getFacturas();
     }
+
 
     public UnidadFuncionalDTO unidadFuncToDTO() {
         UnidadFuncionalDTO unidadFuncionalDTO = new UnidadFuncionalDTO();
@@ -53,27 +54,27 @@ public class UnidadFuncional {
         this.nroUnidad = nroUnidad;
     }
 
-    public List<Persona> getPropietarios() {
+    public ArrayList<Persona> getPropietarios() {
         return propietarios;
     }
 
-    public void setPropietarios(List<Persona> propietarios) {
+    public void setPropietarios(ArrayList<Persona> propietarios) {
         this.propietarios = propietarios;
     }
 
-    public List<Persona> getInquilinos() {
+    public ArrayList<Persona> getInquilinos() {
         return inquilinos;
     }
 
-    public void setInquilinos(List<Persona> inquilinos) {
+    public void setInquilinos(ArrayList<Persona> inquilinos) {
         this.inquilinos = inquilinos;
     }
 
-    public List<FacturaUnidadFuncional> getFacturas() {
+    public ArrayList<FacturaUnidadFuncional> getFacturas() {
         return facturas;
     }
 
-    public void setFacturas(List<FacturaUnidadFuncional> facturas) {
+    public void setFacturas(ArrayList<FacturaUnidadFuncional> facturas) {
         this.facturas = facturas;
     }
 }

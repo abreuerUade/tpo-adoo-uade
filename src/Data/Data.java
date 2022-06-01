@@ -62,11 +62,19 @@ public class Data {
         persona4.setServiciosEnvio(SMS);
         ControladorPersona.getInstance().crearPersona(persona4);
 
+        UnidadFuncionalDTO uf1A = new UnidadFuncionalDTO();
+        uf1A.setNroUnidad(1);
+        uf1A.setSuperficie(45);
+
+
+
+
         ConsorcioDTO cons = new ConsorcioDTO();
         cons.setNombre("Lima 474");
         cons.setCuentaBanco(new Cuenta(persona1.getNombre() + persona1.getApellido(),"2234523452357477472"));
         cons.setBarrio("CABA");
         cons.setId(1);
         ControladorConsorcio.getInstance().crearConsorcio(cons);
+
     }
 }
