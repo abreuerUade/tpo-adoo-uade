@@ -3,9 +3,11 @@ package Controllers;
 import DTO.ConsorcioDTO;
 import DTO.GastoDTO;
 import DTO.UnidadFuncionalDTO;
+import DTO.UsuarioDTO;
 import Negocio.Consorcio;
 import Negocio.Gasto;
 import Negocio.UnidadFuncional;
+import Negocio.Usuario;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -37,8 +39,8 @@ public class ControladorConsorcio {
         return null;
     }
 
-    public void agregarGasto(GastoDTO gasto, int id){
-        Consorcio consorcio = getConsorcio(id);
+    public void agregarGasto(GastoDTO gasto, int id_consorcio){
+        Consorcio consorcio = getConsorcio(id_consorcio);
 
         ArrayList<Gasto> gastos = consorcio.getGastos();
 
@@ -50,15 +52,20 @@ public class ControladorConsorcio {
     }
 
     public void eliminarGasto(GastoDTO gasto, int id_consorcio) {
-        Consorcio consorcio = getConsorcio(id_consorcio);
-        ArrayList<Gasto> gastos = consorcio.getGastos();
+        if(gasto != null) {
+            Consorcio consorcio = getConsorcio(id_consorcio);
+            ArrayList<Gasto> gastos = consorcio.getGastos();
 
-        for(Gasto g : gastos) {
-            if (gasto.getId() == g.getId()) {
-                gastos.remove(g);
+            for(Gasto g : gastos) {
+                if (gasto.getId() == g.getId()) {
+                    gastos.remove(gastos.indexOf(g));
+                }
+                break;
             }
-            break;
+
+            consorcio.setGastos(gastos);
         }
+
     }
 
     public void agregarUnidadFuncional(UnidadFuncionalDTO uf, int id_consorcio) {
@@ -71,6 +78,52 @@ public class ControladorConsorcio {
             unidades_funcionales.add(nueva_uf);
 
             consorcio.setUnidadesFunc(unidades_funcionales);
+        }
+    }
+
+    public void eliminarUnidadFuncional(UnidadFuncionalDTO unidad_funcional, int id_consorcio) {
+        if(unidad_funcional!= null) {
+            Consorcio consorcio = getConsorcio(id_consorcio);
+
+            ArrayList<UnidadFuncional> unidades_funcionales = consorcio.getUnidadesFunc();
+
+            for(UnidadFuncional uf : unidades_funcionales) {
+                if(uf.getNroUnidad() == unidad_funcional.getNroUnidad()) {
+                    unidades_funcionales.remove(unidades_funcionales.indexOf(uf));
+                }
+                break;
+            }
+
+            consorcio.setUnidadesFunc(unidades_funcionales);
+        }
+    }
+
+    public void agregarAdmin (UsuarioDTO admin, int id_consorcio) {
+        if (admin != null) {
+            Consorcio consorcio = getConsorcio(id_consorcio);
+
+            ArrayList<Usuario> admins = consorcio.getAdmin();
+
+            Usuario nuevo_admin = new Usuario(admin);
+            admins.add(nuevo_admin);
+
+            consorcio.setAdmin(admins);
+        }
+    }
+
+    public void eliminarAdmin(UsuarioDTO admin, int id_consorcio) {
+        if (admin != null) {
+            Consorcio consorcio = getConsorcio(id_consorcio);
+            ArrayList<Usuario> admins = consorcio.getAdmin();
+
+            for (Usuario a : admins){
+                if(a.getMail() == admin.getMail()) {
+                    admins.remove(admins.indexOf(a));
+                }
+                break;
+            }
+
+            consorcio.setAdmin(admins);
         }
     }
 
