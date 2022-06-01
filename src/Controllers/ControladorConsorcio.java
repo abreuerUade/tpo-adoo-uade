@@ -2,8 +2,10 @@ package Controllers;
 
 import DTO.ConsorcioDTO;
 import DTO.GastoDTO;
+import DTO.UnidadFuncionalDTO;
 import Negocio.Consorcio;
 import Negocio.Gasto;
+import Negocio.UnidadFuncional;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -56,6 +58,19 @@ public class ControladorConsorcio {
                 gastos.remove(g);
             }
             break;
+        }
+    }
+
+    public void agregarUnidadFuncional(UnidadFuncionalDTO uf, int id_consorcio) {
+        if(uf != null) {
+            Consorcio consorcio = getConsorcio(id_consorcio);
+
+            ArrayList<UnidadFuncional> unidades_funcionales = consorcio.getUnidadesFunc();
+
+            UnidadFuncional nueva_uf = new UnidadFuncional(uf);
+            unidades_funcionales.add(nueva_uf);
+
+            consorcio.setUnidadesFunc(unidades_funcionales);
         }
     }
 

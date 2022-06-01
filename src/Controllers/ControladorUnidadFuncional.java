@@ -1,5 +1,6 @@
 package Controllers;
 import DTO.PersonaDTO;
+import Negocio.FacturaUnidadFuncional;
 import Negocio.Persona;
 import Negocio.UnidadFuncional;
 import DTO.UnidadFuncionalDTO;
@@ -93,6 +94,19 @@ public class ControladorUnidadFuncional {
 
             unidadFuncional.setInquilinos(propietarios);
 
+        }
+
+
+    }
+
+    public void agregarFactura(FacturaUnidadFuncional factura, Integer nro_u) {
+        if(factura != null) {
+            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
+            ArrayList<FacturaUnidadFuncional> facturas = unidadFuncional.getFacturas();
+
+            facturas.add(factura);
+
+            unidadFuncional.setFacturas(facturas);
         }
 
 
