@@ -26,7 +26,7 @@ public class Main {
                 return 0;
             }
         };
-        System.out.println(liquidacionConsorcio1.calcularGastos(1));
+        System.out.println("Suma de los gastos del Consorcio 1: " + liquidacionConsorcio1.calcularGastos(1));
 
         //ControladorGasto.getInstance().verGastos(1);
 
