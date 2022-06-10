@@ -11,9 +11,8 @@ public class Gasto {
     private String nombre;
     private Date fechaFact;
     private Integer cantCuotas;
-    private Integer periodo;
-
-
+    private Integer periodo; //en meses por cuota
+    private Integer idconsorcio;
 
     private Expensas tipoExpensas;
 
@@ -24,7 +23,9 @@ public class Gasto {
         this.fechaFact = gastoDTO.getFechaFact();
         this.cantCuotas = gastoDTO.getCantCuotas();
         this.periodo = gastoDTO.getPeriodo();
+        this.idconsorcio = gastoDTO.getIdconsorcio();
         this.tipoExpensas = gastoDTO.getTipoExpensas();
+
     }
 
     public GastoDTO gastoToDTO() {
@@ -36,8 +37,16 @@ public class Gasto {
         gastoDTO.setCantCuotas(this.cantCuotas);
         gastoDTO.setPeriodo(this.periodo);
         gastoDTO.setTipoExpensas(this.tipoExpensas);
-
+        gastoDTO.setIdconsorcio(this.idconsorcio);
         return gastoDTO;
+    }
+
+    public Integer getIdconsorcio() {
+        return idconsorcio;
+    }
+
+    public void setIdconsorcio(Integer idconsorcio) {
+        this.idconsorcio = idconsorcio;
     }
 
     public Integer getId() {

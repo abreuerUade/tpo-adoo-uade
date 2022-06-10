@@ -38,11 +38,41 @@ public class ControladorGasto {
         return listaGastos;
     }
 
+    public void verGastos(Integer idconsorcio){
+        if (ControladorConsorcio.getInstance().existeConsorcio(idconsorcio)){
+            for (Gasto g:this.gastos) {
+                if (g.getIdconsorcio().equals(idconsorcio)){
+                    System.out.println(g.getNombre());
+                    System.out.println(g.getMonto());
+                    System.out.println(g.getFechaFact());
+                    System.out.println("Cantidad de cuotas: " + g.getCantCuotas());
+                    System.out.println("Periodo entre cuotas en meses: " + g.getPeriodo());
+                    System.out.println(g.getTipoExpensas());
+                }
+
+            }
+        }
+    }
+
+    public Integer gastosbyConsorcio(Integer idconsorcio){
+        Integer totalgastos = 0;
+        if (ControladorConsorcio.getInstance().existeConsorcio(idconsorcio)){
+            for (Gasto g:this.gastos){
+                if(g.getIdconsorcio().equals(idconsorcio)){
+                    totalgastos =totalgastos+ g.getMonto();
+                }
+            }
+        }
+        return totalgastos;
+    }
+
 
     public void crearGasto(GastoDTO gasto){
         if (gasto != null) {
-            Gasto nuevoGasto = new Gasto(gasto);
-            gastos.add(nuevoGasto);
+            if (ControladorConsorcio.getInstance().existeConsorcio(gasto.getIdconsorcio())){
+                Gasto nuevoGasto = new Gasto(gasto);
+                gastos.add(nuevoGasto);
+            }
         }
     }
 
@@ -57,7 +87,6 @@ public class ControladorGasto {
     public void modificarGasto(GastoDTO gasto){
         if (gasto != null) {
             Gasto gastoModif = getGastoById(gasto.getId());
-
             if (gastoModif != null) {
                 int index = gastos.indexOf(gastoModif);
                 gastoModif.setCantCuotas(gasto.getCantCuotas());
@@ -66,6 +95,7 @@ public class ControladorGasto {
                 gastoModif.setNombre(gasto.getNombre());
                 gastoModif.setPeriodo(gasto.getPeriodo());
                 gastoModif.setTipoExpensas(gasto.getTipoExpensas());
+                gastoModif.setIdconsorcio(gasto.getIdconsorcio());
                 gastos.set(index, gastoModif);
             }
         }

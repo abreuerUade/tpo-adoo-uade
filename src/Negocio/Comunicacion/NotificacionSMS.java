@@ -1,5 +1,4 @@
-package Negocio;
-
+package Negocio.Comunicacion;
 import interfaces.ModoEnvio;
 
 public class NotificacionSMS implements ModoEnvio {

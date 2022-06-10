@@ -1,4 +1,4 @@
-package Negocio;
+package Negocio.Comunicacion;
 
 import interfaces.ModoEnvio;
 

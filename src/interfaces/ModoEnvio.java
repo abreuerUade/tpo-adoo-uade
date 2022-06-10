@@ -1,8 +1,9 @@
 package interfaces;
 
-import Negocio.Notificacion;
+import Negocio.Comunicacion.*;
 
 public interface ModoEnvio {
 
     public void enviar (Notificacion notificacion);
+
 }
