@@ -3,6 +3,11 @@ import DTO.*;
 import static Negocio.ServiciosEnvio.*;
 import Controllers.*;
 import Negocio.Cuenta;
+import Negocio.Expensas;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
 
 
 public class Data {
@@ -67,14 +72,48 @@ public class Data {
         uf1A.setSuperficie(45);
 
 
+        ConsorcioDTO consorcio1 = new ConsorcioDTO();
+        consorcio1.setNombre("Lima 474");
+        consorcio1.setCuentaBanco(new Cuenta("Lima 474","543215495432",25516f));
+        consorcio1.setBarrio("CABA");
+        consorcio1.setId(1);
+        ControladorConsorcio.getInstance().crearConsorcio(consorcio1);
 
+        //Reloj
+        Date fechaactual = new Date();
+        //Expensas
+        GastoDTO gasto1 = new GastoDTO();
+        gasto1.setId(1);
+        gasto1.setMonto(5000);
+        gasto1.setNombre("EDENOR");
+        gasto1.setFechaFact(fechaactual);
+        gasto1.setCantCuotas(0);
+        gasto1.setPeriodo(0);
+        gasto1.setIdconsorcio(1);
+        gasto1.setTipoExpensas(Expensas.ORDINARIAS);
+        ControladorGasto.getInstance().crearGasto(gasto1);
 
-        ConsorcioDTO cons = new ConsorcioDTO();
-        cons.setNombre("Lima 474");
-        cons.setCuentaBanco(new Cuenta(persona1.getNombre() + persona1.getApellido(),"2234523452357477472"));
-        cons.setBarrio("CABA");
-        cons.setId(1);
-        ControladorConsorcio.getInstance().crearConsorcio(cons);
+        GastoDTO gasto2 = new GastoDTO();
+        gasto2.setId(2);
+        gasto2.setMonto(60000);
+        gasto2.setNombre("Sueldo");
+        gasto2.setFechaFact(fechaactual);
+        gasto2.setCantCuotas(0);
+        gasto2.setPeriodo(0);
+        gasto2.setIdconsorcio(1);
+        gasto2.setTipoExpensas(Expensas.ORDINARIAS);
+        ControladorGasto.getInstance().crearGasto(gasto2);
+
+        GastoDTO gasto3 = new GastoDTO();
+        gasto3.setId(3);
+        gasto3.setMonto(7000);
+        gasto3.setNombre("Arreglo Terraza");
+        gasto3.setFechaFact(fechaactual);
+        gasto3.setCantCuotas(0);
+        gasto3.setPeriodo(0);
+        gasto3.setIdconsorcio(1);
+        gasto3.setTipoExpensas(Expensas.EXTRAORDINARIAS);
+        ControladorGasto.getInstance().crearGasto(gasto3);
 
     }
 }

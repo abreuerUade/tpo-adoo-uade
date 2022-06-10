@@ -13,7 +13,16 @@ public class GastoDTO {
     private Date fechaFact;
     private Integer cantCuotas;
     private Integer periodo;
+    private Integer idconsorcio;
     private Expensas tipoExpensas;
+
+    public Integer getIdconsorcio() {
+        return idconsorcio;
+    }
+
+    public void setIdconsorcio(Integer idconsorcio) {
+        this.idconsorcio = idconsorcio;
+    }
 
     public Integer getId() {
         return id;

@@ -5,14 +5,20 @@ public class Cuenta {
 
     private String propietario;
     private String CBU;
+    private Float Saldo;
 
-    public Cuenta(String propietario, String CBU) {
+    public Cuenta(String propietario, String CBU, Float Saldo) {
         this.propietario = propietario;
         this.CBU = CBU;
+        this.Saldo = Saldo;
     }
 
-    public String obtenerSaldo() {
-        return "";
+    public Float getSaldo() {
+        return Saldo;
+    }
+
+    public void setSaldo(Float saldo) {
+        Saldo = saldo;
     }
 
     public String getPropietario() {
@@ -30,4 +36,5 @@ public class Cuenta {
     public void setCBU(String CBU) {
         this.CBU = CBU;
     }
+
 }

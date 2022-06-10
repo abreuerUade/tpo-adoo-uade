@@ -177,8 +177,8 @@ public class PanelAltaConsorcio extends JPanel {
 
                 nuevo.setNombre(txtDireccion.getText());
                 nuevo.setBarrio(txtBarrio.getText());
-                nuevo.setCuentaBanco(new Cuenta(txtProp.getText(),txtCBU.getText()));
-
+                //nuevo.setCuentaBanco(new Cuenta(txtProp.getText(),txtCBU.getText()));
+                //DESDE LA CREACION DE UN CONSORCIO NO DEBERIAMOS CREAR UNA CUENTA BANCARIA.
                 nuevo.setId((int) ControladorConsorcio.getInstance().getConsorcios().size()+1);
 
 
