@@ -24,6 +24,9 @@ public class Main {
             }
         };
         System.out.println("Suma de los gastos del Consorcio 1: " + liquidacionConsorcio1.calcularGastos(1));
+
+
+
         TestGastos.testing();
 
     }

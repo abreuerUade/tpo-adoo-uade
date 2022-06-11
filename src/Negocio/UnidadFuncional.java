@@ -38,6 +38,7 @@ public class UnidadFuncional {
 
         return unidadFuncionalDTO;
     }
+    //PENSAR ESTO, no deberia estar en el controlador de unidades funcionales?
 
     public void crearFactura (double extraordinario, double ordinario) {
 

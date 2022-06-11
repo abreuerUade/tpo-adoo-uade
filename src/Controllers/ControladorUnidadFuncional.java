@@ -52,8 +52,8 @@ public class ControladorUnidadFuncional {
             UnidadFuncional ufEdit = getUnidadFuncional(datos.getNroUnidad());
             if (ufEdit != null) {
                 int index = UnidadesFuncionales.indexOf(ufEdit);
-                ufEdit.setInquilinos(datos.getInquilinos());
-                ufEdit.setPropietarios(datos.getPropietarios());
+                ufEdit.setIdconsorcio(datos.getIdconsorcio());
+                ufEdit.setNroUnidad(datos.getNroUnidad());
                 ufEdit.setSuperficie(datos.getSuperficie());
                 UnidadesFuncionales.set(index,ufEdit);
             }

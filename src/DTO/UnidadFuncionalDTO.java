@@ -15,7 +15,7 @@ public class UnidadFuncionalDTO {
     private ArrayList<Persona> propietarios;
     private ArrayList<Persona> inquilinos;
     private ArrayList<FacturaUnidadFuncional> facturas;
-
+    //para que este constructor incompleto, perdon no lo entiendo?
     public UnidadFuncionalDTO(){
         propietarios = new ArrayList<>();
         inquilinos = new ArrayList<>();
