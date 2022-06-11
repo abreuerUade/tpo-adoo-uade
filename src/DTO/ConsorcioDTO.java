@@ -19,13 +19,13 @@ public class ConsorcioDTO {
     //private ArrayList<Gasto> gastos;
     private ArrayList<Usuario> admin;
     private LiquidacionGenerica tipoLiquidacion;
-    
+    /*
     public ConsorcioDTO(){
         UnidadesFunc = new ArrayList<>();
         //gastos = new ArrayList<>();
         admin = new ArrayList<>();
     }
-
+*/
 
     public int getId() {
         return id;

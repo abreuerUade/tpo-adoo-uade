@@ -1,4 +1,5 @@
 package Controllers;
+import DTO.ConsorcioDTO;
 import DTO.PersonaDTO;
 import Negocio.FacturaUnidadFuncional;
 import Negocio.Persona;
@@ -27,14 +28,34 @@ public class ControladorUnidadFuncional {
         }
         return listaUF;
     }
+
     //Buscar unidad funcional por numero y devolver objeto si existe.
-    private UnidadFuncional getUnidadFuncional(Integer NroUnidad) {
+    public UnidadFuncional getUnidadFuncional(Integer NroUnidad) {
         for (UnidadFuncional uf : UnidadesFuncionales) {
             if (uf.getNroUnidad().equals(NroUnidad)){
                 return uf;
             }
         }
         return null;
+    }
+    // Pinta en pantalla los datos de la unidad funcional
+    public void viewUnidadFuncional (Integer idUnidadFuncional){
+        System.out.println(getUnidadFuncional(idUnidadFuncional).getIdUnidadFuncional());
+        System.out.println(getUnidadFuncional(idUnidadFuncional).getNroUnidad());
+        System.out.println(getUnidadFuncional(idUnidadFuncional).getIdconsorcio());
+        System.out.println(getUnidadFuncional(idUnidadFuncional).getSuperficie());
+        System.out.println(getUnidadFuncional(idUnidadFuncional).getInquilinos());
+        System.out.println(getUnidadFuncional(idUnidadFuncional).getFacturas());
+        System.out.println(getUnidadFuncional(idUnidadFuncional).getPropietarios());
+    }
+
+    public ArrayList<UnidadFuncionalDTO> getUnidadesFuncionalesbyConsorcio(ConsorcioDTO consorcioDTO) {
+        ArrayList<UnidadFuncionalDTO> listaUF = new ArrayList<UnidadFuncionalDTO>();
+        for (UnidadFuncional uf : this.UnidadesFuncionales) {
+            if (uf.getIdconsorcio() == consorcioDTO.getId())
+            listaUF.add(uf.unidadFuncToDTO());
+        }
+        return listaUF;
     }
 
     public void crearUnidadFuncional (UnidadFuncionalDTO datos) {
@@ -69,73 +90,47 @@ public class ControladorUnidadFuncional {
         }
     }
 
-// falta verificar si la unidad funcional existe.
-// estamos agregando una copia de la persona
-// no estamos guardando en la lista del controller, por lo tanto no persiste
-//tendria que este metodo llamar la controlador de personas y que le pase el objeto real a partir de los datos del dto
-
-
     public void agregarInquilino(PersonaDTO inquilino, Integer nro_u) {
         if(inquilino != null) {
-            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
-            ArrayList<Persona> inquilinos = unidadFuncional.getInquilinos();
-            Persona nuevoInquilino = new Persona(inquilino);
-
-            inquilinos.add(nuevoInquilino);
-
-            unidadFuncional.setInquilinos(inquilinos);
-
+            if (getUnidadFuncional(nro_u) != null){
+                Persona addpersona = ControladorPersona.getInstance().getPersonabyDNI(inquilino.getDni());
+                UnidadFuncional UFaddInquilino = getUnidadFuncional(nro_u);
+                UFaddInquilino.getInquilinos().add(addpersona);
+                editarUnidadFuncional(UFaddInquilino.unidadFuncToDTO());
+            }
         }
-
-
     }
 
     public void eliminarInquilino(PersonaDTO inquilino, Integer nro_u) {
-        if(inquilino != null) {
-            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
-            ArrayList<Persona> inquilinos = unidadFuncional.getInquilinos();
-
-            for(Persona i : inquilinos){
-                if(inquilino.getDni() == i.getDni()) {
-                    inquilinos.remove(inquilinos.indexOf(i));
-                }
-                break;
-            }
-
-            unidadFuncional.setInquilinos(inquilinos);
-
-        }
+       if(inquilino != null){
+           if(getUnidadFuncional(nro_u) != null){
+                Persona deletePersona = ControladorPersona.getInstance().getPersonabyDNI(inquilino.getDni());
+                UnidadFuncional UFdelPersona =  getUnidadFuncional(nro_u);
+                UFdelPersona.getInquilinos().remove(deletePersona);
+                editarUnidadFuncional(UFdelPersona.unidadFuncToDTO());
+           }
+       }
     }
 
     public void agregarPropietario(PersonaDTO propietario, Integer nro_u) {
         if(propietario != null) {
-            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
-            ArrayList<Persona> propietarios = unidadFuncional.getPropietarios();
-            Persona nuevoPropietario = new Persona(propietario);
-
-            propietarios.add(nuevoPropietario);
-
-            unidadFuncional.setInquilinos(propietarios);
-
+            if (getUnidadFuncional(nro_u) != null){
+                Persona addpersona = ControladorPersona.getInstance().getPersonabyDNI(propietario.getDni());
+                UnidadFuncional UFaddInquilino = getUnidadFuncional(nro_u);
+                UFaddInquilino.getPropietarios().add(addpersona);
+                editarUnidadFuncional(UFaddInquilino.unidadFuncToDTO());
+            }
         }
-
-
     }
 
     public void eliminarPropietario(PersonaDTO propietario, Integer nro_u) {
-        if(propietario != null) {
-            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
-            ArrayList<Persona> propietarios = unidadFuncional.getPropietarios();
-
-            for(Persona i : propietarios){
-                if(propietario.getDni() == i.getDni()) {
-                    propietarios.remove(propietarios.indexOf(i));
-                }
-                break;
+        if(propietario != null){
+            if(getUnidadFuncional(nro_u) != null){
+                Persona deletePersona = ControladorPersona.getInstance().getPersonabyDNI(propietario.getDni());
+                UnidadFuncional UFdelPersona =  getUnidadFuncional(nro_u);
+                UFdelPersona.getPropietarios().remove(deletePersona);
+                editarUnidadFuncional(UFdelPersona.unidadFuncToDTO());
             }
-
-            unidadFuncional.setPropietarios(propietarios);
-
         }
     }
 

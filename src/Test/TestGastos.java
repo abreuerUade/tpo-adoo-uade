@@ -34,7 +34,6 @@ public class TestGastos {
         System.out.println();
         ControladorGasto.getInstance().modificarGasto(gasto1);
         ControladorGasto.getInstance().eliminarGasto(gasto2);
-
         ControladorGasto.getInstance().viewGastos(1);
 
 

@@ -2,7 +2,9 @@ package com.company;
 import Data.Data;
 import GUI.MasterFrame;
 import Negocio.LiquidacionGenerica;
+import Test.TestAutenticar;
 import Test.TestGastos;
+import Test.TestUnidadFuncional;
 
 public class Main {
 
@@ -25,9 +27,12 @@ public class Main {
         };
         System.out.println("Suma de los gastos del Consorcio 1: " + liquidacionConsorcio1.calcularGastos(1));
 
+        //TestAutenticar.testing();
+        //TestGastos.testing();
 
 
-        TestGastos.testing();
+        TestUnidadFuncional.testing();
+
 
     }
 

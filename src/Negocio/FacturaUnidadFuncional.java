@@ -14,6 +14,14 @@ public class FacturaUnidadFuncional {
 
     }
 
+    public FacturaUnidadFuncional(int codigoFactura, float montoExtraordinario, float montoOrdinario, boolean pago, Date fecha) {
+        this.codigoFactura = codigoFactura;
+        this.montoExtraordinario = montoExtraordinario;
+        this.montoOrdinario = montoOrdinario;
+        this.pago = pago;
+        this.fecha = fecha;
+    }
+
     public int getCodigoFactura() {
         return codigoFactura;
     }

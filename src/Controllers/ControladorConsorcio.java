@@ -8,7 +8,6 @@ import Negocio.Consorcio;
 import Negocio.Gasto;
 import Negocio.UnidadFuncional;
 import Negocio.Usuario;
-
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -104,20 +103,12 @@ public class ControladorConsorcio {
         }
     }
 
-
-
-
-
-
     public void agregarAdmin (UsuarioDTO admin, int id_consorcio) {
         if (admin != null) {
             Consorcio consorcio = getConsorcio(id_consorcio);
-
             ArrayList<Usuario> admins = consorcio.getAdmin();
-
             Usuario nuevo_admin = new Usuario(admin);
             admins.add(nuevo_admin);
-
             consorcio.setAdmin(admins);
         }
     }
@@ -157,8 +148,8 @@ public class ControladorConsorcio {
                 consorcioEdit.setCuentaBanco(datos.getCuentaBanco());
                 consorcioEdit.setAdmin(datos.getAdmin());
                 //consorcioEdit.setGastos(datos.getGastos());
-                consorcioEdit.setUnidadesFunc(datos.getUnidadesFunc());
-                consorcioEdit.setTipoLiquidacion(datos.getTipoLiquidacion());
+                //consorcioEdit.setUnidadesFunc(datos.getUnidadesFunc());
+                //consorcioEdit.setTipoLiquidacion(datos.getTipoLiquidacion());
                 Consorcios.set(index,consorcioEdit);
             }
         }

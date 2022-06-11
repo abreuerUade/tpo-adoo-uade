@@ -67,10 +67,54 @@ public class Data {
         persona4.setServiciosEnvio(SMS);
         ControladorPersona.getInstance().crearPersona(persona4);
 
-        UnidadFuncionalDTO uf1A = new UnidadFuncionalDTO();
-        uf1A.setNroUnidad(1);
-        uf1A.setSuperficie(45);
+        UnidadFuncionalDTO uf1 = new UnidadFuncionalDTO();
+        uf1.setIdUnidadFuncional(1);
+        uf1.setIdconsorcio(1);
+        uf1.setNroUnidad(1);
+        uf1.setSuperficie(45);
+        ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf1);
 
+        UnidadFuncionalDTO uf2 = new UnidadFuncionalDTO();
+        uf2.setIdUnidadFuncional(2);
+        uf2.setIdconsorcio(1);
+        uf2.setNroUnidad(2);
+        uf2.setSuperficie(70);
+        ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf2);
+
+        UnidadFuncionalDTO uf3 = new UnidadFuncionalDTO();
+        uf3.setIdUnidadFuncional(3);
+        uf3.setIdconsorcio(1);
+        uf3.setNroUnidad(3);
+        uf3.setSuperficie(65);
+        ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf3);
+
+        UnidadFuncionalDTO uf4 = new UnidadFuncionalDTO();
+        uf4.setIdUnidadFuncional(4);
+        uf4.setIdconsorcio(1);
+        uf4.setNroUnidad(4);
+        uf4.setSuperficie(40);
+        ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf4);
+
+        UnidadFuncionalDTO uf5 = new UnidadFuncionalDTO();
+        uf5.setIdUnidadFuncional(5);
+        uf5.setIdconsorcio(1);
+        uf5.setNroUnidad(5);
+        uf5.setSuperficie(66);
+        ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf5);
+
+        UnidadFuncionalDTO uf6 = new UnidadFuncionalDTO();
+        uf6.setIdUnidadFuncional(6);
+        uf6.setIdconsorcio(1);
+        uf6.setNroUnidad(6);
+        uf6.setSuperficie(45);
+        ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf6);
+
+        UnidadFuncionalDTO uf7 = new UnidadFuncionalDTO();
+        uf7.setIdUnidadFuncional(7);
+        uf7.setIdconsorcio(1);
+        uf7.setNroUnidad(7);
+        uf7.setSuperficie(70);
+        ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf7);
 
         ConsorcioDTO consorcio1 = new ConsorcioDTO();
         consorcio1.setNombre("Lima 474");
