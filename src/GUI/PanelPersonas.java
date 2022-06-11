@@ -63,7 +63,7 @@ public class PanelPersonas extends JPanel {
 
         //////////////////////////////////////////////////////////////////
 
-        lblUsuarios = new JLabel("SELECCIONE UN USUARIO O DE UNO NUEVO DE ALTA");
+        lblUsuarios = new JLabel("SELECCIONE UNA PERSONA O DE UNA NUEVO DE ALTA");
         lblUsuarios.setFont(new Font(Style.FONT, Font.BOLD, 20));
         lblUsuarios.setHorizontalAlignment(0);
 
@@ -92,7 +92,7 @@ public class PanelPersonas extends JPanel {
         contenidoTabla.addColumn("TELÉFONO");
         contenidoTabla.addColumn("EMAIL");
         contenidoTabla.addColumn("UNIDAD");
-        contenidoTabla.addColumn("RELACIÓN");
+        contenidoTabla.addColumn("CONDICIÓN");
         /*
         ArrayList<PersonaDTO> personaDTO;
 
@@ -120,7 +120,7 @@ public class PanelPersonas extends JPanel {
 
         btnAlta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelAltaUsuario();
+                masterFrame.mostrarPanelAltaPersonas();
             }
         });
 

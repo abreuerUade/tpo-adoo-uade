@@ -53,8 +53,6 @@ public class PanelAltaConsorcio extends JPanel {
             txtProp.setText(consorcioDTO.getCuentaBanco().getPropietario());
             txtCBU.setText(consorcioDTO.getCuentaBanco().getCBU());
         }
-
-
     }
 
     public void armarPanelAltaConsorcio(ConsorcioDTO consorcio) {
@@ -190,32 +188,6 @@ public class PanelAltaConsorcio extends JPanel {
                     JOptionPane.showMessageDialog(masterFrame,"Se ha ha producido un error.");
                 }
 
-
-
-            }
-        });
-
-        btnGastos.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-
-                if(consorcio != null){
-                    masterFrame.mostrarPanelGastos();
-                }
-                else {
-                    JOptionPane.showMessageDialog(masterFrame,"Primero debe crear un consorcio.");
-                }
-
-            }
-        });
-
-        btnUnidades.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if(consorcio != null){
-                    masterFrame.mostrarPanelUnidadesFuncionales();
-                }
-                else {
-                    JOptionPane.showMessageDialog(masterFrame,"Primero debe crear un consorcio.");
-                }
 
 
             }

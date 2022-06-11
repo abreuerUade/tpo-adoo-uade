@@ -1,5 +1,10 @@
 package GUI;
 
+import Controllers.ControladorConsorcio;
+import Controllers.ControladorGasto;
+import DTO.ConsorcioDTO;
+import DTO.GastoDTO;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -29,7 +34,7 @@ public class PanelGastos extends JPanel {
 
     }
 
-    public void armarPanelGastos() {
+    public void armarPanelGastos(ConsorcioDTO consorcioDTO) {
 
         ///////////// Panel Base ///////////////////
 
@@ -105,7 +110,29 @@ public class PanelGastos extends JPanel {
 
         btnAlta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelAltaGastos();
+                masterFrame.mostrarPanelAltaGastos(consorcioDTO, null);
+            }
+        });
+
+        btnBaja.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+
+                try{
+                    int selected = (int) tabla.getValueAt(tabla.getSelectedRow(),0);
+
+                    masterFrame.mostrarPanelGastos(consorcioDTO);
+                }
+                catch (Exception exception){
+                    JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un consorcio.");
+                }
+            }
+        });
+
+        btnModificar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
 

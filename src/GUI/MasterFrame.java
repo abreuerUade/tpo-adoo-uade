@@ -1,6 +1,8 @@
 package GUI;
 
 import DTO.ConsorcioDTO;
+import DTO.GastoDTO;
+import DTO.PersonaDTO;
 import DTO.UsuarioDTO;
 
 import javax.swing.*;
@@ -20,6 +22,7 @@ public class MasterFrame extends JFrame {
     PanelUnidadesFuncionales panelUnidadesFuncionales;
     PanelAltaUnidadFuncional panelAltaUnidadFuncional;
     PanelPersonas panelPersonas;
+    PanelAltaPersonas panelAltaPersonas;
 
 
     public void armarMaster() {
@@ -41,7 +44,7 @@ public class MasterFrame extends JFrame {
         panelUnidadesFuncionales = new PanelUnidadesFuncionales(this);
         panelAltaUnidadFuncional = new PanelAltaUnidadFuncional(this);
         panelPersonas = new PanelPersonas(this);
-
+        panelAltaPersonas = new PanelAltaPersonas(this);
     }
 
     public void mostrarPanelInicio(){
@@ -72,9 +75,9 @@ public class MasterFrame extends JFrame {
     }
 
 
-    public void mostrarPanelGastos() {
+    public void mostrarPanelGastos(ConsorcioDTO consorcioDTO) {
         frame.getContentPane().removeAll();
-        panelGastos.armarPanelGastos();
+        panelGastos.armarPanelGastos(consorcioDTO);
         frame.getContentPane().add(panelGastos);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
@@ -120,14 +123,12 @@ public class MasterFrame extends JFrame {
 
     }
 
-
-    public void mostrarPanelAltaGastos() {
+    public void mostrarPanelAltaGastos(ConsorcioDTO consorcioDTO, GastoDTO gastoDTO) {
         frame.getContentPane().removeAll();
-        panelAltaGastos.armarPanelAltaGastos();
+        panelAltaGastos.armarPanelAltaGastos(consorcioDTO, gastoDTO);
         frame.getContentPane().add(panelAltaGastos);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
-
     }
 
     public void mostrarPanelUnidadesFuncionales() {
@@ -155,6 +156,23 @@ public class MasterFrame extends JFrame {
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
 
+    }
+
+    public void mostrarPanelAltaPersonas() {
+        frame.getContentPane().removeAll();
+        panelAltaPersonas.armarPanelAltaPersonas();
+        frame.getContentPane().add(panelAltaPersonas);
+        frame.getContentPane().validate();
+        frame.getContentPane().repaint();
+    }
+
+    public void mostrarPanelAltaPersonas(PersonaDTO persona) {
+        frame.getContentPane().removeAll();
+        panelAltaPersonas.armarPanelAltaPersonas();
+        frame.getContentPane().add(panelAltaPersonas);
+        panelAltaPersonas.cargarCampos(persona);
+        frame.getContentPane().validate();
+        frame.getContentPane().repaint();
     }
 
 

@@ -222,8 +222,22 @@ public class PanelPrincipal extends JPanel {
                     JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un consorcio.");
                 }
 
+            }
+        });
+
+        btnGastos.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ConsorcioDTO consorcioDTO;
 
 
+                try{
+                    int selected = (int) tabla.getValueAt(tabla.getSelectedRow(),0);
+                    consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(selected);
+                    masterFrame.mostrarPanelGastos(consorcioDTO);
+                }
+                catch (Exception exception){
+                    JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un consorcio.");
+                }
             }
         });
         
