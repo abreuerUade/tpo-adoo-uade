@@ -120,12 +120,12 @@ public class PanelAltaUnidadFuncional extends JPanel {
         panelBotones.setBackground(Style.FONDO);
 
 
-
         lblOpciones = new JLabel("Opciones: ");
         lblOpciones.setFont(new Font(Style.FONT, Font.BOLD, 18));
         lblOpciones.setHorizontalAlignment(0);
 
         btnAlta = new JButton("PERSONAS");
+        btnBaja.setVisible(false);
 
         btnBaja = new JButton("");
         btnBaja.setVisible(false);

@@ -1,5 +1,8 @@
 package GUI;
 
+import DTO.ConsorcioDTO;
+import DTO.GastoDTO;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -44,7 +47,16 @@ public class PanelAltaGastos extends JPanel {
 
     }
 
-    public void armarPanelAltaGastos() {
+    public void armarPanelAltaGastos(ConsorcioDTO consorcioDTO, GastoDTO gastoDTO) {
+
+        if (gastoDTO != null){
+            txtNombre.setText(gastoDTO.getNombre());
+            txtMonto.setText(gastoDTO.getMonto().toString());
+            txtFecha.setText(gastoDTO.getFechaFact().toString());
+            txtPeriodo.setText(gastoDTO.getPeriodo().toString());
+            txtCuotas.setText(gastoDTO.getCantCuotas().toString());
+
+        }
 
         ///////////// Panel Base ///////////////////
 
@@ -162,7 +174,7 @@ public class PanelAltaGastos extends JPanel {
 
         btnAtras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelGastos();
+                masterFrame.mostrarPanelPrincipal();
             }
         });
 
