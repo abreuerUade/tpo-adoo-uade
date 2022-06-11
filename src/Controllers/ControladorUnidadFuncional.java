@@ -69,6 +69,12 @@ public class ControladorUnidadFuncional {
         }
     }
 
+// falta verificar si la unidad funcional existe.
+// estamos agregando una copia de la persona
+// no estamos guardando en la lista del controller, por lo tanto no persiste
+//tendria que este metodo llamar la controlador de personas y que le pase el objeto real a partir de los datos del dto
+
+
     public void agregarInquilino(PersonaDTO inquilino, Integer nro_u) {
         if(inquilino != null) {
             UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);

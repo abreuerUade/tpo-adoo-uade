@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UnidadFuncionalDTO {
+    private Integer idUnidadFuncional;
+    private Integer idconsorcio;
     private float superficie;
     private Integer nroUnidad;
     private ArrayList<Persona> propietarios;
@@ -18,6 +20,22 @@ public class UnidadFuncionalDTO {
         propietarios = new ArrayList<>();
         inquilinos = new ArrayList<>();
         facturas = new ArrayList<>();
+    }
+
+    public Integer getIdUnidadFuncional() {
+        return idUnidadFuncional;
+    }
+
+    public void setIdUnidadFuncional(Integer idUnidadFuncional) {
+        this.idUnidadFuncional = idUnidadFuncional;
+    }
+
+    public Integer getIdconsorcio() {
+        return idconsorcio;
+    }
+
+    public void setIdconsorcio(Integer idconsorcio) {
+        this.idconsorcio = idconsorcio;
     }
 
     public float getSuperficie() {

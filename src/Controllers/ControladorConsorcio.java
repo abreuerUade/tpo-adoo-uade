@@ -47,7 +47,9 @@ public class ControladorConsorcio {
         }
         return false;
     }
-/*
+/* NO EXISTE MAS LA LISTA DE GASTOS EN EL CONSORCIO!!!!!!!!
+
+
     public void agregarGasto(GastoDTO gasto, int id_consorcio){
         Consorcio consorcio = getConsorcio(id_consorcio);
         if (consorcio != null) {
@@ -75,6 +77,9 @@ public class ControladorConsorcio {
 
     }
 */
+
+
+
     public void agregarUnidadFuncional(UnidadFuncionalDTO uf, int id_consorcio) {
         if(uf != null) {
             Consorcio consorcio = getConsorcio(id_consorcio);
@@ -98,6 +103,11 @@ public class ControladorConsorcio {
             consorcio.setUnidadesFunc(unidades_funcionales);
         }
     }
+
+
+
+
+
 
     public void agregarAdmin (UsuarioDTO admin, int id_consorcio) {
         if (admin != null) {

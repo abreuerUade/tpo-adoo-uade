@@ -16,13 +16,13 @@ public class ConsorcioDTO {
     private Cuenta cuentaBanco;
     private String barrio;
     private ArrayList<UnidadFuncional> UnidadesFunc;
-    private ArrayList<Gasto> gastos;
+    //private ArrayList<Gasto> gastos;
     private ArrayList<Usuario> admin;
     private LiquidacionGenerica tipoLiquidacion;
     
     public ConsorcioDTO(){
         UnidadesFunc = new ArrayList<>();
-        gastos = new ArrayList<>();
+        //gastos = new ArrayList<>();
         admin = new ArrayList<>();
     }
 
@@ -67,6 +67,7 @@ public class ConsorcioDTO {
         UnidadesFunc = unidadesFunc;
     }
 
+    /*
     public ArrayList<Gasto> getGastos() {
         return gastos;
     }
@@ -74,7 +75,7 @@ public class ConsorcioDTO {
     public void setGastos(ArrayList<Gasto> gastos) {
         this.gastos = gastos;
     }
-
+    */
     public ArrayList<Usuario> getAdmin() {
         return admin;
     }
@@ -109,7 +110,7 @@ public class ConsorcioDTO {
     public void removeUnidadFuncional(UnidadFuncional unidadFuncional){
         this.UnidadesFunc.remove(unidadFuncional);
     }
-
+    /*
     public void addGasto(Gasto gasto){
         if(this.gastos == null){
             this.gastos = new ArrayList<Gasto>();
@@ -120,7 +121,7 @@ public class ConsorcioDTO {
     public void removeGasto(Gasto gasto){
         this.gastos.remove(gasto);
     }
-
+    */
     public void addUsuario(Usuario usuario){
         if(this.admin == null){
             this.admin = new ArrayList<Usuario>();

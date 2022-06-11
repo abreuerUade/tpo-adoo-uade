@@ -21,14 +21,14 @@ public class ControladorGasto {
 
     private Gasto getGastoById(Integer id) {
         for (Gasto g : gastos) {
-            if (g.getId() == id) {
+            if (g.getId().equals(id)) {
                 return g;
             }
         }
         return null;
     }
 
-    public List<GastoDTO> obtenerGastos(){
+    public List<GastoDTO> getGastos(){
         List<GastoDTO> listaGastos = new ArrayList<GastoDTO>();
 
         for (Gasto g : this.gastos){
@@ -38,12 +38,14 @@ public class ControladorGasto {
         return listaGastos;
     }
 
-    public void verGastos(Integer idconsorcio){
+    public void viewGastos(Integer idconsorcio){
         if (ControladorConsorcio.getInstance().existeConsorcio(idconsorcio)){
+            System.out.println("Lista de gastos del consorcio: " + ControladorConsorcio.getInstance().getConsorcioDTO(idconsorcio).getNombre());
             for (Gasto g:this.gastos) {
                 if (g.getIdconsorcio().equals(idconsorcio)){
+                    System.out.println();
                     System.out.println(g.getNombre());
-                    System.out.println(g.getMonto());
+                    System.out.println("Costo: " + g.getMonto());
                     System.out.println(g.getFechaFact());
                     System.out.println("Cantidad de cuotas: " + g.getCantCuotas());
                     System.out.println("Periodo entre cuotas en meses: " + g.getPeriodo());
@@ -55,7 +57,7 @@ public class ControladorGasto {
     }
 
     public Integer gastosbyConsorcio(Integer idconsorcio){
-        Integer totalgastos = 0;
+        int totalgastos = 0;
         if (ControladorConsorcio.getInstance().existeConsorcio(idconsorcio)){
             for (Gasto g:this.gastos){
                 if(g.getIdconsorcio().equals(idconsorcio)){
@@ -86,8 +88,9 @@ public class ControladorGasto {
 
     public void modificarGasto(GastoDTO gasto){
         if (gasto != null) {
+            Gasto gastoVerificar = getGastoById(gasto.getId());
             Gasto gastoModif = getGastoById(gasto.getId());
-            if (gastoModif != null) {
+            if (gastoVerificar != null) {
                 int index = gastos.indexOf(gastoModif);
                 gastoModif.setCantCuotas(gasto.getCantCuotas());
                 gastoModif.setFechaFact(gasto.getFechaFact());

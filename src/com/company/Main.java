@@ -1,11 +1,8 @@
 package com.company;
-import Controllers.*;
 import Data.Data;
 import GUI.MasterFrame;
-import Auth.*;
 import Negocio.LiquidacionGenerica;
-
-import java.net.Authenticator;
+import Test.TestGastos;
 
 public class Main {
 
@@ -27,8 +24,7 @@ public class Main {
             }
         };
         System.out.println("Suma de los gastos del Consorcio 1: " + liquidacionConsorcio1.calcularGastos(1));
-
-        //ControladorGasto.getInstance().verGastos(1);
+        TestGastos.testing();
 
     }
 

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 public class UnidadFuncional {
 
+    private Integer idUnidadFuncional;
+    private Integer idconsorcio;
     private float superficie;
     private Integer nroUnidad;
     private ArrayList<Persona> propietarios;
@@ -13,7 +15,8 @@ public class UnidadFuncional {
     private ArrayList<FacturaUnidadFuncional> facturas;
 
     public UnidadFuncional (UnidadFuncionalDTO unidadFuncionalDTO) {
-
+        this.idUnidadFuncional = unidadFuncionalDTO.getIdUnidadFuncional();
+        this.idconsorcio = unidadFuncionalDTO.getIdconsorcio();
         this.superficie = unidadFuncionalDTO.getSuperficie();
         this.nroUnidad = unidadFuncionalDTO.getNroUnidad();
         this.propietarios = unidadFuncionalDTO.getPropietarios();
@@ -25,6 +28,8 @@ public class UnidadFuncional {
     public UnidadFuncionalDTO unidadFuncToDTO() {
         UnidadFuncionalDTO unidadFuncionalDTO = new UnidadFuncionalDTO();
 
+        unidadFuncionalDTO.setIdUnidadFuncional(this.idUnidadFuncional);
+        unidadFuncionalDTO.setIdconsorcio(this.idconsorcio);
         unidadFuncionalDTO.setSuperficie(this.superficie);
         unidadFuncionalDTO.setNroUnidad(this.nroUnidad);
         unidadFuncionalDTO.setPropietarios(this.propietarios);
@@ -36,6 +41,22 @@ public class UnidadFuncional {
 
     public void crearFactura (double extraordinario, double ordinario) {
 
+    }
+
+    public Integer getIdUnidadFuncional() {
+        return idUnidadFuncional;
+    }
+
+    public void setIdUnidadFuncional(Integer idUnidadFuncional) {
+        this.idUnidadFuncional = idUnidadFuncional;
+    }
+
+    public Integer getIdconsorcio() {
+        return idconsorcio;
+    }
+
+    public void setIdconsorcio(Integer idconsorcio) {
+        this.idconsorcio = idconsorcio;
     }
 
     public float getSuperficie() {

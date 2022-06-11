@@ -17,7 +17,7 @@ public class Gasto {
     private Expensas tipoExpensas;
 
     public Gasto (GastoDTO gastoDTO) {
-
+        this.id = gastoDTO.getId();
         this.monto = gastoDTO.getMonto();
         this.nombre = gastoDTO.getNombre();
         this.fechaFact = gastoDTO.getFechaFact();
@@ -30,7 +30,7 @@ public class Gasto {
 
     public GastoDTO gastoToDTO() {
         GastoDTO gastoDTO = new GastoDTO();
-
+        gastoDTO.setId(this.monto);
         gastoDTO.setMonto(this.monto);
         gastoDTO.setNombre(this.nombre);
         gastoDTO.setFechaFact(this.fechaFact);
