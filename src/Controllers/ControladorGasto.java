@@ -1,5 +1,6 @@
 package Controllers;
 import DTO.GastoDTO;
+import Negocio.Expensas;
 import Negocio.Gasto;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,16 +57,33 @@ public class ControladorGasto {
         }
     }
 
-    public Integer gastosbyConsorcio(Integer idconsorcio){
+    public Integer gastosOrdinariosbyConsorcio(Integer idconsorcio){
         int totalgastos = 0;
         if (ControladorConsorcio.getInstance().existeConsorcio(idconsorcio)){
             for (Gasto g:this.gastos){
                 if(g.getIdconsorcio().equals(idconsorcio)){
-                    totalgastos =totalgastos+ g.getMonto();
+                    if(g.getTipoExpensas().equals(Expensas.ORDINARIAS)){
+                        totalgastos =+ g.getMonto();
+                    }
                 }
             }
         }
         return totalgastos;
+    }
+
+
+    public Integer gastosExtraordinariosbyConsorcio(Integer idconsorcio){
+        Integer gastosExtraordinarios = 0;
+        if (ControladorConsorcio.getInstance().existeConsorcio(idconsorcio)){
+            for (Gasto gExt:gastos){
+                if(gExt.getIdconsorcio().equals(idconsorcio)){
+                    if(gExt.getTipoExpensas().equals(Expensas.EXTRAORDINARIAS)){
+                        gastosExtraordinarios =+ gExt.getMonto();
+                    }
+                }
+            }
+        }
+        return gastosExtraordinarios;
     }
 
 

@@ -51,9 +51,10 @@ public class ControladorUnidadFuncional {
 
     public ArrayList<UnidadFuncionalDTO> getUnidadesFuncionalesbyConsorcio(ConsorcioDTO consorcioDTO) {
         ArrayList<UnidadFuncionalDTO> listaUF = new ArrayList<UnidadFuncionalDTO>();
-        for (UnidadFuncional uf : this.UnidadesFuncionales) {
-            if (uf.getIdconsorcio() == consorcioDTO.getId())
-            listaUF.add(uf.unidadFuncToDTO());
+        for (UnidadFuncional uf : UnidadesFuncionales) {
+            if (uf.getIdconsorcio() == consorcioDTO.getId()){
+                listaUF.add(uf.unidadFuncToDTO());
+            }
         }
         return listaUF;
     }
@@ -136,31 +137,27 @@ public class ControladorUnidadFuncional {
 
     public void agregarFactura(FacturaUnidadFuncional factura, Integer nro_u) {
         if(factura != null) {
-            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
-            ArrayList<FacturaUnidadFuncional> facturas = unidadFuncional.getFacturas();
-
-            facturas.add(factura);
-
-            unidadFuncional.setFacturas(facturas);
+            if (getUnidadFuncional(nro_u)!=null) {
+                UnidadFuncional UFaddFactura = getUnidadFuncional(nro_u);
+                UFaddFactura.getFacturas().add(factura);
+                editarUnidadFuncional(UFaddFactura.unidadFuncToDTO());
+            }
         }
-
     }
 
     public void eliminarFactura(FacturaUnidadFuncional factura, Integer nro_u) {
         if(factura != null) {
-            UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
-            ArrayList<FacturaUnidadFuncional> facturas = unidadFuncional.getFacturas();
-
-            for(FacturaUnidadFuncional f : facturas){
-                if(f.getCodigoFactura() == factura.getCodigoFactura()) {
-                    facturas.remove(facturas.indexOf(f));
+            if (getUnidadFuncional(nro_u)!=null) {
+                UnidadFuncional unidadFuncional = getUnidadFuncional(nro_u);
+                ArrayList<FacturaUnidadFuncional> facturas = unidadFuncional.getFacturas();
+                for (FacturaUnidadFuncional f : facturas) {
+                    if (f.getCodigoFactura() == factura.getCodigoFactura()) {
+                        facturas.remove(facturas.indexOf(f));
+                    }
+                    break;
                 }
-                break;
+                unidadFuncional.setFacturas(facturas);
             }
-
-            unidadFuncional.setFacturas(facturas);
         }
-
     }
-
 }
