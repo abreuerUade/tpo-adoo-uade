@@ -3,6 +3,7 @@ import DTO.GastoDTO;
 import Negocio.Expensas;
 import Negocio.Gasto;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ControladorGasto {
@@ -62,12 +63,19 @@ public class ControladorGasto {
         if (ControladorConsorcio.getInstance().existeConsorcio(idconsorcio)){
             for (Gasto g:this.gastos){
                 if(g.getIdconsorcio().equals(idconsorcio)){
-                    if(g.getTipoExpensas().equals(Expensas.ORDINARIAS)){
-                        if(g.getCantCuotas()==0) {
-                            totalgastos += g.getMonto();
+                    if(g.getTipoExpensas().equals(Expensas.ORDINARIAS) || g.getTipoExpensas().equals(Expensas.GASTOS_PARTICULARES)){
+                        if(g.getFechaFact().getMonth()== new Date().getMonth()) {
+                            if (g.getCantCuotas() == 0) {
+                                totalgastos += g.getMonto();
+                            }
+                            if (g.getCantCuotas() > 0) {
+                                totalgastos += ControladorGasto.getInstance().cobrarGastoCuota(g);
+                            }
                         }
-                        else {
-                            totalgastos += ControladorGasto.getInstance().cobrarGastoCuota(g);
+                        if (verificarMesCuota(g)){
+                            if(g.getCantCuotas() > 0){
+                                totalgastos += ControladorGasto.getInstance().cobrarGastoCuota(g);
+                            }
                         }
                     }
                 }
@@ -83,12 +91,21 @@ public class ControladorGasto {
             for (Gasto gExt:gastos){
                 if(gExt.getIdconsorcio().equals(idconsorcio)){
                     if(gExt.getTipoExpensas().equals(Expensas.EXTRAORDINARIAS)){
-                        if(gExt.getCantCuotas()==0) {
-                            gastosExtraordinarios += gExt.getMonto();
+                        if(gExt.getFechaFact().getMonth()== new Date().getMonth()) {
+                            if (gExt.getCantCuotas() == 0) {
+                                gastosExtraordinarios += gExt.getMonto();
+                            }
+                            if (gExt.getCantCuotas() > 0) {
+                                gastosExtraordinarios += ControladorGasto.getInstance().cobrarGastoCuota(gExt);
+                            }
                         }
-                        if (gExt.getCantCuotas()>0) {
-                            gastosExtraordinarios += ControladorGasto.getInstance().cobrarGastoCuota(gExt);
+                        // Pagos de cuotas de gastos fuera del mes.
+                        if (verificarMesCuota(gExt)){
+                            if(gExt.getCantCuotas() > 0){
+                                gastosExtraordinarios += ControladorGasto.getInstance().cobrarGastoCuota(gExt);
+                            }
                         }
+
                     }
                 }
             }
@@ -106,7 +123,21 @@ public class ControladorGasto {
         return cuota;
     }
 
-
+    public boolean verificarMesCuota(Gasto verificarGasto){
+        boolean seDebePagar = false;
+        int cuotas = verificarGasto.getCantCuotas();
+        int mesActual = new Date().getMonth();
+        int mesTest = verificarGasto.getFechaFact().getMonth();
+        while (cuotas>0){
+            mesTest += verificarGasto.getPeriodo();
+            if (mesTest == mesActual){
+                seDebePagar = true;
+                break;
+            }
+            cuotas-=1;
+        }
+        return seDebePagar;
+    }
 
     public void crearGasto(GastoDTO gasto){
         if (gasto != null) {

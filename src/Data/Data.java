@@ -172,12 +172,22 @@ public class Data {
         gasto4.setId(4);
         gasto4.setMonto(100000);
         gasto4.setNombre("Pintar Fachada");
-        gasto4.setFechaFact(fechaactual);
+        gasto4.setFechaFact(new Date(122,3,1));
         gasto4.setCantCuotas(4);
         gasto4.setPeriodo(2);
         gasto4.setIdconsorcio(1);
         gasto4.setTipoExpensas(Expensas.EXTRAORDINARIAS);
         ControladorGasto.getInstance().crearGasto(gasto4);
 
+        GastoDTO gasto5 = new GastoDTO();
+        gasto5.setId(5);
+        gasto5.setMonto(10000);
+        gasto5.setNombre("Reparacion cerradura entrada");
+        gasto5.setFechaFact(fechaactual);
+        gasto5.setCantCuotas(0);
+        gasto5.setPeriodo(0);
+        gasto5.setIdconsorcio(1);
+        gasto5.setTipoExpensas(Expensas.GASTOS_PARTICULARES);
+        ControladorGasto.getInstance().crearGasto(gasto5);
     }
 }
