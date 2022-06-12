@@ -66,6 +66,9 @@ public class ControladorGasto {
                         if(g.getCantCuotas()==0) {
                             totalgastos += g.getMonto();
                         }
+                        else {
+                            totalgastos += ControladorGasto.getInstance().cobrarGastoCuota(g);
+                        }
                     }
                 }
             }
@@ -83,6 +86,9 @@ public class ControladorGasto {
                         if(gExt.getCantCuotas()==0) {
                             gastosExtraordinarios += gExt.getMonto();
                         }
+                        if (gExt.getCantCuotas()>0) {
+                            gastosExtraordinarios += ControladorGasto.getInstance().cobrarGastoCuota(gExt);
+                        }
                     }
                 }
             }
@@ -90,7 +96,17 @@ public class ControladorGasto {
         return gastosExtraordinarios;
     }
 
+    public Integer cobrarGastoCuota(Gasto gastoProcesarPago){
+        Integer cuota = gastoProcesarPago.getMonto()/gastoProcesarPago.getCantCuotas();
+        if(gastoProcesarPago.getCantCuotas()>0){
+            int monto = gastoProcesarPago.getMonto();
+            gastoProcesarPago.setMonto(monto - cuota);
+            gastoProcesarPago.setCantCuotas(gastoProcesarPago.getCantCuotas()-1);
+            modificarGasto(gastoProcesarPago.gastoToDTO());
+        }
+        return cuota;
 
+    }
 
 
 

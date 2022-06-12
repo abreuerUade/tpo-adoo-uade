@@ -168,5 +168,16 @@ public class Data {
         gasto3.setTipoExpensas(Expensas.EXTRAORDINARIAS);
         ControladorGasto.getInstance().crearGasto(gasto3);
 
+        GastoDTO gasto4 = new GastoDTO();
+        gasto4.setId(4);
+        gasto4.setMonto(100000);
+        gasto4.setNombre("Pintar Fachada");
+        gasto4.setFechaFact(fechaactual);
+        gasto4.setCantCuotas(4);
+        gasto4.setPeriodo(2);
+        gasto4.setIdconsorcio(1);
+        gasto4.setTipoExpensas(Expensas.EXTRAORDINARIAS);
+        ControladorGasto.getInstance().crearGasto(gasto4);
+
     }
 }
