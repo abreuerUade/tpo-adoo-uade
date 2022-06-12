@@ -39,6 +39,7 @@ public class Data {
         persona1.setMail("rperez@gmail.com");
         persona1.setServiciosEnvio(EMAIL);
         ControladorPersona.getInstance().crearPersona(persona1);
+        ControladorUnidadFuncional.getInstance().agregarInquilino(persona1,1);
 
         PersonaDTO persona2 = new PersonaDTO();
         persona2.setDni(27523655);
@@ -48,6 +49,7 @@ public class Data {
         persona2.setMail("sgimenez@gmail.com");
         persona2.setServiciosEnvio(EMAIL);
         ControladorPersona.getInstance().crearPersona(persona2);
+        ControladorUnidadFuncional.getInstance().agregarPropietario(persona2,1);
 
         PersonaDTO persona3 = new PersonaDTO();
         persona3.setDni(37451633);
@@ -57,6 +59,7 @@ public class Data {
         persona3.setMail("prodriguez@gmail.com");
         persona3.setServiciosEnvio(WHATSAPP);
         ControladorPersona.getInstance().crearPersona(persona3);
+        ControladorUnidadFuncional.getInstance().agregarInquilino(persona3,2);
 
         PersonaDTO persona4 = new PersonaDTO();
         persona4.setDni(20410653);
@@ -66,6 +69,7 @@ public class Data {
         persona4.setMail("jmartinez@gmail.com");
         persona4.setServiciosEnvio(SMS);
         ControladorPersona.getInstance().crearPersona(persona4);
+        ControladorUnidadFuncional.getInstance().agregarPropietario(persona4,3);
 
         UnidadFuncionalDTO uf1 = new UnidadFuncionalDTO();
         uf1.setIdUnidadFuncional(1);
