@@ -2,7 +2,7 @@ package interfaces;
 
 import Negocio.Comunicacion.*;
 
-public interface ModoEnvio {
+public interface EstrategiaDeNotificacion {
 
     public void enviar (Notificacion notificacion);
 

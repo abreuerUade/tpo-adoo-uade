@@ -1,12 +1,11 @@
 package Negocio.Comunicacion;
 
-import Negocio.LiquidacionGenerica;
 import Negocio.Persona;
 
 public class Notificacion {
 
     private Persona destinatario;
-    private LiquidacionGenerica mensaje;
+    private String mensaje;
 
     public Persona getDestinatario() {
         return destinatario;
@@ -16,11 +15,11 @@ public class Notificacion {
         this.destinatario = destinatario;
     }
 
-    public LiquidacionGenerica getMensaje() {
+    public String getMensaje() {
         return mensaje;
     }
 
-    public void setMensaje(LiquidacionGenerica mensaje) {
+    public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
 }

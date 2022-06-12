@@ -4,10 +4,12 @@ import DTO.ConsorcioDTO;
 import DTO.GastoDTO;
 import DTO.UnidadFuncionalDTO;
 import DTO.UsuarioDTO;
-import Negocio.Consorcio;
-import Negocio.Gasto;
-import Negocio.UnidadFuncional;
-import Negocio.Usuario;
+import Negocio.*;
+import Negocio.Comunicacion.Notificacion;
+import Negocio.Comunicacion.NotificacionSMS;
+import Negocio.Comunicacion.NotificacionWS;
+import Negocio.Comunicacion.NotificacionesEmail;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -182,6 +184,30 @@ public class ControladorConsorcio {
             }
         }
         return 0f;
+    }
+
+    public void liquidarConsorcio(ConsorcioDTO consorcioDTO){
+        //ALgo
+        notificarLiquidacion(consorcioDTO);
+    }
+
+    public void notificarLiquidacion(ConsorcioDTO consorcioDTO){
+        Notificador notificador = new Notificador();
+        Notificacion notificacion = new Notificacion();
+        for (UnidadFuncionalDTO uf:ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO)){
+            ArrayList<Persona> interesados = uf.getInquilinos();
+            interesados.addAll(uf.getPropietarios());
+            for (Persona interesado:interesados){
+                notificacion.setMensaje("mensaje de prueba");
+                notificacion.setDestinatario(interesado);
+                switch(interesado.getModoDeEnvio()) {
+                    case SMS: notificador.setEstrategia(new NotificacionSMS()); break;
+                    case WHATSAPP: notificador.setEstrategia(new NotificacionWS()); break;
+                    case EMAIL: notificador.setEstrategia(new NotificacionesEmail()); break;
+                }
+                notificador.enviar(notificacion);
+            }
+        }
     }
 
 }

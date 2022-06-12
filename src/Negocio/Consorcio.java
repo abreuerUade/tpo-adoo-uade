@@ -47,7 +47,7 @@ public class Consorcio {
     }
 
 
-    public void liquidar(UnidadFuncional unidadFuncional) {
+    public void liquidar() {
 
     }
 
