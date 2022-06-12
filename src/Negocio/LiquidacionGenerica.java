@@ -20,8 +20,8 @@ public abstract class LiquidacionGenerica {
         if (ControladorConsorcio.getInstance().existeConsorcio(idconsorcio)){
             gastoOrdinario = ControladorGasto.getInstance().gastosOrdinariosbyConsorcio(idconsorcio);
             extraordinario = ControladorGasto.getInstance().gastosExtraordinariosbyConsorcio(idconsorcio);
-            gastos.add(gastoOrdinario);
-            gastos.add(extraordinario);
+            gastos.add(gastoOrdinario); //en el indice 0 los gastos ordinarios
+            gastos.add(extraordinario); //en el indice 1 los gastos Extraordinarios
         }
         return gastos;
     }

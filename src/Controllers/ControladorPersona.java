@@ -1,5 +1,6 @@
 package Controllers;
 
+import DTO.ConsorcioDTO;
 import DTO.GastoDTO;
 import DTO.PersonaDTO;
 import Negocio.Gasto;
@@ -31,17 +32,12 @@ public class ControladorPersona {
     }
 
     public List<PersonaDTO> obtenerPersonas() {
-
         List<PersonaDTO> listaPersonas = new ArrayList<PersonaDTO>();
-
         for (Persona p : personas) {
             listaPersonas.add(p.personaToDTO());
         }
-
         return listaPersonas;
-
     }
-
 
     public void crearPersona(PersonaDTO persona) {
         if (persona != null){

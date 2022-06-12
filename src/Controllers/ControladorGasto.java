@@ -63,7 +63,9 @@ public class ControladorGasto {
             for (Gasto g:this.gastos){
                 if(g.getIdconsorcio().equals(idconsorcio)){
                     if(g.getTipoExpensas().equals(Expensas.ORDINARIAS)){
-                        totalgastos =+ g.getMonto();
+                        if(g.getCantCuotas()==0) {
+                            totalgastos += g.getMonto();
+                        }
                     }
                 }
             }
@@ -78,13 +80,18 @@ public class ControladorGasto {
             for (Gasto gExt:gastos){
                 if(gExt.getIdconsorcio().equals(idconsorcio)){
                     if(gExt.getTipoExpensas().equals(Expensas.EXTRAORDINARIAS)){
-                        gastosExtraordinarios =+ gExt.getMonto();
+                        if(gExt.getCantCuotas()==0) {
+                            gastosExtraordinarios += gExt.getMonto();
+                        }
                     }
                 }
             }
         }
         return gastosExtraordinarios;
     }
+
+
+
 
 
     public void crearGasto(GastoDTO gasto){
