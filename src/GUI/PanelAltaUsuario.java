@@ -52,12 +52,7 @@ public class PanelAltaUsuario extends JPanel {
             txtMail.setText(usuario.getMail());
             txtMail.setEnabled(false);
         }
-
-
-
     }
-
-
 
     public void armarPanelAltaUsuario() {
         this.removeAll();

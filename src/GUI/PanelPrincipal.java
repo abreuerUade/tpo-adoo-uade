@@ -1,8 +1,10 @@
 package GUI;
 
 import Controllers.ControladorConsorcio;
+import Controllers.ControladorUnidadFuncional;
 import Controllers.ControladorUsuario;
 import DTO.ConsorcioDTO;
+import DTO.UnidadFuncionalDTO;
 import DTO.UsuarioDTO;
 
 import javax.swing.*;
@@ -177,7 +179,7 @@ public class PanelPrincipal extends JPanel {
                 ConsorcioDTO c;
                 try {
                     int id = (int) tabla.getValueAt(tabla.getSelectedRow(),0);
-                    c = ControladorConsorcio.getInstance().getConsorcios().get(id-1);
+                    c = ControladorConsorcio.getInstance().getConsorcioDTO(id);
 
 
                     masterFrame.mostrarPanelAltaConsorcio(c);
@@ -204,7 +206,20 @@ public class PanelPrincipal extends JPanel {
 
         btnUF.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelUnidadesFuncionales();
+
+                ConsorcioDTO c;
+                try {
+
+                    int id = (int) tabla.getValueAt(tabla.getSelectedRow(),0);
+
+                    c = ControladorConsorcio.getInstance().getConsorcioDTO(id);
+
+                    masterFrame.mostrarPanelUnidadesFuncionales(c);
+
+                }
+                catch (Exception exception){
+                    JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un consorcio.");
+                }
             }
         });
 
@@ -214,7 +229,9 @@ public class PanelPrincipal extends JPanel {
 
 
                 try{
+
                     int selected = (int) tabla.getValueAt(tabla.getSelectedRow(),0);
+                    System.out.println(selected);
                     consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(selected);
                     masterFrame.mostrarPanelPersonas(consorcioDTO);
                 }

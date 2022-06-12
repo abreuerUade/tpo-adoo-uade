@@ -131,18 +131,18 @@ public class MasterFrame extends JFrame {
         frame.getContentPane().repaint();
     }
 
-    public void mostrarPanelUnidadesFuncionales() {
+    public void mostrarPanelUnidadesFuncionales(ConsorcioDTO consorcioDTO) {
         frame.getContentPane().removeAll();
-        panelUnidadesFuncionales.armarPanelUnidadesFuncionales();
+        panelUnidadesFuncionales.armarPanelUnidadesFuncionales(consorcioDTO);
         frame.getContentPane().add(panelUnidadesFuncionales);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
 
     }
 
-    public void mostrarPanelAltaunidadFuncional() {
+    public void mostrarPanelAltaunidadFuncional(ConsorcioDTO consorcioDTO) {
         frame.getContentPane().removeAll();
-        panelAltaUnidadFuncional.armarPanelAltaUnidadFuncional();
+        panelAltaUnidadFuncional.armarPanelAltaUnidadFuncional(consorcioDTO);
         frame.getContentPane().add(panelAltaUnidadFuncional);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();

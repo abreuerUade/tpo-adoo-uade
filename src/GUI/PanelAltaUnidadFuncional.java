@@ -1,6 +1,11 @@
 package GUI;
 
+import Controllers.ControladorUnidadFuncional;
+import DTO.ConsorcioDTO;
+import DTO.UnidadFuncionalDTO;
+import DTO.UsuarioDTO;
 import Negocio.Persona;
+import Negocio.UnidadFuncional;
 
 import javax.swing.*;
 import java.awt.*;
@@ -24,12 +29,8 @@ public class PanelAltaUnidadFuncional extends JPanel {
     private JPanel panelForm;
     private JLabel lblUnidad;
     private JLabel lblSuperficie;
-    private JLabel lblPropietarios;
-    private JLabel lblInquilinos;
     private JTextField txtUnidad;
     private JTextField txtSup;
-    private JComboBox<String> cmbProp;
-    private JComboBox<String> cmbInqui;
     private JPanel panelBotones;
     private JButton btnGuardar;
 
@@ -41,7 +42,16 @@ public class PanelAltaUnidadFuncional extends JPanel {
 
     }
 
-    public void armarPanelAltaUnidadFuncional() {
+    public void cargarCampos(UnidadFuncionalDTO uf) {
+        if(uf != null){
+            txtUnidad.setText(uf.getNroUnidad().toString());
+            txtSup.setText(String.valueOf(uf.getSuperficie()));
+
+
+        }
+    }
+
+    public void armarPanelAltaUnidadFuncional(ConsorcioDTO consorcioDTO) {
 
         ///////////// Panel Base ///////////////////
 
@@ -73,7 +83,7 @@ public class PanelAltaUnidadFuncional extends JPanel {
         lblAlta.setVerticalAlignment(0);
 
         panelForm = new JPanel();
-        panelForm.setLayout(new GridLayout(5,5,5,20));
+        panelForm.setLayout(new GridLayout(2,2,5,40));
         panelForm.setBackground(Style.FONDO);
 
         lblUnidad = new JLabel("Unidad:   ");
@@ -84,14 +94,6 @@ public class PanelAltaUnidadFuncional extends JPanel {
         lblSuperficie.setFont(new Font(Style.FONT, Font.PLAIN, 18));
         lblSuperficie.setHorizontalAlignment(alignL);
 
-        lblPropietarios = new JLabel("Propietarios:   ");
-        lblPropietarios.setFont(new Font(Style.FONT, Font.PLAIN, 18));
-        lblPropietarios.setHorizontalAlignment(alignL);
-
-        lblInquilinos = new JLabel("Inquilinos:    ");
-        lblInquilinos.setFont(new Font(Style.FONT, Font.PLAIN, 18));
-        lblInquilinos.setHorizontalAlignment(alignL);
-
         txtUnidad = new JTextField();
         txtUnidad.setHorizontalAlignment(alignR);
         txtUnidad.setPreferredSize(new Dimension(200,40));
@@ -99,18 +101,10 @@ public class PanelAltaUnidadFuncional extends JPanel {
         txtSup = new JTextField();
         txtSup.setHorizontalAlignment(alignR);
 
-        cmbProp = new JComboBox<String>();
-
-        cmbInqui = new JComboBox<String>();
-
         panelForm.add(lblUnidad);
         panelForm.add(txtUnidad);
         panelForm.add(lblSuperficie);
         panelForm.add(txtSup);
-        panelForm.add(lblPropietarios);
-        panelForm.add(cmbProp);
-        panelForm.add(lblInquilinos);
-        panelForm.add(cmbInqui);
 
         panelBotones = new JPanel();
 
@@ -124,8 +118,8 @@ public class PanelAltaUnidadFuncional extends JPanel {
         lblOpciones.setFont(new Font(Style.FONT, Font.BOLD, 18));
         lblOpciones.setHorizontalAlignment(0);
 
-        btnAlta = new JButton("PERSONAS");
-        btnBaja.setVisible(false);
+        btnAlta = new JButton("");
+        btnAlta.setVisible(false);
 
         btnBaja = new JButton("");
         btnBaja.setVisible(false);
@@ -146,9 +140,25 @@ public class PanelAltaUnidadFuncional extends JPanel {
         panelIz.add(btnAtras);
         panelIz.add(btnSalir);
 
+        btnGuardar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                UnidadFuncionalDTO nuevaUf = new UnidadFuncionalDTO();
+
+                nuevaUf.setNroUnidad(Integer.parseInt(txtUnidad.getText()));
+                nuevaUf.setSuperficie(Float.parseFloat(txtSup.getText()));
+                int id = ControladorUnidadFuncional.getInstance().getUnidadesFuncionales().size()+1;
+                nuevaUf.setIdUnidadFuncional(id);
+                nuevaUf.setIdconsorcio(consorcioDTO.getId());
+
+                ControladorUnidadFuncional.getInstance().crearUnidadFuncional(nuevaUf);
+
+                masterFrame.mostrarPanelUnidadesFuncionales(consorcioDTO);
+            }
+        });
+
         btnAtras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelUnidadesFuncionales();
+                masterFrame.mostrarPanelPrincipal();
             }
         });
 

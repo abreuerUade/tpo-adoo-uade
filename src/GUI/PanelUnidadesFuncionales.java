@@ -1,10 +1,17 @@
 package GUI;
 
+import Controllers.ControladorUnidadFuncional;
+import DTO.ConsorcioDTO;
+import DTO.UnidadFuncionalDTO;
+import Negocio.Persona;
+import Negocio.UnidadFuncional;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class PanelUnidadesFuncionales extends JPanel {
 
@@ -29,8 +36,8 @@ public class PanelUnidadesFuncionales extends JPanel {
 
     }
 
-    public void armarPanelUnidadesFuncionales() {
-
+    public void armarPanelUnidadesFuncionales(ConsorcioDTO consorcioDTO) {
+        this.removeAll();
         ///////////// Panel Base ///////////////////
 
         this.setLayout(new BorderLayout());
@@ -81,8 +88,21 @@ public class PanelUnidadesFuncionales extends JPanel {
         contenidoTabla.addColumn("PROPIETARIO");
         contenidoTabla.addColumn("INQUILINO");
         contenidoTabla.addColumn("SUPERFICIE");
-        contenidoTabla.addColumn("CONTACTO");
 
+
+        ArrayList <UnidadFuncionalDTO> unidades = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+
+        for (UnidadFuncionalDTO u : unidades){
+
+            Object [] row = new Object[4];
+
+            row[0] = u.getNroUnidad();
+            row[1] = u.getPropietarios().size() == 0 ? "" : u.getPropietarios().get(0).getNombre();
+            row[2] = u.getInquilinos().size() == 0 ? "" : u.getInquilinos().get(0).getNombre();
+            row[3] = u.getSuperficie();
+
+            contenidoTabla.addRow(row);
+        }
 
         panelDe.add(lblUsuarios, BorderLayout.NORTH);
         panelDe.add(scrollPane, BorderLayout.CENTER);
@@ -95,7 +115,23 @@ public class PanelUnidadesFuncionales extends JPanel {
 
         btnAlta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelAltaunidadFuncional();
+                masterFrame.mostrarPanelAltaunidadFuncional(consorcioDTO);
+            }
+        });
+
+        btnBaja.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                try{
+                    int id = (int) tabla.getValueAt(tabla.getSelectedRow(), 0);
+                    UnidadFuncionalDTO u = ControladorUnidadFuncional.getInstance().getUnidadFuncional(id).unidadFuncToDTO();
+                    ControladorUnidadFuncional.getInstance().eliminarUnidadFuncional(u);
+                    masterFrame.mostrarPanelUnidadesFuncionales(consorcioDTO);
+                }
+                catch (Exception exception){
+
+                }
+
             }
         });
 
