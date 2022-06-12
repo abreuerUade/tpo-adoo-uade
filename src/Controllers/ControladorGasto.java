@@ -99,13 +99,11 @@ public class ControladorGasto {
     public Integer cobrarGastoCuota(Gasto gastoProcesarPago){
         Integer cuota = gastoProcesarPago.getMonto()/gastoProcesarPago.getCantCuotas();
         if(gastoProcesarPago.getCantCuotas()>0){
-            int monto = gastoProcesarPago.getMonto();
-            gastoProcesarPago.setMonto(monto - cuota);
+            gastoProcesarPago.setMonto(gastoProcesarPago.getMonto() - cuota);
             gastoProcesarPago.setCantCuotas(gastoProcesarPago.getCantCuotas()-1);
             modificarGasto(gastoProcesarPago.gastoToDTO());
         }
         return cuota;
-
     }
 
 
