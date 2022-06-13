@@ -160,4 +160,15 @@ public class ControladorUnidadFuncional {
             }
         }
     }
+
+
+    public float calcularSuperficieTotalbyConsorcio(int idconsorcio) {
+        int superficieTotal = 0;
+        ConsorcioDTO consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(idconsorcio);
+        ArrayList<UnidadFuncionalDTO> listUF = getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+        for (UnidadFuncionalDTO uf:listUF){
+            superficieTotal+=uf.getSuperficie();
+        }
+        return superficieTotal;
+    }
 }

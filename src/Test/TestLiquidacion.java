@@ -11,8 +11,8 @@ public class TestLiquidacion {
 
         LiquidacionGenerica liquidacionConsorcio1 = new LiquidacionGenerica() {
             @Override
-            public float DivisionExpensas() {
-                return 0;
+            public void DivisionExpensas(int idconsorcio, ArrayList<Integer> gastos) {
+
             }
         };
 
