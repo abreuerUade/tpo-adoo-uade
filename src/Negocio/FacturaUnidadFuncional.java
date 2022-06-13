@@ -1,12 +1,17 @@
 package Negocio;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class FacturaUnidadFuncional {
 
-    private int codigoFactura;
+    private UUID codigoFactura;
     private float montoExtraordinario;
     private float montoOrdinario;
+
+
+
+    private float reservas;
     private boolean pago;
     private Date fecha;
 
@@ -14,19 +19,19 @@ public class FacturaUnidadFuncional {
 
     }
 
-    public FacturaUnidadFuncional(int codigoFactura, float montoExtraordinario, float montoOrdinario, boolean pago, Date fecha) {
-        this.codigoFactura = codigoFactura;
+    public FacturaUnidadFuncional(float montoExtraordinario, float montoOrdinario, float reservas, boolean pago, Date fecha) {
+        this.codigoFactura = UUID.randomUUID();
         this.montoExtraordinario = montoExtraordinario;
         this.montoOrdinario = montoOrdinario;
         this.pago = pago;
         this.fecha = fecha;
     }
 
-    public int getCodigoFactura() {
+    public UUID getCodigoFactura() {
         return codigoFactura;
     }
 
-    public void setCodigoFactura(int codigoFactura) {
+    public void setCodigoFactura(UUID codigoFactura) {
         this.codigoFactura = codigoFactura;
     }
 
@@ -60,5 +65,13 @@ public class FacturaUnidadFuncional {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public float getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(float reservas) {
+        this.reservas = reservas;
     }
 }
