@@ -2,11 +2,13 @@ package GUI;
 
 import Controllers.ControladorConsorcio;
 import Controllers.ControladorPersona;
+import Controllers.ControladorUnidadFuncional;
 import Controllers.ControladorUsuario;
 import DTO.ConsorcioDTO;
 import DTO.PersonaDTO;
 import DTO.UnidadFuncionalDTO;
 import DTO.UsuarioDTO;
+import Negocio.Persona;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -92,7 +94,41 @@ public class PanelPersonas extends JPanel {
         contenidoTabla.addColumn("TELÉFONO");
         contenidoTabla.addColumn("EMAIL");
         contenidoTabla.addColumn("UNIDAD");
-        contenidoTabla.addColumn("CONDICIÓN");
+        contenidoTabla.addColumn("RELACION");
+
+        ArrayList<UnidadFuncionalDTO> unidades = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+
+        for(UnidadFuncionalDTO uf : unidades){
+            ArrayList<Persona> prop = uf.getPropietarios();
+            ArrayList<Persona> inqui = uf.getInquilinos();
+
+            for(Persona p : prop){
+                Object [] row = new Object[7];
+                row[0] = p.getNombre();
+                row[1] = p.getApellido();
+                row[2] = p.getDni();
+                row[3] = p.getTelefono();
+                row[4] = p.getMail();
+                row[5] = uf.getNroUnidad();
+                row[6] = "Propietario";
+
+                contenidoTabla.addRow(row);
+            }
+
+            for(Persona i : inqui){
+                Object [] row = new Object[7];
+                row[0] = i.getNombre();
+                row[1] = i.getApellido();
+                row[2] = i.getDni();
+                row[3] = i.getTelefono();
+                row[4] = i.getMail();
+                row[5] = uf.getNroUnidad();
+                row[6] = "Inquilino";
+
+                contenidoTabla.addRow(row);
+            }
+
+        }
         /*
         ArrayList<PersonaDTO> personaDTO;
 
