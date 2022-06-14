@@ -11,7 +11,12 @@
     <inspection_tool class="AbstractMethodOverridesConcreteMethod" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="AbstractMethodWithMissingImplementations" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="AccessStaticViaInstance" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="AccessToNonThreadSafeStaticFieldFromInstance" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="AccessToNonThreadSafeStaticFieldFromInstance" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="nonThreadSafeClasses">
+        <value />
+      </option>
+      <option name="nonThreadSafeTypes" value="" />
+    </inspection_tool>
     <inspection_tool class="AccessToStaticFieldLockedOnInstance" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="AmbiguousFieldAccess" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="AmbiguousMethodCall" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -59,7 +64,9 @@
     <inspection_tool class="AssignmentUsedAsCondition" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="AtomicFieldUpdaterIssues" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="AtomicFieldUpdaterNotStaticFinal" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="AutoBoxing" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="AutoBoxing" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreAddedToCollection" value="false" />
+    </inspection_tool>
     <inspection_tool class="AutoCloseableResource" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="AutoUnboxing" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="AwaitNotInLoop" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -129,19 +136,27 @@
     <inspection_tool class="CapturingCleaner" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="CastCanBeRemovedNarrowingVariableType" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="CastConflictsWithInstanceof" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="CastThatLosesPrecision" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="CastThatLosesPrecision" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreIntegerCharCasts" value="false" />
+      <option name="ignoreOverflowingByteCasts" value="false" />
+    </inspection_tool>
     <inspection_tool class="CastToIncompatibleInterface" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="CatchMayIgnoreException" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="CaughtExceptionImmediatelyRethrown" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="ChainedEquality" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="ChainedMethodCall" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="ChainedMethodCall" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_ignoreFieldInitializations" value="true" />
+      <option name="m_ignoreThisSuperCalls" value="true" />
+    </inspection_tool>
     <inspection_tool class="ChannelResource" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="insideTryAllowed" value="false" />
     </inspection_tool>
     <inspection_tool class="CharUsedInArithmeticContext" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="CharacterComparison" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="CharsetObjectCanBeUsed" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="CheckForOutOfMemoryOnLargeArrayAllocation" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="CheckForOutOfMemoryOnLargeArrayAllocation" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_limit" value="64" />
+    </inspection_tool>
     <inspection_tool class="CheckedExceptionClass" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ClassCanBeRecord" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="ClassComplexity" enabled="false" level="TYPO" enabled_by_default="false">
@@ -154,7 +169,15 @@
     </inspection_tool>
     <inspection_tool class="ClassEscapesItsScope" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="ClassGetClass" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="ClassHasNoToStringMethod" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="ClassHasNoToStringMethod" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="excludeClassNames" value="" />
+      <option name="excludeException" value="true" />
+      <option name="excludeDeprecated" value="true" />
+      <option name="excludeEnum" value="false" />
+      <option name="excludeAbstract" value="false" />
+      <option name="excludeTestCode" value="false" />
+      <option name="excludeInnerClasses" value="false" />
+    </inspection_tool>
     <inspection_tool class="ClassIndependentOfModule" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ClassInheritanceDepth" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="m_limit" value="2" />
@@ -174,7 +197,9 @@
     <inspection_tool class="ClassOnlyUsedInOnePackage" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ClassReferencesSubclass" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ClassUnconnectedToPackage" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="ClassWithMultipleLoggers" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="ClassWithMultipleLoggers" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="loggerNamesString" value="java.util.logging.Logger,org.slf4j.Logger,org.apache.commons.logging.Log,org.apache.log4j.Logger,org.apache.logging.log4j.Logger" />
+    </inspection_tool>
     <inspection_tool class="ClassWithOnlyPrivateConstructors" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ClassWithTooManyDependencies" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="limit" value="10" />
@@ -305,11 +330,21 @@
       <option name="ignoreSideEffectConditions" value="true" />
     </inspection_tool>
     <inspection_tool class="DuplicateExpressions" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="DuplicateStringLiteralInspection" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="DuplicateStringLiteralInspection" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="MIN_STRING_LENGTH" value="5" />
+      <option name="IGNORE_PROPERTY_KEYS" value="false" />
+    </inspection_tool>
     <inspection_tool class="DuplicateThrows" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="DuplicatedDataProviderNames" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="DynamicRegexReplaceableByCompiledPattern" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="EmptyClass" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="EmptyClass" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignorableAnnotations">
+        <value />
+      </option>
+      <option name="ignoreClassWithParameterization" value="false" />
+      <option name="ignoreThrowables" value="true" />
+      <option name="commentsAreContent" value="true" />
+    </inspection_tool>
     <inspection_tool class="EmptyFinallyBlock" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="EmptyInitializer" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="EmptyMethod" enabled="true" level="TYPO" enabled_by_default="true" />
@@ -358,15 +393,24 @@
     <inspection_tool class="ExternalizableWithSerializationMethods" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ExternalizableWithoutPublicNoArgConstructor" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="FallthruInSwitchStatement" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="FeatureEnvy" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="FeatureEnvy" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreTestCases" value="false" />
+    </inspection_tool>
     <inspection_tool class="FieldAccessNotGuarded" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="FieldAccessedSynchronizedAndUnsynchronized" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="countGettersAndSetters" value="false" />
     </inspection_tool>
     <inspection_tool class="FieldCanBeLocal" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="FieldCount" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="FieldCount" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_countConstantFields" value="false" />
+      <option name="m_considerStaticFinalFieldsConstant" value="false" />
+      <option name="myCountEnumConstants" value="false" />
+      <option name="m_limit" value="10" />
+    </inspection_tool>
     <inspection_tool class="FieldHasSetterButNoGetter" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="FieldHidesSuperclassField" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="FieldHidesSuperclassField" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_ignoreInvisibleFields" value="true" />
+    </inspection_tool>
     <inspection_tool class="FieldMayBeFinal" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="FieldMayBeStatic" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="FieldNamingConvention" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -377,7 +421,9 @@
     <inspection_tool class="FinalMethodInFinalClass" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="FinalPrivateMethod" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="FinalStaticMethod" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="Finalize" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="Finalize" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreTrivialFinalizers" value="true" />
+    </inspection_tool>
     <inspection_tool class="FinalizeNotProtected" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="FinallyBlockCannotCompleteNormally" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="FloatingPointEquality" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -398,7 +444,18 @@
     <inspection_tool class="FunctionalExpressionCanBeFolded" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="FuseStreamOperations" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="Guava" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="HardCodedStringLiteral" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="HardCodedStringLiteral" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreForAssertStatements" value="true" />
+      <option name="ignoreForExceptionConstructors" value="true" />
+      <option name="ignoreForSpecifiedExceptionConstructors" value="" />
+      <option name="ignoreForJUnitAsserts" value="true" />
+      <option name="ignoreForClassReferences" value="true" />
+      <option name="ignoreForPropertyKeyReferences" value="true" />
+      <option name="ignoreForNonAlpha" value="true" />
+      <option name="ignoreAssignedToConstants" value="false" />
+      <option name="ignoreToString" value="false" />
+      <option name="nonNlsCommentPattern" value="NON-NLS" />
+    </inspection_tool>
     <inspection_tool class="HardcodedFileSeparators" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="m_recognizeExampleMediaType" value="false" />
     </inspection_tool>
@@ -422,14 +479,18 @@
     </inspection_tool>
     <inspection_tool class="IfStatementMissingBreakInLoop" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="IfStatementWithIdenticalBranches" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="IfStatementWithTooManyBranches" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="IfStatementWithTooManyBranches" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_limit" value="3" />
+    </inspection_tool>
     <inspection_tool class="IgnoreResultOfCall" enabled="true" level="INFORMATION" enabled_by_default="true">
       <option name="m_reportAllNonLibraryCalls" value="false" />
       <option name="callCheckString" value="java.io.File,.*,java.io.InputStream,read|skip|available|markSupported,java.io.Reader,read|skip|ready|markSupported,java.lang.AbstractStringBuilder,capacity|codePointAt|codePointBefore|codePointCount|indexOf|lastIndexOf|offsetByCodePoints|substring|subSequence,java.lang.Boolean,.*,java.lang.Byte,.*,java.lang.Character,.*,java.lang.Double,.*,java.lang.Float,.*,java.lang.Integer,.*,java.lang.Long,.*,java.lang.Math,.*,java.lang.Object,equals|hashCode|toString,java.lang.Short,.*,java.lang.StrictMath,.*,java.lang.String,.*,java.lang.Thread,interrupted,java.math.BigDecimal,.*,java.math.BigInteger,.*,java.net.InetAddress,.*,java.net.URI,.*,java.nio.channels.AsynchronousChannelGroup,.*,java.util.Arrays,.*,java.util.Collections,(?!addAll).*,java.util.List,of,java.util.Map,of|ofEntries|entry,java.util.Set,of,java.util.UUID,.*,java.util.concurrent.BlockingQueue,offer|remove,java.util.concurrent.CountDownLatch,await|getCount,java.util.concurrent.ExecutorService,awaitTermination|isShutdown|isTerminated,java.util.concurrent.ForkJoinPool,awaitQuiescence,java.util.concurrent.Semaphore,tryAcquire|availablePermits|isFair|hasQueuedThreads|getQueueLength|getQueuedThreads,java.util.concurrent.locks.Condition,await|awaitNanos|awaitUntil,java.util.concurrent.locks.Lock,tryLock|newCondition,java.util.regex.Matcher,pattern|toMatchResult|start|end|group|groupCount|matches|find|lookingAt|quoteReplacement|replaceAll|replaceFirst|regionStart|regionEnd|hasTransparentBounds|hasAnchoringBounds|hitEnd|requireEnd,java.util.regex.Pattern,.*,java.util.stream.BaseStream,.*,java.util.stream.DoubleStream,.*,java.util.stream.IntStream,.*,java.util.stream.LongStream,.*,java.util.stream.Stream,.*" />
     </inspection_tool>
     <inspection_tool class="IgnoredJUnitTest" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ImplicitArrayToString" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="ImplicitCallToSuper" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="ImplicitCallToSuper" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_ignoreForObjectSubclasses" value="false" />
+    </inspection_tool>
     <inspection_tool class="ImplicitDefaultCharsetUsage" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ImplicitNumericConversion" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="ignoreWideningConversions" value="false" />
@@ -454,10 +515,17 @@
     </inspection_tool>
     <inspection_tool class="InsertLiteralUnderscores" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="InstanceGuardedByStatic" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="InstanceVariableInitialization" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="InstanceVariableUninitializedUse" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="InstanceVariableInitialization" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_ignorePrimitives" value="false" />
+    </inspection_tool>
+    <inspection_tool class="InstanceVariableUninitializedUse" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_ignorePrimitives" value="false" />
+      <option name="annotationNamesString" value="" />
+    </inspection_tool>
     <inspection_tool class="InstanceofCatchParameter" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="InstanceofChain" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="InstanceofChain" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreInstanceofOnLibraryClasses" value="false" />
+    </inspection_tool>
     <inspection_tool class="InstanceofIncompatibleInterface" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="InstanceofThis" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="InstantiatingObjectToGetClassObject" enabled="true" level="TYPO" enabled_by_default="true" />
@@ -469,7 +537,9 @@
     </inspection_tool>
     <inspection_tool class="InterfaceMayBeAnnotatedFunctional" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="InterfaceMethodClashesWithObject" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="InterfaceNeverImplemented" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="InterfaceNeverImplemented" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreInterfacesThatOnlyDeclareConstants" value="false" />
+    </inspection_tool>
     <inspection_tool class="InterfaceWithOnlyOneDirectInheritor" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="InvalidComparatorMethodReference" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="IterableUsedAsVararg" enabled="true" level="TYPO" enabled_by_default="true" />
@@ -480,7 +550,9 @@
     <inspection_tool class="JDBCResource" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="insideTryAllowed" value="false" />
     </inspection_tool>
-    <inspection_tool class="JNDIResource" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="JNDIResource" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="insideTryAllowed" value="false" />
+    </inspection_tool>
     <inspection_tool class="JUnit3StyleTestMethodInJUnit4Class" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="JUnit4AnnotatedMethodInJUnit3TestCase" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="JUnit5MalformedExtensions" enabled="true" level="TYPO" enabled_by_default="true" />
@@ -521,7 +593,9 @@
     <inspection_tool class="LambdaParameterNamingConvention" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="LambdaParameterTypeCanBeSpecified" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="LambdaUnfriendlyMethodOverload" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="LawOfDemeter" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="LawOfDemeter" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreLibraryCalls" value="true" />
+    </inspection_tool>
     <inspection_tool class="LengthOneStringInIndexOf" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="LengthOneStringsInConcatenation" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="LimitedScopeInnerClass" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -532,12 +606,21 @@
     </inspection_tool>
     <inspection_tool class="LiteralAsArgToStringEquals" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="LoadLibraryWithNonConstantString" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="LocalCanBeFinal" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="LocalCanBeFinal" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="REPORT_VARIABLES" value="true" />
+      <option name="REPORT_PARAMETERS" value="true" />
+    </inspection_tool>
     <inspection_tool class="LocalVariableHidingMemberVariable" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="m_ignoreInvisibleFields" value="true" />
       <option name="m_ignoreStaticMethods" value="true" />
     </inspection_tool>
-    <inspection_tool class="LocalVariableNamingConvention" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="LocalVariableNamingConvention" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_ignoreForLoopParameters" value="false" />
+      <option name="m_ignoreCatchParameters" value="false" />
+      <option name="m_regex" value="[a-z][A-Za-z\d]*" />
+      <option name="m_minLength" value="1" />
+      <option name="m_maxLength" value="20" />
+    </inspection_tool>
     <inspection_tool class="LogStatementGuardedByLogCondition" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="LoggerInitializedWithForeignClass" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="loggerFactoryMethodName" value="getLogger,getLogger,getLog,getLogger" />
@@ -620,7 +703,9 @@
     </inspection_tool>
     <inspection_tool class="MissingPackageInfo" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="MissingSerialAnnotation" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="MissortedModifiers" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="MissortedModifiers" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_requireAnnotationsFirst" value="true" />
+    </inspection_tool>
     <inspection_tool class="MisspelledEquals" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="MisspelledMethodName" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ModuleWithTooFewClasses" enabled="false" level="TYPO" enabled_by_default="false">
@@ -644,18 +729,27 @@
     </inspection_tool>
     <inspection_tool class="NakedNotify" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="NativeMethods" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="NegatedConditional" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="NegatedConditional" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_ignoreNegatedNullComparison" value="true" />
+    </inspection_tool>
     <inspection_tool class="NegatedConditionalExpression" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="NegatedEqualityExpression" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="NegatedIfElse" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="NegatedIfElse" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_ignoreNegatedNullComparison" value="true" />
+      <option name="m_ignoreNegatedZeroComparison" value="false" />
+    </inspection_tool>
     <inspection_tool class="NegativelyNamedBooleanVariable" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="NestedAssignment" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="NestedConditionalExpression" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="NestedMethodCall" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="NestedMethodCall" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_ignoreFieldInitializations" value="true" />
+    </inspection_tool>
     <inspection_tool class="NestedSwitchStatement" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="NestedSynchronizedStatement" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="NestedTryStatement" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="NestingDepth" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="NestingDepth" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_limit" value="5" />
+    </inspection_tool>
     <inspection_tool class="NewClassNamingConvention" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="NewExceptionWithoutArguments" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="NewMethodNamingConvention" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -679,7 +773,9 @@
     <inspection_tool class="NonFinalGuard" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="NonFinalStaticVariableUsedInClassInitialization" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="NonFinalUtilityClass" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="NonProtectedConstructorInAbstractClass" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="NonProtectedConstructorInAbstractClass" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_ignoreNonPublicClasses" value="false" />
+    </inspection_tool>
     <inspection_tool class="NonPublicClone" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="NonReproducibleMathCall" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="NonSerializableFieldInSerializableClass" enabled="false" level="TYPO" enabled_by_default="false">
@@ -747,12 +843,16 @@
       <option name="ignoreInconvertibleTypes" value="true" />
     </inspection_tool>
     <inspection_tool class="OverloadedVarargsMethod" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="OverlyComplexArithmeticExpression" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="OverlyComplexArithmeticExpression" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_limit" value="6" />
+    </inspection_tool>
     <inspection_tool class="OverlyComplexBooleanExpression" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="m_limit" value="3" />
       <option name="m_ignorePureConjunctionsDisjunctions" value="true" />
     </inspection_tool>
-    <inspection_tool class="OverlyLargePrimitiveArrayInitializer" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="OverlyLargePrimitiveArrayInitializer" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_limit" value="64" />
+    </inspection_tool>
     <inspection_tool class="OverlyLongLambda" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="OverlyStrongTypeCast" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="ignoreInMatchingInstanceof" value="false" />
@@ -850,7 +950,9 @@
     </inspection_tool>
     <inspection_tool class="PublicStaticArrayField" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="PublicStaticCollectionField" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="QuestionableName" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="QuestionableName" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="nameString" value="aa,abc,bad,bar,bar2,baz,baz1,baz2,baz3,bb,blah,bogus,bool,cc,dd,defau1t,dummy,dummy2,ee,fa1se,ff,foo,foo1,foo2,foo3,foobar,four,fred,fred1,fred2,gg,hh,hello,hello1,hello2,hello3,ii,nu11,one,silly,silly2,string,two,that,then,three,whi1e,var" />
+    </inspection_tool>
     <inspection_tool class="RandomDoubleForRandomInteger" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="RawUseOfParameterizedType" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="ReadObjectAndWriteObjectPrivate" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -869,7 +971,10 @@
     <inspection_tool class="RedundantExplicitVariableType" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="RedundantFieldInitialization" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="RedundantFileCreation" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="RedundantImplements" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="RedundantImplements" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreSerializable" value="false" />
+      <option name="ignoreCloneable" value="false" />
+    </inspection_tool>
     <inspection_tool class="RedundantLabeledSwitchRuleCodeBlock" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="RedundantLambdaParameterType" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="RedundantMethodOverride" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -902,7 +1007,12 @@
     <inspection_tool class="ResultOfObjectAllocationIgnored" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ResultSetIndexZero" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ReturnFromFinallyBlock" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="ReturnNull" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="ReturnNull" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_reportObjectMethods" value="true" />
+      <option name="m_reportArrayMethods" value="true" />
+      <option name="m_reportCollectionMethods" value="true" />
+      <option name="m_ignorePrivateMethods" value="false" />
+    </inspection_tool>
     <inspection_tool class="ReturnOfInnerClass" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ReturnSeparatedFromComputation" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="ReturnThis" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -919,7 +1029,10 @@
     <inspection_tool class="SerialPersistentFieldsWithWrongSignature" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="SerialVersionUIDNotStaticFinal" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="SerializableDeserializableClassInSecureContext" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="SerializableHasSerializationMethods" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="SerializableHasSerializationMethods" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreAnonymousInnerClasses" value="false" />
+      <option name="superClassString" value="java.io.Externalizable,java.awt.Component" />
+    </inspection_tool>
     <inspection_tool class="SerializableInnerClassHasSerialVersionUIDField" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="ignoreAnonymousInnerClasses" value="false" />
       <option name="superClassString" value="java.awt.Component" />
@@ -956,7 +1069,9 @@
     <inspection_tool class="SleepWhileHoldingLock" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="SlowAbstractSetRemoveAll" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="SlowListContainsAll" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="SocketResource" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="SocketResource" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="insideTryAllowed" value="false" />
+    </inspection_tool>
     <inspection_tool class="SortedCollectionWithNonComparableKeys" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="SpringQualifierCopyableLombok" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="StandardVariableNames" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -1038,12 +1153,16 @@
     <inspection_tool class="SuspiciousToArrayCall" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="SwitchLabeledRuleCanBeCodeBlock" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="SwitchStatement" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="SwitchStatementDensity" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="SwitchStatementDensity" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_limit" value="20" />
+    </inspection_tool>
     <inspection_tool class="SwitchStatementWithConfusingDeclaration" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="SwitchStatementWithTooFewBranches" enabled="true" level="TYPO" enabled_by_default="true">
       <option name="m_limit" value="2" />
     </inspection_tool>
-    <inspection_tool class="SwitchStatementWithTooManyBranches" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="SwitchStatementWithTooManyBranches" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_limit" value="10" />
+    </inspection_tool>
     <inspection_tool class="SwitchStatementsWithoutDefault" enabled="true" level="TYPO" enabled_by_default="true">
       <option name="m_ignoreFullyCoveredEnums" value="true" />
     </inspection_tool>
@@ -1091,13 +1210,20 @@
     <inspection_tool class="ThreadStopSuspendResume" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ThreadWithDefaultRunMethod" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="ThreadYield" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="ThreeNegationsPerMethod" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="ThrowCaughtLocally" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="ThreeNegationsPerMethod" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_ignoreInEquals" value="true" />
+      <option name="ignoreInAssert" value="false" />
+    </inspection_tool>
+    <inspection_tool class="ThrowCaughtLocally" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreRethrownExceptions" value="false" />
+    </inspection_tool>
     <inspection_tool class="ThrowFromFinallyBlock" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="ThrowableNotThrown" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="ThrowablePrintStackTrace" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ThrowablePrintedToSystemOut" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="ThrownExceptionsPerMethod" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="ThrownExceptionsPerMethod" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="m_limit" value="3" />
+    </inspection_tool>
     <inspection_tool class="ThrowsRuntimeException" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="TimeToString" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="ToArrayCallWithZeroLengthArrayArgument" enabled="true" level="TYPO" enabled_by_default="true" />
@@ -1163,7 +1289,9 @@
     </inspection_tool>
     <inspection_tool class="UnnecessaryInheritDoc" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="UnnecessaryInitCause" enabled="true" level="TYPO" enabled_by_default="true" />
-    <inspection_tool class="UnnecessaryJavaDocLink" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="UnnecessaryJavaDocLink" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreInlineLinkToSuper" value="false" />
+    </inspection_tool>
     <inspection_tool class="UnnecessaryLabelOnBreakStatement" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="UnnecessaryLabelOnContinueStatement" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="UnnecessaryLocalVariable" enabled="true" level="TYPO" enabled_by_default="true">
@@ -1195,7 +1323,9 @@
       <option name="ignoreComplexLiterals" value="false" />
     </inspection_tool>
     <inspection_tool class="UnqualifiedFieldAccess" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="UnqualifiedInnerClassAccess" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="UnqualifiedInnerClassAccess" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreReferencesToLocalInnerClasses" value="true" />
+    </inspection_tool>
     <inspection_tool class="UnqualifiedMethodAccess" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="UnqualifiedStaticUsage" enabled="false" level="TYPO" enabled_by_default="false">
       <option name="m_ignoreStaticFieldAccesses" value="false" />
@@ -1218,7 +1348,10 @@
     <inspection_tool class="UseBulkOperation" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="UseCompareMethod" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="UseOfAWTPeerClass" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="UseOfAnotherObjectsPrivateField" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="UseOfAnotherObjectsPrivateField" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignoreSameClass" value="false" />
+      <option name="ignoreEquals" value="false" />
+    </inspection_tool>
     <inspection_tool class="UseOfClone" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="UseOfConcreteClass" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="UseOfJDBCDriverClass" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -1234,7 +1367,12 @@
     </inspection_tool>
     <inspection_tool class="UtilityClassCanBeEnum" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="UtilityClassWithPublicConstructor" enabled="false" level="TYPO" enabled_by_default="false" />
-    <inspection_tool class="UtilityClassWithoutPrivateConstructor" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="UtilityClassWithoutPrivateConstructor" enabled="false" level="TYPO" enabled_by_default="false">
+      <option name="ignorableAnnotations">
+        <value />
+      </option>
+      <option name="ignoreClassesWithOnlyMain" value="false" />
+    </inspection_tool>
     <inspection_tool class="VarargParameter" enabled="true" level="TYPO" enabled_by_default="true" />
     <inspection_tool class="VariableNotUsedInsideIf" enabled="false" level="TYPO" enabled_by_default="false" />
     <inspection_tool class="VariableTypeCanBeExplicit" enabled="true" level="TYPO" enabled_by_default="true" />

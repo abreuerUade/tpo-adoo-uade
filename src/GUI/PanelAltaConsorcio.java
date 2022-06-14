@@ -50,13 +50,15 @@ public class PanelAltaConsorcio extends JPanel {
         if(consorcioDTO != null){
             txtDireccion.setText(consorcioDTO.getNombre());
             txtBarrio.setText(consorcioDTO.getBarrio());
-            txtProp.setText(consorcioDTO.getCuentaBanco().getPropietario());
-            txtCBU.setText(consorcioDTO.getCuentaBanco().getCBU());
+            //txtProp.setText(consorcioDTO.getCuentaBanco().getPropietario());
+            txtProp.setEnabled(false);
+            //txtCBU.setText(consorcioDTO.getCuentaBanco().getCBU());
+            txtCBU.setEnabled(false);
         }
     }
 
-    public void armarPanelAltaConsorcio(ConsorcioDTO consorcio) {
-
+    public void armarPanelAltaConsorcio(ConsorcioDTO consorcioDTO) {
+        this.removeAll();
         ///////////// Panel Base ///////////////////
 
         this.setLayout(new BorderLayout());
@@ -177,19 +179,27 @@ public class PanelAltaConsorcio extends JPanel {
                 nuevo.setBarrio(txtBarrio.getText());
                 //nuevo.setCuentaBanco(new Cuenta(txtProp.getText(),txtCBU.getText()));
                 //DESDE LA CREACION DE UN CONSORCIO NO DEBERIAMOS CREAR UNA CUENTA BANCARIA.
-                nuevo.setId((int) ControladorConsorcio.getInstance().getConsorcios().size()+1);
+                if(consorcioDTO != null){
+                    try {
+                        nuevo.setId(consorcioDTO.getId());
+                        ControladorConsorcio.getInstance().editarConsorcio(nuevo);
+                        System.out.println(ControladorConsorcio.getInstance().getConsorcioDTO(1).getNombre());
+                    }
+                    catch (Error error){
+                        JOptionPane.showMessageDialog(masterFrame,"Se ha ha producido un error.");
+                    }
+                }else{
+                    nuevo.setId((int) ControladorConsorcio.getInstance().getConsorcios().size()+1);
+                    try{
+                        ControladorConsorcio.getInstance().crearConsorcio(nuevo);
 
-
-                try{
-                    ControladorConsorcio.getInstance().crearConsorcio(nuevo);
-                    masterFrame.mostrarPanelPrincipal();
+                    }
+                    catch (Error error){
+                        JOptionPane.showMessageDialog(masterFrame,"Se ha ha producido un error.");
+                    }
                 }
-                catch (Error error){
-                    JOptionPane.showMessageDialog(masterFrame,"Se ha ha producido un error.");
-                }
 
-
-
+                masterFrame.mostrarPanelPrincipal();
             }
         });
 

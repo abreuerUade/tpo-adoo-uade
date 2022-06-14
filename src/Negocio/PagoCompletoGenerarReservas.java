@@ -40,7 +40,7 @@ public class PagoCompletoGenerarReservas extends LiquidacionGenerica{
             float expensaOrdinaria = gastos.get(0) * coeficiente;
             float expensaExtraordinaria = gastos.get(1) * coeficiente;
             float reserva = gasto.getMonto() * coeficiente;
-            Facturador.crearFactura(uf.getNroUnidad(), expensaOrdinaria, expensaExtraordinaria, reserva);
+            //Facturador.crearFactura(uf.getNroUnidad(), expensaOrdinaria, expensaExtraordinaria, reserva);
         }
     }
 }

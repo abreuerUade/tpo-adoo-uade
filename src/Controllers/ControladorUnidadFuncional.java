@@ -161,6 +161,33 @@ public class ControladorUnidadFuncional {
         }
     }
 
+    public ArrayList<PersonaDTO> getPropietarioByUf(UnidadFuncionalDTO unidadFuncionalDTO){
+        ArrayList<PersonaDTO> propietarios = new ArrayList<>();
+
+        for (UnidadFuncional u : UnidadesFuncionales){
+            if(unidadFuncionalDTO.getIdUnidadFuncional().equals(u.getIdUnidadFuncional())){
+                for(Persona p : u.getPropietarios()){
+                    propietarios.add(p.personaToDTO());
+                }
+
+            }
+        }
+        return propietarios;
+    }
+
+    public ArrayList<PersonaDTO> getInquilinoByUf(UnidadFuncionalDTO unidadFuncionalDTO){
+        ArrayList<PersonaDTO> inquilino = new ArrayList<>();
+
+        for (UnidadFuncional u : UnidadesFuncionales){
+            if(unidadFuncionalDTO.getIdUnidadFuncional().equals(u.getIdUnidadFuncional())){
+                for(Persona p : u.getInquilinos()){
+                    inquilino.add(p.personaToDTO());
+                }
+            }
+        }
+        return inquilino;
+    }
+
 
     public float calcularSuperficieTotalbyConsorcio(int idconsorcio) {
         int superficieTotal = 0;

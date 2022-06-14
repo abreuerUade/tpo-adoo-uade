@@ -115,9 +115,13 @@ public class MasterFrame extends JFrame {
 
     public void mostrarPanelAltaConsorcio(ConsorcioDTO consorcio) {
         frame.getContentPane().removeAll();
+
         panelAltaConsorcio.armarPanelAltaConsorcio(consorcio);
+
         frame.getContentPane().add(panelAltaConsorcio);
+
         panelAltaConsorcio.cargarCampos(consorcio);
+
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
 
@@ -158,19 +162,10 @@ public class MasterFrame extends JFrame {
 
     }
 
-    public void mostrarPanelAltaPersonas() {
+    public void mostrarPanelAltaPersonas(ConsorcioDTO consorcioDTO) {
         frame.getContentPane().removeAll();
-        panelAltaPersonas.armarPanelAltaPersonas();
+        panelAltaPersonas.armarPanelAltaPersonas(consorcioDTO);
         frame.getContentPane().add(panelAltaPersonas);
-        frame.getContentPane().validate();
-        frame.getContentPane().repaint();
-    }
-
-    public void mostrarPanelAltaPersonas(PersonaDTO persona) {
-        frame.getContentPane().removeAll();
-        panelAltaPersonas.armarPanelAltaPersonas();
-        frame.getContentPane().add(panelAltaPersonas);
-        panelAltaPersonas.cargarCampos(persona);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
     }

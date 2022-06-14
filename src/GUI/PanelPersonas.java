@@ -65,7 +65,7 @@ public class PanelPersonas extends JPanel {
 
         //////////////////////////////////////////////////////////////////
 
-        lblUsuarios = new JLabel("SELECCIONE UNA PERSONA O DE UNA NUEVO DE ALTA");
+        lblUsuarios = new JLabel("PANEL DE PROPIETARIOS E INQUILINOS");
         lblUsuarios.setFont(new Font(Style.FONT, Font.BOLD, 20));
         lblUsuarios.setHorizontalAlignment(0);
 
@@ -94,15 +94,15 @@ public class PanelPersonas extends JPanel {
         contenidoTabla.addColumn("TELÉFONO");
         contenidoTabla.addColumn("EMAIL");
         contenidoTabla.addColumn("UNIDAD");
-        contenidoTabla.addColumn("RELACION");
+        contenidoTabla.addColumn("CONDICIÓN");
 
         ArrayList<UnidadFuncionalDTO> unidades = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
 
         for(UnidadFuncionalDTO uf : unidades){
-            ArrayList<Persona> prop = uf.getPropietarios();
-            ArrayList<Persona> inqui = uf.getInquilinos();
+            ArrayList<PersonaDTO> prop = ControladorUnidadFuncional.getInstance().getPropietarioByUf(uf);
+            ArrayList<PersonaDTO> inqui = ControladorUnidadFuncional.getInstance().getInquilinoByUf(uf);
 
-            for(Persona p : prop){
+            for(PersonaDTO p : prop){
                 Object [] row = new Object[7];
                 row[0] = p.getNombre();
                 row[1] = p.getApellido();
@@ -115,7 +115,7 @@ public class PanelPersonas extends JPanel {
                 contenidoTabla.addRow(row);
             }
 
-            for(Persona i : inqui){
+            for(PersonaDTO i : inqui){
                 Object [] row = new Object[7];
                 row[0] = i.getNombre();
                 row[1] = i.getApellido();
@@ -129,21 +129,6 @@ public class PanelPersonas extends JPanel {
             }
 
         }
-        /*
-        ArrayList<PersonaDTO> personaDTO;
-
-        System.out.println(ControladorUsuario.getInstance().getUsuarios());
-        for (UsuarioDTO u : usuarios){
-
-            Object [] row = new Object[7];
-            row[0] = u.getNombre();
-            row[1] = u.getApellido();
-            row[2] = u.getMail();
-
-            contenidoTabla.addRow(row);
-        }
-        */
-
 
         panelDe.add(lblUsuarios, BorderLayout.NORTH);
         panelDe.add(scrollPane, BorderLayout.CENTER);
@@ -156,27 +141,34 @@ public class PanelPersonas extends JPanel {
 
         btnAlta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelAltaPersonas();
+                masterFrame.mostrarPanelAltaPersonas(consorcioDTO);
             }
         });
 
         btnBaja.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                UsuarioDTO usuarioDTO = new UsuarioDTO();
-                usuarioDTO.setNombre((String) tabla.getValueAt(tabla.getSelectedRow(),0));
-                usuarioDTO.setApellido((String) tabla.getValueAt(tabla.getSelectedRow(),1));
-                usuarioDTO.setMail((String) tabla.getValueAt(tabla.getSelectedRow(),2));
+                PersonaDTO personaDTO;
+                int dni = (int) tabla.getValueAt(tabla.getSelectedRow(),2);
+                int uf = (int) tabla.getValueAt(tabla.getSelectedRow(),5);
+                String condicion = tabla.getValueAt(tabla.getSelectedRow(),6).toString();
+                personaDTO = ControladorPersona.getInstance().getPersonabyDNI(dni).personaToDTO();
 
-                int res = JOptionPane.showOptionDialog(new JFrame(), "Seguro que desea elimiar al usuario?","Aviso",
+                int res = JOptionPane.showOptionDialog(new JFrame(), "Seguro que desea elimiar esta persona?","Aviso",
                         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                         new Object[] { "Yes", "No" }, JOptionPane.YES_OPTION);
                 if (res == JOptionPane.YES_OPTION) {
                     try {
-                        ControladorUsuario.getInstance().eliminarUsuario(usuarioDTO);
-                        masterFrame.mostrarPanelUsuarios();
+                        System.out.println(ControladorPersona.getInstance().obtenerPersonas());
+                        if(condicion.equals("Propietario")){
+                            ControladorUnidadFuncional.getInstance().eliminarPropietario(personaDTO,uf);
+                        }else {
+                            ControladorUnidadFuncional.getInstance().eliminarInquilino(personaDTO,uf);
+                        }
+                        masterFrame.mostrarPanelPersonas(consorcioDTO);
+                        System.out.println(ControladorPersona.getInstance().obtenerPersonas());
                     }
                     catch (Exception exception){
-                        JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un usuario.");
+                        JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar una persona.");
                     }
                 }
             }

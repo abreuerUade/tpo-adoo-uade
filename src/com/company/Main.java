@@ -4,6 +4,7 @@ import DTO.ConsorcioDTO;
 import Data.Data;
 import GUI.MasterFrame;
 import Negocio.LiquidacionGenerica;
+import Negocio.ServiciosEnvio;
 import Test.TestAutenticar;
 import Test.TestGastos;
 import Test.TestUnidadFuncional;
@@ -18,6 +19,16 @@ public class Main {
         master.armarMaster();
         master.mostrarPanelInicio();
         master.showFrame();
+
+        System.out.println(ControladorConsorcio.getInstance().getConsorcioDTO(1).getNombre());
+        ConsorcioDTO consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(1);
+        consorcioDTO.setNombre("Carlos");
+        ControladorConsorcio.getInstance().editarConsorcio(consorcioDTO);
+        System.out.println(ControladorConsorcio.getInstance().getConsorcioDTO(1).getNombre());
+
+
+
+
     }
 
 

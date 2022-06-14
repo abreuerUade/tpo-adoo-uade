@@ -1,9 +1,13 @@
 package GUI;
 
 import Auth.Autenticador;
+import Controllers.ControladorPersona;
+import Controllers.ControladorUnidadFuncional;
 import Controllers.ControladorUsuario;
+import DTO.ConsorcioDTO;
 import DTO.PersonaDTO;
 import DTO.UsuarioDTO;
+import Negocio.ServiciosEnvio;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,13 +35,18 @@ public class PanelAltaPersonas extends JPanel {
     private JLabel lblMail;
     private JLabel lblDni;
     private JLabel lblTelefono;
-    private JLabel servicioEnvio;
+    private JLabel lblUnidadFuncional;
+    private JLabel lblServicioEnvio;
+    private JLabel lblCondicion;
 
     private JTextField txtNombre;
     private JTextField txtApellido;
     private JTextField txtMail;
     private JTextField txtDni;
     private JTextField txtTelefono;
+    private JTextField txtUnidadFuncional;
+    private JComboBox<String> cmbServicioEnvio;
+    private JComboBox<String> cmbCondicion;
 
     private JPanel panelBotones;
     private JButton btnGuardar;
@@ -60,7 +69,7 @@ public class PanelAltaPersonas extends JPanel {
         }
     }
 
-    public void armarPanelAltaPersonas() {
+    public void armarPanelAltaPersonas(ConsorcioDTO consorcioDTO) {
         this.removeAll();
         ///////////// Panel Base ///////////////////
 
@@ -92,7 +101,7 @@ public class PanelAltaPersonas extends JPanel {
         lblAlta.setVerticalAlignment(0);
 
         panelForm = new JPanel();
-        panelForm.setLayout(new GridLayout(6,2,5,20));
+        panelForm.setLayout(new GridLayout(8,2,5,10));
         panelForm.setBackground(Style.FONDO);
 
         lblNombre = new JLabel("Nombre:   ");
@@ -111,9 +120,21 @@ public class PanelAltaPersonas extends JPanel {
         lblDni.setFont(new Font(Style.FONT, Font.PLAIN, 18));
         lblDni.setHorizontalAlignment(alignL);
 
-        lblTelefono = new JLabel("TELEFONO:    ");
+        lblTelefono = new JLabel("Teléfono:    ");
         lblTelefono.setFont(new Font(Style.FONT, Font.PLAIN, 18));
         lblTelefono.setHorizontalAlignment(alignL);
+
+        lblUnidadFuncional = new JLabel("Unidad Funcioanl:    ");
+        lblUnidadFuncional.setFont(new Font(Style.FONT, Font.PLAIN, 18));
+        lblUnidadFuncional.setHorizontalAlignment(alignL);
+
+        lblServicioEnvio = new JLabel("Método de notificación:    ");
+        lblServicioEnvio.setFont(new Font(Style.FONT, Font.PLAIN, 18));
+        lblServicioEnvio.setHorizontalAlignment(alignL);
+
+        lblCondicion = new JLabel("Condición:    ");
+        lblCondicion.setFont(new Font(Style.FONT, Font.PLAIN, 18));
+        lblCondicion.setHorizontalAlignment(alignL);
 
         txtNombre = new JTextField("");
         txtNombre.setHorizontalAlignment(alignR);
@@ -130,6 +151,15 @@ public class PanelAltaPersonas extends JPanel {
         txtTelefono = new JTextField("");
         txtTelefono.setHorizontalAlignment(alignR);
 
+        txtUnidadFuncional = new JTextField("");
+        txtUnidadFuncional.setHorizontalAlignment(alignR);
+
+        String[] metodos = new String[]{"SMS", "EMAIL", "WHATSAPP"};
+        cmbServicioEnvio = new JComboBox<>(metodos);
+
+        String[] condicion = new String[]{"INQUILINO", "PROPIETARIO"};
+        cmbCondicion = new JComboBox<>(condicion);
+
         panelForm.add(lblNombre);
         panelForm.add(txtNombre);
         panelForm.add(lblApellido);
@@ -140,6 +170,12 @@ public class PanelAltaPersonas extends JPanel {
         panelForm.add(txtDni);
         panelForm.add(lblTelefono);
         panelForm.add(txtTelefono);
+        panelForm.add(lblUnidadFuncional);
+        panelForm.add(txtUnidadFuncional);
+        panelForm.add(lblServicioEnvio);
+        panelForm.add(cmbServicioEnvio);
+        panelForm.add(lblCondicion);
+        panelForm.add(cmbCondicion);
 
         panelBotones = new JPanel();
 
@@ -181,6 +217,24 @@ public class PanelAltaPersonas extends JPanel {
 
                 PersonaDTO nuevaPersona = new PersonaDTO();
 
+                nuevaPersona.setNombre(txtNombre.getText());
+                nuevaPersona.setApellido(txtApellido.getText());
+                nuevaPersona.setDni(Integer.parseInt(txtDni.getText()));
+                nuevaPersona.setMail(txtMail.getText());
+                nuevaPersona.setTelefono(Integer.parseInt(txtTelefono.getText()));
+                ServiciosEnvio serviciosEnvio = ServiciosEnvio.SMS;
+                nuevaPersona.setServiciosEnvio(serviciosEnvio);
+                String condicion = cmbCondicion.getSelectedItem().toString();
+                Integer uf = Integer.parseInt(txtUnidadFuncional.getText());
+                ControladorPersona.getInstance().crearPersona(nuevaPersona);
+                if (condicion.equals("PROPIETARIO")){
+                    ControladorUnidadFuncional.getInstance().agregarPropietario(nuevaPersona, uf);
+                }
+                else {
+                    ControladorUnidadFuncional.getInstance().agregarInquilino(nuevaPersona, uf);
+                }
+
+                masterFrame.mostrarPanelPersonas(consorcioDTO);
 
             }
         });

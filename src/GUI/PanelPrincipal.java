@@ -181,7 +181,6 @@ public class PanelPrincipal extends JPanel {
                     int id = (int) tabla.getValueAt(tabla.getSelectedRow(),0);
                     c = ControladorConsorcio.getInstance().getConsorcioDTO(id);
 
-
                     masterFrame.mostrarPanelAltaConsorcio(c);
                 }
                 catch (Exception exception){
@@ -245,7 +244,6 @@ public class PanelPrincipal extends JPanel {
         btnGastos.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ConsorcioDTO consorcioDTO;
-
 
                 try{
                     int selected = (int) tabla.getValueAt(tabla.getSelectedRow(),0);

@@ -149,6 +149,7 @@ public class ControladorConsorcio {
                 consorcioEdit.setContacto(datos.getContacto());
                 consorcioEdit.setCuentaBanco(datos.getCuentaBanco());
                 consorcioEdit.setAdmin(datos.getAdmin());
+                consorcioEdit.setBarrio(datos.getBarrio());
                 //consorcioEdit.setGastos(datos.getGastos());
                 //consorcioEdit.setUnidadesFunc(datos.getUnidadesFunc());
                 //consorcioEdit.setTipoLiquidacion(datos.getTipoLiquidacion());

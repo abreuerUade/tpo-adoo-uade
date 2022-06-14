@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class PanelGastos extends JPanel {
 
@@ -97,6 +98,8 @@ public class PanelGastos extends JPanel {
         contenidoTabla.addColumn("CUOTAS");
         contenidoTabla.addColumn("PERIODO");
         contenidoTabla.addColumn("TIPO DE EXP");
+
+
 
 
         panelDe.add(lblUsuarios, BorderLayout.NORTH);

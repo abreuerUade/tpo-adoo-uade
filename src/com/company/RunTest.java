@@ -5,7 +5,7 @@ import Controllers.ControladorGasto;
 import Data.Data;
 import GUI.MasterFrame;
 import Negocio.LiquidacionGenerica;
-import Test.TestFacturador;
+//import Test.TestFacturador;
 import Test.TestLiquidacion;
 import Test.TestUnidadFuncional;
 
@@ -20,7 +20,7 @@ public class RunTest {
 
 
 
-          // Algunos test
+       // Algunos test
 
           //TestAutenticar.testing();
           //TestGastos.testing();
@@ -28,6 +28,6 @@ public class RunTest {
 
           //TestLiquidacion.testing();
 
-          TestFacturador.testing();
+          //TestFacturador.testing();
      }
 }
