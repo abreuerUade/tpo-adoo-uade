@@ -135,22 +135,6 @@ public class ControladorUnidadFuncional {
         }
     }
 
-    public void actualizarDatosPersona(PersonaDTO personaDTO){
-        if(personaDTO != null){
-            for (UnidadFuncional u: UnidadesFuncionales){
-                for(Persona p: u.getPropietarios()){
-                    if(p.getDni() == personaDTO.getDni()){
-                        p.setNombre(personaDTO.getNombre());
-                        p.setApellido(personaDTO.getApellido());
-                        p.setMail(personaDTO.getMail());
-                        p.setTelefono(personaDTO.getTelefono());
-                        p.setModoDeEnvio(personaDTO.getServiciosEnvio());
-                    }
-                }
-            }
-        }
-    }
-
     public void agregarFactura(FacturaUnidadFuncional factura, Integer nro_u) {
         if(factura != null) {
             if (getUnidadFuncional(nro_u)!=null) {

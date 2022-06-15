@@ -99,8 +99,19 @@ public class PanelGastos extends JPanel {
         contenidoTabla.addColumn("PERIODO");
         contenidoTabla.addColumn("TIPO DE EXP");
 
+        ArrayList<GastoDTO> gastos = ControladorGasto.getInstance().getGastosByConsorcio(consorcioDTO);
 
+        for(GastoDTO g: gastos){
+            Object [] row = new Object[6];
+            row[0] = g.getNombre();
+            row[1] = "$ " + g.getMonto().toString();
+            row[2] = g.getFechaFact();
+            row[3] = g.getCantCuotas();
+            row[4] = g.getPeriodo();
+            row[5] = g.getTipoExpensas();
 
+            contenidoTabla.addRow(row);
+        }
 
         panelDe.add(lblUsuarios, BorderLayout.NORTH);
         panelDe.add(scrollPane, BorderLayout.CENTER);

@@ -20,15 +20,6 @@ public class Main {
         master.mostrarPanelInicio();
         master.showFrame();
 
-        System.out.println(ControladorConsorcio.getInstance().getConsorcioDTO(1).getNombre());
-        ConsorcioDTO consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(1);
-        consorcioDTO.setNombre("Carlos");
-        ControladorConsorcio.getInstance().editarConsorcio(consorcioDTO);
-        System.out.println(ControladorConsorcio.getInstance().getConsorcioDTO(1).getNombre());
-
-
-
-
     }
 
 

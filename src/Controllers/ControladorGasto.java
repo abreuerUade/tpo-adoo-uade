@@ -1,4 +1,5 @@
 package Controllers;
+import DTO.ConsorcioDTO;
 import DTO.GastoDTO;
 import Negocio.Expensas;
 import Negocio.Gasto;
@@ -56,6 +57,18 @@ public class ControladorGasto {
 
             }
         }
+    }
+
+    public ArrayList<GastoDTO> getGastosByConsorcio(ConsorcioDTO consorcioDTO){
+        ArrayList<GastoDTO> gastosByConsorcio = new ArrayList<>();
+        if(consorcioDTO != null) {
+            for (Gasto g : gastos) {
+                if (g.getIdconsorcio().equals(consorcioDTO.getId())) {
+                    gastosByConsorcio.add(g.gastoToDTO());
+                }
+            }
+        }
+        return gastosByConsorcio;
     }
 
     public Integer gastosOrdinariosbyConsorcio(Integer idconsorcio){
