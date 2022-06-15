@@ -141,7 +141,7 @@ public class PanelPersonas extends JPanel {
 
         btnAlta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelAltaPersonas(consorcioDTO);
+                masterFrame.mostrarPanelAltaPersonas(consorcioDTO, null);
             }
         });
 
@@ -177,13 +177,11 @@ public class PanelPersonas extends JPanel {
         btnModificar.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                UsuarioDTO usuarioDTO = new UsuarioDTO();
+                PersonaDTO persona = new PersonaDTO();
                 try {
-                    usuarioDTO.setNombre((String) tabla.getValueAt(tabla.getSelectedRow(),0));
-                    usuarioDTO.setApellido((String) tabla.getValueAt(tabla.getSelectedRow(),1));
-                    usuarioDTO.setMail((String) tabla.getValueAt(tabla.getSelectedRow(),2));
-
-                    masterFrame.mostrarPanelAltaUsuario(usuarioDTO);
+                    int dni = (int) tabla.getValueAt(tabla.getSelectedRow(),2);
+                    persona = ControladorPersona.getInstance().getPersonabyDNI(dni).personaToDTO();
+                    masterFrame.mostrarPanelAltaPersonas(consorcioDTO, persona);
 
                     //ControladorUsuario.getInstance().eliminarUsuario(usuarioDTO);
 

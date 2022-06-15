@@ -162,10 +162,11 @@ public class MasterFrame extends JFrame {
 
     }
 
-    public void mostrarPanelAltaPersonas(ConsorcioDTO consorcioDTO) {
+    public void mostrarPanelAltaPersonas(ConsorcioDTO consorcioDTO, PersonaDTO personaDTO) {
         frame.getContentPane().removeAll();
-        panelAltaPersonas.armarPanelAltaPersonas(consorcioDTO);
+        panelAltaPersonas.armarPanelAltaPersonas(consorcioDTO, personaDTO);
         frame.getContentPane().add(panelAltaPersonas);
+        panelAltaPersonas.cargarCampos(personaDTO);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
     }

@@ -66,10 +66,14 @@ public class PanelAltaPersonas extends JPanel {
             txtMail.setText(persona.getMail());
             txtTelefono.setText((String.valueOf(persona.getTelefono())));
             txtDni.setText(String.valueOf(persona.getDni()));
+            txtUnidadFuncional.setEnabled(false);
+            lblCondicion.setVisible(false);
+            cmbCondicion.setVisible(false);
+
         }
     }
 
-    public void armarPanelAltaPersonas(ConsorcioDTO consorcioDTO) {
+    public void armarPanelAltaPersonas(ConsorcioDTO consorcioDTO, PersonaDTO personaDTO) {
         this.removeAll();
         ///////////// Panel Base ///////////////////
 
@@ -225,15 +229,18 @@ public class PanelAltaPersonas extends JPanel {
                 ServiciosEnvio serviciosEnvio = ServiciosEnvio.SMS;
                 nuevaPersona.setServiciosEnvio(serviciosEnvio);
                 String condicion = cmbCondicion.getSelectedItem().toString();
-                Integer uf = Integer.parseInt(txtUnidadFuncional.getText());
-                ControladorPersona.getInstance().crearPersona(nuevaPersona);
-                if (condicion.equals("PROPIETARIO")){
-                    ControladorUnidadFuncional.getInstance().agregarPropietario(nuevaPersona, uf);
-                }
-                else {
-                    ControladorUnidadFuncional.getInstance().agregarInquilino(nuevaPersona, uf);
-                }
 
+                if (personaDTO == null) {
+                    Integer uf = Integer.parseInt(txtUnidadFuncional.getText());
+                    ControladorPersona.getInstance().crearPersona(nuevaPersona);
+                    if (condicion.equals("PROPIETARIO")) {
+                        ControladorUnidadFuncional.getInstance().agregarPropietario(nuevaPersona, uf);
+                    } else {
+                        ControladorUnidadFuncional.getInstance().agregarInquilino(nuevaPersona, uf);
+                    }
+                }else{
+                    ControladorPersona.getInstance().modificarPersona(nuevaPersona);
+                }
                 masterFrame.mostrarPanelPersonas(consorcioDTO);
 
             }
