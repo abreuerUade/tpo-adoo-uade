@@ -164,6 +164,7 @@ public class ControladorConsorcio {
         if (datos != null){
             Consorcio consorcioRemove = getConsorcio(datos.getId());
             if (consorcioRemove != null){
+                consorcioRemove.setUnidadesFunc(new ArrayList<>());
                 Consorcios.remove(getConsorcio(datos.getId()));
             }
         }

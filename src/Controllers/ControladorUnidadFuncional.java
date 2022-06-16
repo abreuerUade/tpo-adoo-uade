@@ -61,7 +61,7 @@ public class ControladorUnidadFuncional {
 
     public void crearUnidadFuncional (UnidadFuncionalDTO datos) {
         if (datos != null) {
-            UnidadFuncional ufVerificar = getUnidadFuncional(datos.getNroUnidad());
+            UnidadFuncional ufVerificar = getUnidadFuncional(datos.getIdUnidadFuncional());
             if (ufVerificar == null) {
                 UnidadFuncional ufNew = new UnidadFuncional(datos);
                 UnidadesFuncionales.add(ufNew);

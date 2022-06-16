@@ -146,6 +146,7 @@ public class PanelAltaUnidadFuncional extends JPanel {
                 nuevaUf.setNroUnidad(Integer.parseInt(txtUnidad.getText()));
                 nuevaUf.setSuperficie(Float.parseFloat(txtSup.getText()));
                 nuevaUf.setIdconsorcio(consorcioDTO.getId());
+
                 if(unidadFuncionalDTO == null) {
 
                     int id = ControladorUnidadFuncional.getInstance().getUnidadesFuncionales().size() + 1;

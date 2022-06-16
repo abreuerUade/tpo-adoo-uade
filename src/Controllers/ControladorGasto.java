@@ -180,7 +180,7 @@ public class ControladorGasto {
                 gastoModif.setMonto(gasto.getMonto());
                 gastoModif.setNombre(gasto.getNombre());
                 gastoModif.setPeriodo(gasto.getPeriodo());
-                //gastoModif.setTipoExpensas(gasto.getTipoExpensas());
+                gastoModif.setTipoExpensas(gasto.getTipoExpensas());
                 //gastoModif.setIdconsorcio(gasto.getIdconsorcio());
                 gastos.set(index, gastoModif);
             }

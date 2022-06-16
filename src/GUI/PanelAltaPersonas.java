@@ -68,6 +68,7 @@ public class PanelAltaPersonas extends JPanel {
             txtMail.setText(persona.getMail());
             txtTelefono.setText((String.valueOf(persona.getTelefono())));
             txtDni.setText(String.valueOf(persona.getDni()));
+            txtDni.setEnabled(false);
             cmbUnidadFuncional.setEnabled(false);
             lblCondicion.setVisible(false);
             cmbCondicion.setVisible(false);
