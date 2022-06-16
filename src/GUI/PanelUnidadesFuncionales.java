@@ -115,7 +115,7 @@ public class PanelUnidadesFuncionales extends JPanel {
 
         btnAlta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelAltaunidadFuncional(consorcioDTO);
+                masterFrame.mostrarPanelAltaunidadFuncional(consorcioDTO, null);
             }
         });
 
@@ -138,7 +138,11 @@ public class PanelUnidadesFuncionales extends JPanel {
         btnModificar.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelAltaUsuario();
+                UnidadFuncionalDTO uf;
+                int id = (int) tabla.getValueAt(tabla.getSelectedRow(), 0);
+                uf = ControladorUnidadFuncional.getInstance().getUnidadFuncional(id).unidadFuncToDTO();
+
+                masterFrame.mostrarPanelAltaunidadFuncional(consorcioDTO, uf);
 
             }
         });

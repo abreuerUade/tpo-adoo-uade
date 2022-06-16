@@ -36,7 +36,7 @@ public class PanelGastos extends JPanel {
     }
 
     public void armarPanelGastos(ConsorcioDTO consorcioDTO) {
-
+        this.removeAll();
         ///////////// Panel Base ///////////////////
 
         this.setLayout(new BorderLayout());
@@ -98,17 +98,19 @@ public class PanelGastos extends JPanel {
         contenidoTabla.addColumn("CUOTAS");
         contenidoTabla.addColumn("PERIODO");
         contenidoTabla.addColumn("TIPO DE EXP");
+        contenidoTabla.addColumn("ID");
 
         ArrayList<GastoDTO> gastos = ControladorGasto.getInstance().getGastosByConsorcio(consorcioDTO);
 
         for(GastoDTO g: gastos){
-            Object [] row = new Object[6];
+            Object [] row = new Object[7];
             row[0] = g.getNombre();
             row[1] = "$ " + g.getMonto().toString();
             row[2] = g.getFechaFact();
             row[3] = g.getCantCuotas();
             row[4] = g.getPeriodo();
             row[5] = g.getTipoExpensas();
+            row[6] = g.getId();
 
             contenidoTabla.addRow(row);
         }
@@ -130,11 +132,12 @@ public class PanelGastos extends JPanel {
 
         btnBaja.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                GastoDTO gasto = new GastoDTO();
 
                 try{
-                    int selected = (int) tabla.getValueAt(tabla.getSelectedRow(),0);
-
+                    int selected = (int) tabla.getValueAt(tabla.getSelectedRow(),6);
+                    gasto.setId(selected);
+                    ControladorGasto.getInstance().eliminarGasto(gasto);
                     masterFrame.mostrarPanelGastos(consorcioDTO);
                 }
                 catch (Exception exception){
@@ -144,8 +147,20 @@ public class PanelGastos extends JPanel {
         });
 
         btnModificar.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
+                GastoDTO gasto;
+
+                try{
+                    int id = (int) tabla.getValueAt(tabla.getSelectedRow(), 6);
+
+                    gasto = ControladorGasto.getInstance().getGastoById(id).gastoToDTO();
+                    masterFrame.mostrarPanelAltaGastos(consorcioDTO, gasto);
+
+                } catch (Exception exception){
+                    JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un gasto.");
+                }
+
+
 
             }
         });

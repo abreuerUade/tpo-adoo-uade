@@ -1,9 +1,6 @@
 package GUI;
 
-import DTO.ConsorcioDTO;
-import DTO.GastoDTO;
-import DTO.PersonaDTO;
-import DTO.UsuarioDTO;
+import DTO.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -115,13 +112,9 @@ public class MasterFrame extends JFrame {
 
     public void mostrarPanelAltaConsorcio(ConsorcioDTO consorcio) {
         frame.getContentPane().removeAll();
-
         panelAltaConsorcio.armarPanelAltaConsorcio(consorcio);
-
         frame.getContentPane().add(panelAltaConsorcio);
-
         panelAltaConsorcio.cargarCampos(consorcio);
-
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
 
@@ -131,6 +124,7 @@ public class MasterFrame extends JFrame {
         frame.getContentPane().removeAll();
         panelAltaGastos.armarPanelAltaGastos(consorcioDTO, gastoDTO);
         frame.getContentPane().add(panelAltaGastos);
+        panelAltaGastos.cargarCampos(gastoDTO);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
     }
@@ -144,10 +138,11 @@ public class MasterFrame extends JFrame {
 
     }
 
-    public void mostrarPanelAltaunidadFuncional(ConsorcioDTO consorcioDTO) {
+    public void mostrarPanelAltaunidadFuncional(ConsorcioDTO consorcioDTO, UnidadFuncionalDTO unidadFuncionalDTO) {
         frame.getContentPane().removeAll();
-        panelAltaUnidadFuncional.armarPanelAltaUnidadFuncional(consorcioDTO);
+        panelAltaUnidadFuncional.armarPanelAltaUnidadFuncional(consorcioDTO, unidadFuncionalDTO);
         frame.getContentPane().add(panelAltaUnidadFuncional);
+        panelAltaUnidadFuncional.cargarCampos(unidadFuncionalDTO);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
 

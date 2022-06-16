@@ -6,6 +6,7 @@ import Controllers.ControladorUnidadFuncional;
 import Controllers.ControladorUsuario;
 import DTO.ConsorcioDTO;
 import DTO.PersonaDTO;
+import DTO.UnidadFuncionalDTO;
 import DTO.UsuarioDTO;
 import Negocio.ServiciosEnvio;
 
@@ -13,6 +14,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class PanelAltaPersonas extends JPanel {
 
@@ -44,7 +46,7 @@ public class PanelAltaPersonas extends JPanel {
     private JTextField txtMail;
     private JTextField txtDni;
     private JTextField txtTelefono;
-    private JTextField txtUnidadFuncional;
+    private JComboBox<String> cmbUnidadFuncional;
     private JComboBox<String> cmbServicioEnvio;
     private JComboBox<String> cmbCondicion;
 
@@ -66,7 +68,7 @@ public class PanelAltaPersonas extends JPanel {
             txtMail.setText(persona.getMail());
             txtTelefono.setText((String.valueOf(persona.getTelefono())));
             txtDni.setText(String.valueOf(persona.getDni()));
-            txtUnidadFuncional.setEnabled(false);
+            cmbUnidadFuncional.setEnabled(false);
             lblCondicion.setVisible(false);
             cmbCondicion.setVisible(false);
 
@@ -155,8 +157,12 @@ public class PanelAltaPersonas extends JPanel {
         txtTelefono = new JTextField("");
         txtTelefono.setHorizontalAlignment(alignR);
 
-        txtUnidadFuncional = new JTextField("");
-        txtUnidadFuncional.setHorizontalAlignment(alignR);
+        ArrayList<UnidadFuncionalDTO> unidadesDTO = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+        ArrayList<String> ufs = new ArrayList<String>();
+        for(UnidadFuncionalDTO u: unidadesDTO){
+            ufs.add(u.getNroUnidad().toString());
+        }
+        cmbUnidadFuncional = new JComboBox<>(ufs.toArray(new String[0]));
 
         String[] metodos = new String[]{"SMS", "EMAIL", "WHATSAPP"};
         cmbServicioEnvio = new JComboBox<>(metodos);
@@ -175,7 +181,7 @@ public class PanelAltaPersonas extends JPanel {
         panelForm.add(lblTelefono);
         panelForm.add(txtTelefono);
         panelForm.add(lblUnidadFuncional);
-        panelForm.add(txtUnidadFuncional);
+        panelForm.add(cmbUnidadFuncional);
         panelForm.add(lblServicioEnvio);
         panelForm.add(cmbServicioEnvio);
         panelForm.add(lblCondicion);
@@ -231,7 +237,7 @@ public class PanelAltaPersonas extends JPanel {
                 String condicion = cmbCondicion.getSelectedItem().toString();
 
                 if (personaDTO == null) {
-                    Integer uf = Integer.parseInt(txtUnidadFuncional.getText());
+                    Integer uf = Integer.parseInt(cmbUnidadFuncional.getSelectedItem().toString());
                     ControladorPersona.getInstance().crearPersona(nuevaPersona);
                     if (condicion.equals("PROPIETARIO")) {
                         ControladorUnidadFuncional.getInstance().agregarPropietario(nuevaPersona, uf);

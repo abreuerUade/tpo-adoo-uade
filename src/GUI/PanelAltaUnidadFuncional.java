@@ -51,8 +51,8 @@ public class PanelAltaUnidadFuncional extends JPanel {
         }
     }
 
-    public void armarPanelAltaUnidadFuncional(ConsorcioDTO consorcioDTO) {
-
+    public void armarPanelAltaUnidadFuncional(ConsorcioDTO consorcioDTO, UnidadFuncionalDTO unidadFuncionalDTO) {
+        this.removeAll();
         ///////////// Panel Base ///////////////////
 
         this.setLayout(new BorderLayout());
@@ -143,15 +143,19 @@ public class PanelAltaUnidadFuncional extends JPanel {
         btnGuardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 UnidadFuncionalDTO nuevaUf = new UnidadFuncionalDTO();
-
                 nuevaUf.setNroUnidad(Integer.parseInt(txtUnidad.getText()));
                 nuevaUf.setSuperficie(Float.parseFloat(txtSup.getText()));
-                int id = ControladorUnidadFuncional.getInstance().getUnidadesFuncionales().size()+1;
-                nuevaUf.setIdUnidadFuncional(id);
                 nuevaUf.setIdconsorcio(consorcioDTO.getId());
+                if(unidadFuncionalDTO == null) {
 
-                ControladorUnidadFuncional.getInstance().crearUnidadFuncional(nuevaUf);
+                    int id = ControladorUnidadFuncional.getInstance().getUnidadesFuncionales().size() + 1;
+                    nuevaUf.setIdUnidadFuncional(id);
 
+                    ControladorUnidadFuncional.getInstance().crearUnidadFuncional(nuevaUf);
+                }else{
+                    nuevaUf.setIdUnidadFuncional(unidadFuncionalDTO.getIdUnidadFuncional());
+                    ControladorUnidadFuncional.getInstance().editarUnidadFuncional(nuevaUf);
+                }
                 masterFrame.mostrarPanelUnidadesFuncionales(consorcioDTO);
             }
         });

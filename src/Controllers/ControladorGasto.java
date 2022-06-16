@@ -22,7 +22,7 @@ public class ControladorGasto {
         return instancia;
     }
 
-    private Gasto getGastoById(Integer id) {
+    public Gasto getGastoById(Integer id) {
         for (Gasto g : gastos) {
             if (g.getId().equals(id)) {
                 return g;
@@ -180,8 +180,8 @@ public class ControladorGasto {
                 gastoModif.setMonto(gasto.getMonto());
                 gastoModif.setNombre(gasto.getNombre());
                 gastoModif.setPeriodo(gasto.getPeriodo());
-                gastoModif.setTipoExpensas(gasto.getTipoExpensas());
-                gastoModif.setIdconsorcio(gasto.getIdconsorcio());
+                //gastoModif.setTipoExpensas(gasto.getTipoExpensas());
+                //gastoModif.setIdconsorcio(gasto.getIdconsorcio());
                 gastos.set(index, gastoModif);
             }
         }

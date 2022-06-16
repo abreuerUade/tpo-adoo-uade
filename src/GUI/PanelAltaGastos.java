@@ -1,12 +1,15 @@
 package GUI;
 
+import Controllers.ControladorGasto;
 import DTO.ConsorcioDTO;
 import DTO.GastoDTO;
+import Negocio.Expensas;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 public class PanelAltaGastos extends JPanel {
 
@@ -25,13 +28,11 @@ public class PanelAltaGastos extends JPanel {
     private JPanel panelForm;
     private JLabel lblNombre;
     private JLabel lblMonto;
-    private JLabel lblFecha;
     private JLabel lblCuotas;
     private JLabel lblPeriodo;
     private JLabel lblTipoExp;
     private JTextField txtNombre;
     private JTextField txtMonto;
-    private JTextField txtFecha;
     private JTextField txtCuotas;
     private JTextField txtPeriodo;
     private JComboBox<String> txtTipoExp;
@@ -47,19 +48,18 @@ public class PanelAltaGastos extends JPanel {
 
     }
 
-    public void armarPanelAltaGastos(ConsorcioDTO consorcioDTO, GastoDTO gastoDTO) {
-
+    public void cargarCampos(GastoDTO gastoDTO){
         if (gastoDTO != null){
             txtNombre.setText(gastoDTO.getNombre());
             txtMonto.setText(gastoDTO.getMonto().toString());
-            txtFecha.setText(gastoDTO.getFechaFact().toString());
             txtPeriodo.setText(gastoDTO.getPeriodo().toString());
             txtCuotas.setText(gastoDTO.getCantCuotas().toString());
-
         }
+    }
 
+    public void armarPanelAltaGastos(ConsorcioDTO consorcioDTO, GastoDTO gastoDTO) {
+        this.removeAll();
         ///////////// Panel Base ///////////////////
-
         this.setLayout(new BorderLayout());
 
         panelIz = new JPanel();
@@ -99,10 +99,6 @@ public class PanelAltaGastos extends JPanel {
         lblMonto.setFont(new Font(Style.FONT, Font.PLAIN, 18));
         lblMonto.setHorizontalAlignment(alignL);
 
-        lblFecha = new JLabel("Fecha de Facturación:   ");
-        lblFecha.setFont(new Font(Style.FONT, Font.PLAIN, 18));
-        lblFecha.setHorizontalAlignment(alignL);
-
         lblCuotas = new JLabel("Cantidad de Cuotas:    ");
         lblCuotas.setFont(new Font(Style.FONT, Font.PLAIN, 18));
         lblCuotas.setHorizontalAlignment(alignL);
@@ -117,13 +113,10 @@ public class PanelAltaGastos extends JPanel {
 
         txtNombre = new JTextField();
         txtMonto = new JTextField();
-        txtFecha = new JTextField();
-        txtCuotas = new JPasswordField();
+        txtCuotas = new JTextField();
         txtPeriodo = new JTextField();
 
-
-
-        expensas = new String[]{"Ordinarias", "Extraordinarias", "Recurrentes", "No Recurrentes"};
+        expensas = new String[]{"Ordinarias", "Extraordinarias", "Gastos_Particulares"};
         txtTipoExp = new JComboBox<>(expensas);
 
 
@@ -131,8 +124,6 @@ public class PanelAltaGastos extends JPanel {
         panelForm.add(txtNombre);
         panelForm.add(lblMonto);
         panelForm.add(txtMonto);
-        panelForm.add(lblFecha);
-        panelForm.add(txtFecha);
         panelForm.add(lblCuotas);
         panelForm.add(txtCuotas);
         panelForm.add(lblPeriodo);
@@ -172,9 +163,35 @@ public class PanelAltaGastos extends JPanel {
         panelIz.add(btnAtras);
         panelIz.add(btnSalir);
 
+        btnGuardar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                GastoDTO nuevoGasto = new GastoDTO();
+
+                nuevoGasto.setNombre(txtNombre.getText());
+                nuevoGasto.setMonto(Integer.parseInt(txtMonto.getText()));
+                nuevoGasto.setCantCuotas(Integer.parseInt(txtCuotas.getText()));
+                nuevoGasto.setPeriodo(Integer.parseInt(txtPeriodo.getText()));
+                nuevoGasto.setTipoExpensas(Expensas.valueOf(txtTipoExp.getSelectedItem().toString().toUpperCase()));
+                nuevoGasto.setFechaFact(new Date());
+
+                if(gastoDTO == null){
+
+                    nuevoGasto.setIdconsorcio(consorcioDTO.getId());
+                    nuevoGasto.setId(ControladorGasto.getInstance().getGastos().size()+1);
+                    System.out.println(ControladorGasto.getInstance().getGastos());
+                    ControladorGasto.getInstance().crearGasto(nuevoGasto);
+                    System.out.println(ControladorGasto.getInstance().getGastos());
+                }else {
+                    nuevoGasto.setId(gastoDTO.getId());
+                    ControladorGasto.getInstance().modificarGasto(nuevoGasto);
+                }
+                masterFrame.mostrarPanelGastos(consorcioDTO);
+            }
+        });
+
         btnAtras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelPrincipal();
+                masterFrame.mostrarPanelGastos(consorcioDTO);
             }
         });
 

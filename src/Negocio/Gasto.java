@@ -30,7 +30,7 @@ public class Gasto {
 
     public GastoDTO gastoToDTO() {
         GastoDTO gastoDTO = new GastoDTO();
-        gastoDTO.setId(this.monto);
+        gastoDTO.setId(this.id);
         gastoDTO.setMonto(this.monto);
         gastoDTO.setNombre(this.nombre);
         gastoDTO.setFechaFact(this.fechaFact);

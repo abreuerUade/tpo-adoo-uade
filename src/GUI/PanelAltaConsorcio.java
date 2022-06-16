@@ -119,7 +119,7 @@ public class PanelAltaConsorcio extends JPanel {
         txtProp = new JTextField();
         txtProp.setHorizontalAlignment(alignR);
 
-        txtCBU = new JPasswordField();
+        txtCBU = new JTextField();
         txtCBU.setHorizontalAlignment(alignR);
 
 
@@ -192,13 +192,11 @@ public class PanelAltaConsorcio extends JPanel {
                     nuevo.setId((int) ControladorConsorcio.getInstance().getConsorcios().size()+1);
                     try{
                         ControladorConsorcio.getInstance().crearConsorcio(nuevo);
-
                     }
                     catch (Error error){
                         JOptionPane.showMessageDialog(masterFrame,"Se ha ha producido un error.");
                     }
                 }
-
                 masterFrame.mostrarPanelPrincipal();
             }
         });
