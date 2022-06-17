@@ -148,10 +148,10 @@ public class ControladorUnidadFuncional {
         return idUf;
     }
 
-    public void agregarFactura(FacturaUnidadFuncional factura, Integer nro_u) {
+    public void agregarFactura(FacturaUnidadFuncional factura, Integer idUf) {
         if(factura != null) {
-            if (getUnidadFuncional(nro_u)!=null) {
-                UnidadFuncional UFaddFactura = getUnidadFuncional(nro_u);
+            if (getUnidadFuncional(idUf)!=null) {
+                UnidadFuncional UFaddFactura = getUnidadFuncional(idUf);
                 UFaddFactura.getFacturas().add(factura);
                 editarUnidadFuncional(UFaddFactura.unidadFuncToDTO());
             }
