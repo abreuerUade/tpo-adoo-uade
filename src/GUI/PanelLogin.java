@@ -99,15 +99,14 @@ public class PanelLogin extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String mail = txtUser.getText();
                 String pass = String.copyValueOf(passField.getPassword());
-                //Autenticador.getInstance().autenticar(mail, pass);
-                if(true) {
+
+                if(Autenticador.getInstance().autenticar(mail, pass)) {
+                    masterFrame.setLoggedUser(mail);
                     masterFrame.mostrarPanelPrincipal();
                 }
                 else {
                     JOptionPane.showMessageDialog(masterFrame,"Ingrese mail y contraseña válidos.");
                 }
-
-
 
             }
         });

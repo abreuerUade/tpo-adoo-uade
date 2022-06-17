@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 
 public class Autenticador implements AuthProvider  {
+
     private ArrayList<Credencial> Credenciales = null;
     private static Autenticador instancia = null;
     private Autenticador(){Credenciales = new ArrayList<Credencial>();}

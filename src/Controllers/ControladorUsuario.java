@@ -27,7 +27,7 @@ public class ControladorUsuario {
         return lista;
     }
 
-    private Usuario getUsuario(String mail){
+    public Usuario getUsuario(String mail){
         for (Usuario u:Usuarios) {
             if (u.getMail().equals(mail)){
                 return u;

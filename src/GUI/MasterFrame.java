@@ -1,5 +1,6 @@
 package GUI;
 
+import Controllers.ControladorUsuario;
 import DTO.*;
 
 import javax.swing.*;
@@ -21,6 +22,7 @@ public class MasterFrame extends JFrame {
     PanelPersonas panelPersonas;
     PanelAltaPersonas panelAltaPersonas;
     PanelLiquidacion panelLiquidacion;
+    public static String loggedUserMail;
 
 
     public void armarMaster() {
@@ -44,6 +46,11 @@ public class MasterFrame extends JFrame {
         panelPersonas = new PanelPersonas(this);
         panelAltaPersonas = new PanelAltaPersonas(this);
         panelLiquidacion = new PanelLiquidacion(this);
+
+    }
+
+    public void setLoggedUser(String user){
+        loggedUserMail = user;
     }
 
     public void mostrarPanelInicio(){
@@ -72,7 +79,6 @@ public class MasterFrame extends JFrame {
         frame.getContentPane().repaint();
 
     }
-
 
     public void mostrarPanelGastos(ConsorcioDTO consorcioDTO) {
         frame.getContentPane().removeAll();

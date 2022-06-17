@@ -1,6 +1,8 @@
 package GUI;
 
+import Controllers.ControladorUsuario;
 import DTO.ConsorcioDTO;
+import DTO.UsuarioDTO;
 
 import javax.swing.*;
 import java.awt.*;
@@ -86,6 +88,8 @@ public class PanelLiquidacion extends JPanel {
         panelIz.add(btnPCGFFR);
         panelIz.add(btnAtras);
         panelIz.add(btnSalir);
+
+        UsuarioDTO usuario = ControladorUsuario.getInstance().getUsuario(MasterFrame.loggedUserMail).usuarioToDto();
 
 
         btnAtras.addActionListener(new ActionListener() {
