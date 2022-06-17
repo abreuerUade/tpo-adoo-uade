@@ -26,6 +26,6 @@ public abstract class LiquidacionGenerica {
         return gastos;
     }
 
-    public abstract void DivisionExpensas (int idconsorcio, ArrayList<Integer> gastos);
+    public abstract void DivisionExpensas (int idconsorcio, Integer generarReserva, Integer usarReserva);
 
 }
