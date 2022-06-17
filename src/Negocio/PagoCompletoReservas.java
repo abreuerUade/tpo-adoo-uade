@@ -12,8 +12,10 @@ public class PagoCompletoReservas extends LiquidacionGenerica{
     //Descontar del total un valor disponible en el salgo y Dividir el resto entre todas las unidades funcionales y generar sus facturas.
     @Override
     public void DivisionExpensas(int idconsorcio, Integer generarReserva, Integer usarReserva) {
+
         float saldoDisponible = obtenerSaldo(idconsorcio);
         ArrayList<Integer> gastos = this.calcularGastos(idconsorcio);
+
         if (usarReserva<=saldoDisponible){
             ConsorcioDTO consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(idconsorcio);
             ArrayList<UnidadFuncionalDTO> listUF = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
