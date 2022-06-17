@@ -150,6 +150,7 @@ public class PanelPersonas extends JPanel {
                 PersonaDTO personaDTO;
                 int dni = (int) tabla.getValueAt(tabla.getSelectedRow(),2);
                 int uf = (int) tabla.getValueAt(tabla.getSelectedRow(),5);
+                int idUf = ControladorUnidadFuncional.getInstance().getIdFromUf(consorcioDTO.getId(), uf);
                 String condicion = tabla.getValueAt(tabla.getSelectedRow(),6).toString();
                 personaDTO = ControladorPersona.getInstance().getPersonabyDNI(dni).personaToDTO();
 
@@ -158,14 +159,12 @@ public class PanelPersonas extends JPanel {
                         new Object[] { "Yes", "No" }, JOptionPane.YES_OPTION);
                 if (res == JOptionPane.YES_OPTION) {
                     try {
-                        System.out.println(ControladorPersona.getInstance().obtenerPersonas());
                         if(condicion.equals("Propietario")){
-                            ControladorUnidadFuncional.getInstance().eliminarPropietario(personaDTO,uf);
+                            ControladorUnidadFuncional.getInstance().eliminarPropietario(personaDTO,idUf);
                         }else {
-                            ControladorUnidadFuncional.getInstance().eliminarInquilino(personaDTO,uf);
+                            ControladorUnidadFuncional.getInstance().eliminarInquilino(personaDTO,idUf);
                         }
                         masterFrame.mostrarPanelPersonas(consorcioDTO);
-                        System.out.println(ControladorPersona.getInstance().obtenerPersonas());
                     }
                     catch (Exception exception){
                         JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar una persona.");

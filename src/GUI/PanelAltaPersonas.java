@@ -239,11 +239,12 @@ public class PanelAltaPersonas extends JPanel {
 
                 if (personaDTO == null) {
                     Integer uf = Integer.parseInt(cmbUnidadFuncional.getSelectedItem().toString());
+                    Integer idUf = ControladorUnidadFuncional.getInstance().getIdFromUf(consorcioDTO.getId(), uf);
                     ControladorPersona.getInstance().crearPersona(nuevaPersona);
                     if (condicion.equals("PROPIETARIO")) {
-                        ControladorUnidadFuncional.getInstance().agregarPropietario(nuevaPersona, uf);
+                        ControladorUnidadFuncional.getInstance().agregarPropietario(nuevaPersona, idUf);
                     } else {
-                        ControladorUnidadFuncional.getInstance().agregarInquilino(nuevaPersona, uf);
+                        ControladorUnidadFuncional.getInstance().agregarInquilino(nuevaPersona, idUf);
                     }
                 }else{
                     ControladorPersona.getInstance().modificarPersona(nuevaPersona);

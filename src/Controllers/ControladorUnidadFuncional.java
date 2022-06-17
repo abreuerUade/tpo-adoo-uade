@@ -1,6 +1,7 @@
 package Controllers;
 import DTO.ConsorcioDTO;
 import DTO.PersonaDTO;
+import Negocio.Consorcio;
 import Negocio.FacturaUnidadFuncional;
 import Negocio.Persona;
 import Negocio.UnidadFuncional;
@@ -30,9 +31,9 @@ public class ControladorUnidadFuncional {
     }
 
     //Buscar unidad funcional por numero y devolver objeto si existe.
-    public UnidadFuncional getUnidadFuncional(Integer NroUnidad) {
+    public UnidadFuncional getUnidadFuncional(Integer IdUnidad) {
         for (UnidadFuncional uf : UnidadesFuncionales) {
-            if (uf.getNroUnidad().equals(NroUnidad)){
+            if (uf.getIdUnidadFuncional().equals(IdUnidad)){
                 return uf;
             }
         }
@@ -71,7 +72,7 @@ public class ControladorUnidadFuncional {
 
     public void editarUnidadFuncional (UnidadFuncionalDTO datos) {
         if (datos != null) {
-            UnidadFuncional ufEdit = getUnidadFuncional(datos.getNroUnidad());
+            UnidadFuncional ufEdit = getUnidadFuncional(datos.getIdUnidadFuncional());
             if (ufEdit != null) {
                 int index = UnidadesFuncionales.indexOf(ufEdit);
                 ufEdit.setIdconsorcio(datos.getIdconsorcio());
@@ -91,11 +92,11 @@ public class ControladorUnidadFuncional {
         }
     }
 
-    public void agregarInquilino(PersonaDTO inquilino, Integer nro_u) {
+    public void agregarInquilino(PersonaDTO inquilino, Integer idUnidad) {
         if(inquilino != null) {
-            if (getUnidadFuncional(nro_u) != null){
+            if (getUnidadFuncional(idUnidad) != null){
                 Persona addpersona = ControladorPersona.getInstance().getPersonabyDNI(inquilino.getDni());
-                UnidadFuncional UFaddInquilino = getUnidadFuncional(nro_u);
+                UnidadFuncional UFaddInquilino = getUnidadFuncional(idUnidad);
                 UFaddInquilino.getInquilinos().add(addpersona);
                 editarUnidadFuncional(UFaddInquilino.unidadFuncToDTO());
             }
@@ -133,6 +134,18 @@ public class ControladorUnidadFuncional {
                 editarUnidadFuncional(UFdelPersona.unidadFuncToDTO());
             }
         }
+    }
+
+    public Integer getIdFromUf(Integer idConsorcio, Integer nroUnidad){
+        Integer idUf = -1;
+        if (idConsorcio!=null && nroUnidad != null){
+            for(UnidadFuncional u: UnidadesFuncionales){
+                if(u.getIdconsorcio() == idConsorcio && u.getNroUnidad() == nroUnidad){
+                    idUf = u.getIdUnidadFuncional();
+                }
+            }
+        }
+        return idUf;
     }
 
     public void agregarFactura(FacturaUnidadFuncional factura, Integer nro_u) {

@@ -4,6 +4,8 @@ import DTO.ConsorcioDTO;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PanelLiquidacion extends JPanel {
 
@@ -13,6 +15,16 @@ public class PanelLiquidacion extends JPanel {
 
     private JLabel lblOpciones;
     private JLabel lblLiquidacion;
+    // Pago Completo de Gastos
+    private JButton btnPCG;
+    // Pago Completo con Fondos de Reservas
+    private JButton btnPCFR;
+    // Pago Completo y Generar Futuros Fondos de Reservas
+    private JButton btnPCGFFR;
+    private JButton btnAtras;
+    private JButton btnSalir;
+    private JButton btnNotificar;
+
 
 
     public PanelLiquidacion (MasterFrame masterFrame){
@@ -24,6 +36,21 @@ public class PanelLiquidacion extends JPanel {
         ///////////// Panel Base ///////////////////
 
         this.setLayout(new BorderLayout());
+
+        btnPCG = new JButton("Pago Completo de Gastos");
+        btnPCG.setPreferredSize(new Dimension(180, 40));
+        btnPCG.setHorizontalAlignment(0);
+
+        btnPCFR = new JButton("Pago Completo con \n Fondos de Reservas");
+        btnPCFR.setPreferredSize(new Dimension(180, 40));
+        btnPCFR.setHorizontalAlignment(0);
+
+        btnPCGFFR = new JButton("Pago Completo y Generar \n Futuros Fondos de Reservas");
+        btnPCGFFR.setPreferredSize(new Dimension(180, 40));
+        btnPCGFFR.setHorizontalAlignment(0);
+
+        btnAtras = new JButton("ATRAS");
+        btnSalir = new JButton("SALIR");
 
         panelIz = new JPanel();
         GridLayout leftLayout = new GridLayout(6, 1);
@@ -54,7 +81,25 @@ public class PanelLiquidacion extends JPanel {
 
         panelDe.add(lblLiquidacion, BorderLayout.NORTH);
         panelIz.add(lblOpciones);
+        panelIz.add(btnPCG);
+        panelIz.add(btnPCFR);
+        panelIz.add(btnPCGFFR);
+        panelIz.add(btnAtras);
+        panelIz.add(btnSalir);
 
+
+        btnAtras.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                masterFrame.mostrarPanelPrincipal();
+            }
+        });
+
+        btnSalir.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                masterFrame.mostrarPanelLogin();
+            }
+        });
     }
 
 }
