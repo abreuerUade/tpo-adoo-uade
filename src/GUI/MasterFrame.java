@@ -8,20 +8,21 @@ import java.awt.*;
 
 public class MasterFrame extends JFrame {
 
-    JFrame frame;
-    PanelInicio panelInicio;
-    PanelLogin panelLogin;
-    PanelPrincipal panelPrincipal;
-    PanelGastos panelGastos;
-    PanelUsuarios panelUsuarios;
-    PanelAltaUsuario panelAltaUsuario;
-    PanelAltaConsorcio panelAltaConsorcio;
-    PanelAltaGastos panelAltaGastos;
-    PanelUnidadesFuncionales panelUnidadesFuncionales;
-    PanelAltaUnidadFuncional panelAltaUnidadFuncional;
-    PanelPersonas panelPersonas;
-    PanelAltaPersonas panelAltaPersonas;
-    PanelLiquidacion panelLiquidacion;
+    private JFrame frame;
+    private PanelInicio panelInicio;
+    private PanelLogin panelLogin;
+    private PanelPrincipal panelPrincipal;
+    private PanelGastos panelGastos;
+    private PanelUsuarios panelUsuarios;
+    private PanelAltaUsuario panelAltaUsuario;
+    private PanelAltaConsorcio panelAltaConsorcio;
+    private PanelAltaGastos panelAltaGastos;
+    private PanelUnidadesFuncionales panelUnidadesFuncionales;
+    private PanelAltaUnidadFuncional panelAltaUnidadFuncional;
+    private PanelPersonas panelPersonas;
+    private PanelAltaPersonas panelAltaPersonas;
+    private PanelLiquidacion panelLiquidacion;
+    private PanelFacturas panelFacturas;
     public static String loggedUserMail;
 
 
@@ -46,6 +47,7 @@ public class MasterFrame extends JFrame {
         panelPersonas = new PanelPersonas(this);
         panelAltaPersonas = new PanelAltaPersonas(this);
         panelLiquidacion = new PanelLiquidacion(this);
+        panelFacturas = new PanelFacturas(this);
 
     }
 
@@ -178,6 +180,15 @@ public class MasterFrame extends JFrame {
         frame.getContentPane().removeAll();
         panelLiquidacion.armarPanelLiquidacion(consorcioDTO);
         frame.getContentPane().add(panelLiquidacion);
+        frame.getContentPane().validate();
+        frame.getContentPane().repaint();
+
+    }
+
+    public void mostrarPanelFacturas(ConsorcioDTO consorcioDTO, UnidadFuncionalDTO unidadFuncionalDTO) {
+        frame.getContentPane().removeAll();
+        panelFacturas.armarPanelFacturas(consorcioDTO, unidadFuncionalDTO);
+        frame.getContentPane().add(panelFacturas);
         frame.getContentPane().validate();
         frame.getContentPane().repaint();
 

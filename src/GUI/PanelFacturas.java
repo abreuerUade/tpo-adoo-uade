@@ -3,8 +3,7 @@ package GUI;
 import Controllers.ControladorUnidadFuncional;
 import DTO.ConsorcioDTO;
 import DTO.UnidadFuncionalDTO;
-import Negocio.Persona;
-import Negocio.UnidadFuncional;
+import Negocio.FacturaUnidadFuncional;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -13,12 +12,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class PanelUnidadesFuncionales extends JPanel {
-
+public class PanelFacturas extends JPanel {
     private MasterFrame masterFrame;
     private JPanel panelIz;
     private JPanel panelDe;
-    private JPanel panelBotones;
+
     private JLabel lblOpciones;
     private JLabel lblUsuarios;
     private JButton btnAlta;
@@ -26,18 +24,17 @@ public class PanelUnidadesFuncionales extends JPanel {
     private JButton btnModificar;
     private JButton btnAtras;
     private JButton btnSalir;
-    private JButton btnFacturas;
 
     private DefaultTableModel contenidoTabla;
     private JTable tabla;
     private JScrollPane scrollPane;
 
-    public PanelUnidadesFuncionales (MasterFrame masterFrame){
+    public PanelFacturas (MasterFrame masterFrame){
         this.masterFrame = masterFrame;
 
     }
 
-    public void armarPanelUnidadesFuncionales(ConsorcioDTO consorcioDTO) {
+    public void armarPanelFacturas(ConsorcioDTO consorcioDTO, UnidadFuncionalDTO unidadFuncionalDTO) {
         this.removeAll();
         ///////////// Panel Base ///////////////////
 
@@ -62,7 +59,8 @@ public class PanelUnidadesFuncionales extends JPanel {
 
         //////////////////////////////////////////////////////////////////
 
-        lblUsuarios = new JLabel("SELECCIONE UNA UNIDAD FUNCIONAL O DE UNA NUEVA DE ALTA");
+        String unidad = unidadFuncionalDTO.getNroUnidad().toString();
+        lblUsuarios = new JLabel("FACTURAS DE LA UNIDAD " + unidad);
         lblUsuarios.setFont(new Font(Style.FONT, Font.BOLD, 20));
         lblUsuarios.setHorizontalAlignment(0);
 
@@ -71,14 +69,13 @@ public class PanelUnidadesFuncionales extends JPanel {
         lblOpciones.setHorizontalAlignment(0);
 
         btnAlta = new JButton("ALTA");
+        btnAlta.setVisible(false);
         btnBaja = new JButton("BAJA");
+        btnBaja.setVisible(false);
         btnModificar = new JButton("MODIFICAR");
+        btnModificar.setVisible(false);
         btnAtras = new JButton("ATRAS");
         btnSalir = new JButton("SALIR");
-        btnFacturas = new JButton("VER FACTURAS");
-        btnFacturas.setPreferredSize(new Dimension(200,50));
-
-
 
         ////////////// Tabla ////////////////
 
@@ -89,33 +86,30 @@ public class PanelUnidadesFuncionales extends JPanel {
         scrollPane.setBounds(0, 0, 550, 370);
         scrollPane.setOpaque(false);
 
-        contenidoTabla.addColumn("UNIDAD");
-        contenidoTabla.addColumn("PROPIETARIO");
-        contenidoTabla.addColumn("INQUILINO");
-        contenidoTabla.addColumn("SUPERFICIE");
+        contenidoTabla.addColumn("CODIGO");
+        contenidoTabla.addColumn("FECHA");
+        contenidoTabla.addColumn("MONTO ORD");
+        contenidoTabla.addColumn("MONTO EXT");
+        contenidoTabla.addColumn("FONDO DE RES.");
+        contenidoTabla.addColumn("PAGADA");
 
+        ArrayList<FacturaUnidadFuncional> facturas = ControladorUnidadFuncional.getInstance().getFacturasbyUf(unidadFuncionalDTO.getIdUnidadFuncional());
 
-        ArrayList <UnidadFuncionalDTO> unidades = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+        for (FacturaUnidadFuncional f: facturas){
+            Object [] row = new Object[6];
 
-        for (UnidadFuncionalDTO u : unidades){
+            row[0] = f.getCodigoFactura();
+            row[1] = f.getFecha();
+            row[2] = "$ " + f.getMontoOrdinario();
+            row[3] = "$ " + f.getMontoExtraordinario();
+            row[4] = "$ " + f.getReservas();
+            row[5] = f.isPago();
 
-            Object [] row = new Object[4];
-
-            row[0] = u.getNroUnidad();
-            row[1] = u.getPropietarios().size() == 0 ? "" : u.getPropietarios().get(0).getNombre();
-            row[2] = u.getInquilinos().size() == 0 ? "" : u.getInquilinos().get(0).getNombre();
-            row[3] = u.getSuperficie();
-
-            contenidoTabla.addRow(row);
+                    contenidoTabla.addRow(row);
         }
-
-        panelBotones = new JPanel();
-        panelBotones.add(btnFacturas);
-        panelBotones.setBackground(Style.FONDO);
 
         panelDe.add(lblUsuarios, BorderLayout.NORTH);
         panelDe.add(scrollPane, BorderLayout.CENTER);
-        panelDe.add(panelBotones, BorderLayout.SOUTH);
         panelIz.add(lblOpciones);
         panelIz.add(btnAlta);
         panelIz.add(btnBaja);
@@ -160,7 +154,7 @@ public class PanelUnidadesFuncionales extends JPanel {
 
         btnAtras.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelPrincipal();
+                masterFrame.mostrarPanelUnidadesFuncionales(consorcioDTO);
             }
         });
 
@@ -168,19 +162,6 @@ public class PanelUnidadesFuncionales extends JPanel {
 
             public void actionPerformed(ActionEvent e) {
                 masterFrame.mostrarPanelLogin();
-            }
-        });
-
-        btnFacturas.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                UnidadFuncionalDTO uf;
-                int nroUnidad = (int) tabla.getValueAt(tabla.getSelectedRow(), 0);
-                int idUf = ControladorUnidadFuncional.getInstance().getIdFromUf(consorcioDTO.getId(), nroUnidad);
-                uf = ControladorUnidadFuncional.getInstance().getUnidadFuncional(idUf).unidadFuncToDTO();
-
-                masterFrame.mostrarPanelFacturas(consorcioDTO, uf);
-
             }
         });
 

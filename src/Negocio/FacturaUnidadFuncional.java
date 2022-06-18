@@ -20,6 +20,7 @@ public class FacturaUnidadFuncional {
         this.codigoFactura = UUID.randomUUID();
         this.montoExtraordinario = montoExtraordinario;
         this.montoOrdinario = montoOrdinario;
+        this.reservas = reservas;
         this.pago = pago;
         this.fecha = fecha;
     }
