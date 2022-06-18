@@ -11,6 +11,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class PanelFacturas extends JPanel {
     private MasterFrame masterFrame;
@@ -19,7 +20,7 @@ public class PanelFacturas extends JPanel {
 
     private JLabel lblOpciones;
     private JLabel lblUsuarios;
-    private JButton btnAlta;
+    private JButton btnPago;
     private JButton btnBaja;
     private JButton btnModificar;
     private JButton btnAtras;
@@ -68,8 +69,7 @@ public class PanelFacturas extends JPanel {
         lblOpciones.setFont(new Font(Style.FONT, Font.BOLD, 18));
         lblOpciones.setHorizontalAlignment(0);
 
-        btnAlta = new JButton("ALTA");
-        btnAlta.setVisible(false);
+        btnPago = new JButton("CONFIRMAR PAGO");
         btnBaja = new JButton("BAJA");
         btnBaja.setVisible(false);
         btnModificar = new JButton("MODIFICAR");
@@ -103,7 +103,7 @@ public class PanelFacturas extends JPanel {
             row[2] = "$ " + f.getMontoOrdinario();
             row[3] = "$ " + f.getMontoExtraordinario();
             row[4] = "$ " + f.getReservas();
-            row[5] = f.isPago();
+            row[5] = f.isPago() ? "Pagada" : "Sin Pagar";
 
                     contenidoTabla.addRow(row);
         }
@@ -111,44 +111,27 @@ public class PanelFacturas extends JPanel {
         panelDe.add(lblUsuarios, BorderLayout.NORTH);
         panelDe.add(scrollPane, BorderLayout.CENTER);
         panelIz.add(lblOpciones);
-        panelIz.add(btnAlta);
+        panelIz.add(btnPago);
         panelIz.add(btnBaja);
         panelIz.add(btnModificar);
         panelIz.add(btnAtras);
         panelIz.add(btnSalir);
 
-        btnAlta.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                masterFrame.mostrarPanelAltaunidadFuncional(consorcioDTO, null);
-            }
-        });
-
-        btnBaja.addActionListener(new ActionListener() {
+        btnPago.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                try{
-                    int id = (int) tabla.getValueAt(tabla.getSelectedRow(), 0);
-                    UnidadFuncionalDTO u = ControladorUnidadFuncional.getInstance().getUnidadFuncional(id).unidadFuncToDTO();
-                    ControladorUnidadFuncional.getInstance().eliminarUnidadFuncional(u);
-                    masterFrame.mostrarPanelUnidadesFuncionales(consorcioDTO);
+                try {
+                    UUID id = (UUID) tabla.getValueAt(tabla.getSelectedRow(),0);
+                    FacturaUnidadFuncional factura = ControladorUnidadFuncional.getInstance().getFacturaById(id, unidadFuncionalDTO.getIdUnidadFuncional());
+                    if(factura.isPago()){
+                        JOptionPane.showMessageDialog(masterFrame,"La factura ya esta paga.");
+                    }else{
+                        factura.setPago(true);
+                        masterFrame.mostrarPanelFacturas(consorcioDTO, unidadFuncionalDTO);
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar una factura");
                 }
-                catch (Exception exception){
-
-                }
-
-            }
-        });
-
-        btnModificar.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                UnidadFuncionalDTO uf;
-                int nroUnidad = (int) tabla.getValueAt(tabla.getSelectedRow(), 0);
-                int idUf = ControladorUnidadFuncional.getInstance().getIdFromUf(consorcioDTO.getId(), nroUnidad);
-                uf = ControladorUnidadFuncional.getInstance().getUnidadFuncional(idUf).unidadFuncToDTO();
-
-                masterFrame.mostrarPanelAltaunidadFuncional(consorcioDTO, uf);
-
             }
         });
 
