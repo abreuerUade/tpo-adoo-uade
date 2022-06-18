@@ -6,6 +6,9 @@ import Controllers.ControladorUsuario;
 import DTO.ConsorcioDTO;
 import DTO.UsuarioDTO;
 import Negocio.LiquidacionGenerica;
+import Negocio.PagoCompleto;
+import Negocio.PagoCompletoGenerarReservas;
+import Negocio.PagoCompletoReservas;
 
 import javax.swing.*;
 import java.awt.*;
@@ -189,8 +192,11 @@ public class PanelLiquidacion extends JPanel {
         panelDe.add(panelForm, BorderLayout.CENTER);
         panelDe.add(panelBtn, BorderLayout.SOUTH);
 
+        consorcioDTO.setTipoLiquidacion(new PagoCompleto());
+
         btnPCG.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                consorcioDTO.setTipoLiquidacion(new PagoCompleto());
                 txtCargaSaldo.setEnabled(false);
                 txtUsoSaldo.setEnabled(false);
                 lblCargaSaldo.setFont(new Font(Style.FONT, Font.ITALIC, 18));
@@ -202,7 +208,8 @@ public class PanelLiquidacion extends JPanel {
 
         btnPCFR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            lblLiquidacion.setText("LIQUIDACION DE EXPNSAS: \nPago Completo con Fondos de Reservas");
+                consorcioDTO.setTipoLiquidacion(new PagoCompletoReservas());
+                lblLiquidacion.setText("LIQUIDACION DE EXPENSAS: \nPago Completo con Fondos de Reservas");
                 txtUsoSaldo.setEnabled(true);
                 txtCargaSaldo.setEnabled(false);
                 lblCargaSaldo.setFont(new Font(Style.FONT, Font.ITALIC, 18));
@@ -214,7 +221,8 @@ public class PanelLiquidacion extends JPanel {
 
         btnPCGFFR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                lblLiquidacion.setText("LIQUIDACION DE EXPNSAS: \nPago Completo y Generar Futuros Fondos de Reservas");
+                consorcioDTO.setTipoLiquidacion(new PagoCompletoGenerarReservas());
+                lblLiquidacion.setText("LIQUIDACION DE EXPENSAS: \nPago Completo y Generar Futuros Fondos de Reservas");
                 txtCargaSaldo.setEnabled(true);
                 txtUsoSaldo.setEnabled(false);
                 lblCargaSaldo.setFont(new Font(Style.FONT, Font.BOLD, 18));
@@ -245,7 +253,11 @@ public class PanelLiquidacion extends JPanel {
 
         btnLiquidar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                ControladorConsorcio.getInstance().editarConsorcio(consorcioDTO); //updatea el tipo de liquidacion
+                int idconsorcio = consorcioDTO.getId();
+                int generarReserva = txtCargaSaldo.getText().equals("") ? 0 : Integer.parseInt(txtCargaSaldo.getText());
+                int usarReserva = txtUsoSaldo.getText().equals("") ? 0 : Integer.parseInt(txtUsoSaldo.getText());
+                ControladorConsorcio.getInstance().liquidarConsorcio(idconsorcio, generarReserva, usarReserva);
             }
         });
     }

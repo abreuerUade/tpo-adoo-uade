@@ -9,15 +9,12 @@ import java.util.List;
 
 public class Consorcio {
 
-
     private int id;
     private String nombre;
     private String contacto;
     private Cuenta cuentaBanco;
     private String barrio;
-    //private ArrayList<UnidadFuncional> UnidadesFunc;
-    //private ArrayList<Gasto> gastos;
-    //private ArrayList<Usuario> admin;
+
     private LiquidacionGenerica tipoLiquidacion;
 
     public Consorcio (ConsorcioDTO consorcioDTO) {
@@ -26,9 +23,6 @@ public class Consorcio {
         this.contacto = consorcioDTO.getContacto();
         this.cuentaBanco = consorcioDTO.getCuentaBanco();
         this.barrio = consorcioDTO.getBarrio();
-        //this.UnidadesFunc = consorcioDTO.getUnidadesFunc();
-        //this.gastos = consorcioDTO.getGastos();
-        //this.admin = consorcioDTO.getAdmin();
         this.tipoLiquidacion = consorcioDTO.getTipoLiquidacion();
     }
 
@@ -39,20 +33,19 @@ public class Consorcio {
         consorcioDTO.setBarrio(this.barrio);
         consorcioDTO.setContacto(this.contacto);
         consorcioDTO.setCuentaBanco(this.cuentaBanco);
-        //consorcioDTO.setUnidadesFunc(this.UnidadesFunc);
-        //consorcioDTO.setGastos(this.gastos);
-        //consorcioDTO.setAdmin(this.admin);
         consorcioDTO.setTipoLiquidacion(this.tipoLiquidacion);
         return consorcioDTO;
     }
 
 
-    public void liquidar() {
-
+    public void liquidar(int generarReservas, int usarReservas) {
+        float saldo = this.tipoLiquidacion.obtenerSaldo(this.id);
+        ArrayList<Integer> gastos = this.tipoLiquidacion.calcularGastos(this.id);
+        this.tipoLiquidacion.DivisionExpensas(this.id, generarReservas, usarReservas);
     }
 
     public void cambiarCriterio (LiquidacionGenerica liquidacionGenerica) {
-
+        this.tipoLiquidacion = liquidacionGenerica;
     }
 
     public void setId(int id) {

@@ -12,15 +12,14 @@ public class PagoCompleto extends LiquidacionGenerica{
     @Override
 
     public void DivisionExpensas(int idconsorcio, Integer generarReserva, Integer usarReserva) {
-        ConsorcioDTO consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(idconsorcio);
-        ArrayList<UnidadFuncionalDTO> listUF = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+        ArrayList<UnidadFuncionalDTO> listUF = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(idconsorcio);
         float superficieTotal = ControladorUnidadFuncional.getInstance().calcularSuperficieTotalbyConsorcio(idconsorcio);
         ArrayList <Integer> gastos = calcularGastos(idconsorcio);
         for (UnidadFuncionalDTO uf:listUF){
             float coeficiente = uf.getSuperficie()/superficieTotal;
             float expensaOrdinaria = gastos.get(0)*coeficiente;
             float expensaExtraordinaria = gastos.get(1)*coeficiente;
-            //Facturador.crearFactura(uf.getNroUnidad(), expensaOrdinaria, expensaExtraordinaria);
+            Facturador.crearFactura(uf.getIdUnidadFuncional(), expensaOrdinaria, expensaExtraordinaria);
         }
     }
 }

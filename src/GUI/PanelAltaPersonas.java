@@ -158,7 +158,7 @@ public class PanelAltaPersonas extends JPanel {
         txtTelefono = new JTextField("");
         txtTelefono.setHorizontalAlignment(alignR);
 
-        ArrayList<UnidadFuncionalDTO> unidadesDTO = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+        ArrayList<UnidadFuncionalDTO> unidadesDTO = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO.getId());
         ArrayList<String> ufs = new ArrayList<String>();
         for(UnidadFuncionalDTO u: unidadesDTO){
             ufs.add(u.getNroUnidad().toString());

@@ -90,7 +90,7 @@ public class PanelUnidadesFuncionales extends JPanel {
         contenidoTabla.addColumn("SUPERFICIE");
 
 
-        ArrayList <UnidadFuncionalDTO> unidades = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+        ArrayList <UnidadFuncionalDTO> unidades = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO.getId());
 
         for (UnidadFuncionalDTO u : unidades){
 

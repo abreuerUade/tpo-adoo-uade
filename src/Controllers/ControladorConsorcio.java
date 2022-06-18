@@ -47,57 +47,6 @@ public class ControladorConsorcio {
         }
         return false;
     }
-/*
-    public void agregarUnidadFuncional(UnidadFuncionalDTO uf, int id_consorcio) {
-        if(uf != null) {
-            Consorcio consorcio = getConsorcio(id_consorcio);
-            ArrayList<UnidadFuncional> unidades_funcionales = consorcio.getUnidadesFunc();
-            UnidadFuncional nueva_uf = new UnidadFuncional(uf);
-            unidades_funcionales.add(nueva_uf);
-            consorcio.setUnidadesFunc(unidades_funcionales);
-        }
-    }
-
-    public void eliminarUnidadFuncional(UnidadFuncionalDTO unidad_funcional, int id_consorcio) {
-        if(unidad_funcional!= null) {
-            Consorcio consorcio = getConsorcio(id_consorcio);
-            ArrayList<UnidadFuncional> unidades_funcionales = consorcio.getUnidadesFunc();
-            for(UnidadFuncional uf : unidades_funcionales) {
-                if(uf.getNroUnidad() == unidad_funcional.getNroUnidad()) {
-                    unidades_funcionales.remove(unidades_funcionales.indexOf(uf));
-                }
-                break;
-            }
-            consorcio.setUnidadesFunc(unidades_funcionales);
-        }
-    }
-
-    public void agregarAdmin (UsuarioDTO admin, int id_consorcio) {
-        if (admin != null) {
-            Consorcio consorcio = getConsorcio(id_consorcio);
-            ArrayList<Usuario> admins = consorcio.getAdmin();
-            Usuario nuevo_admin = new Usuario(admin);
-            admins.add(nuevo_admin);
-            consorcio.setAdmin(admins);
-        }
-    }
-
-    public void eliminarAdmin(UsuarioDTO admin, int id_consorcio) {
-        if (admin != null) {
-            Consorcio consorcio = getConsorcio(id_consorcio);
-            ArrayList<Usuario> admins = consorcio.getAdmin();
-
-            for (Usuario a : admins){
-                if(a.getMail() == admin.getMail()) {
-                    admins.remove(admins.indexOf(a));
-                }
-                break;
-            }
-
-            consorcio.setAdmin(admins);
-        }
-    }
-*/
     public void crearConsorcio (ConsorcioDTO datos){
         if (datos!=null){
             Consorcio consorcioVerificar = getConsorcio(datos.getId());
@@ -115,11 +64,8 @@ public class ControladorConsorcio {
                 consorcioEdit.setNombre(datos.getNombre());
                 consorcioEdit.setContacto(datos.getContacto());
                 consorcioEdit.setCuentaBanco(datos.getCuentaBanco());
-                //consorcioEdit.setAdmin(datos.getAdmin());
                 consorcioEdit.setBarrio(datos.getBarrio());
-                //consorcioEdit.setGastos(datos.getGastos());
-                //consorcioEdit.setUnidadesFunc(datos.getUnidadesFunc());
-                //consorcioEdit.setTipoLiquidacion(datos.getTipoLiquidacion());
+                consorcioEdit.setTipoLiquidacion(datos.getTipoLiquidacion());
                 Consorcios.set(index,consorcioEdit);
             }
         }
@@ -154,15 +100,19 @@ public class ControladorConsorcio {
         return 0f;
     }
 
-    public void liquidarConsorcio(ConsorcioDTO consorcioDTO){
-        //ALgo
-        notificarLiquidacion(consorcioDTO);
+    public void liquidarConsorcio(int idConsorcio, int generarReservas, int usarReservas){
+        for(Consorcio c : Consorcios){
+            if(c.getId() == idConsorcio){
+                c.liquidar(generarReservas, usarReservas);
+            }
+        }
+        notificarLiquidacion(idConsorcio);
     }
 
-    public void notificarLiquidacion(ConsorcioDTO consorcioDTO){
+    public void notificarLiquidacion(int idConsorcio){
         Notificador notificador = new Notificador();
         Notificacion notificacion = new Notificacion();
-        for (UnidadFuncionalDTO uf:ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO)){
+        for (UnidadFuncionalDTO uf:ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(idConsorcio)){
             ArrayList<Persona> interesados = uf.getInquilinos();
             interesados.addAll(uf.getPropietarios());
             for (Persona interesado:interesados){

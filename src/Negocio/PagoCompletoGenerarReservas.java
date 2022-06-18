@@ -14,8 +14,7 @@ public class PagoCompletoGenerarReservas extends LiquidacionGenerica{
     // Crea un gasto del tipo fondo de reserva el cual se suma al TOTAL que obtengo de Calcular gasto y Dividir los gastos entre todas las unidades funcionales y generar sus facturas.
     @Override
     public void DivisionExpensas(int idconsorcio, Integer generarReserva, Integer usarReserva) {
-        ConsorcioDTO consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(idconsorcio);
-        ArrayList<UnidadFuncionalDTO> listUF = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+        ArrayList<UnidadFuncionalDTO> listUF = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(idconsorcio);
         float superficieTotal = ControladorUnidadFuncional.getInstance().calcularSuperficieTotalbyConsorcio(idconsorcio);
         ArrayList<Integer> gastos = calcularGastos(idconsorcio);
 

@@ -96,7 +96,7 @@ public class PanelPersonas extends JPanel {
         contenidoTabla.addColumn("UNIDAD");
         contenidoTabla.addColumn("CONDICIÓN");
 
-        ArrayList<UnidadFuncionalDTO> unidades = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+        ArrayList<UnidadFuncionalDTO> unidades = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO.getId());
 
         for(UnidadFuncionalDTO uf : unidades){
             ArrayList<PersonaDTO> prop = ControladorUnidadFuncional.getInstance().getPropietarioByUf(uf);

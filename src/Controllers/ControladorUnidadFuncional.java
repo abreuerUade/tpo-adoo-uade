@@ -50,10 +50,10 @@ public class ControladorUnidadFuncional {
         System.out.println(getUnidadFuncional(idUnidadFuncional).getPropietarios());
     }
 
-    public ArrayList<UnidadFuncionalDTO> getUnidadesFuncionalesbyConsorcio(ConsorcioDTO consorcioDTO) {
+    public ArrayList<UnidadFuncionalDTO> getUnidadesFuncionalesbyConsorcio(int idConsorcio) {
         ArrayList<UnidadFuncionalDTO> listaUF = new ArrayList<UnidadFuncionalDTO>();
         for (UnidadFuncional uf : UnidadesFuncionales) {
-            if (uf.getIdconsorcio() == consorcioDTO.getId()){
+            if (uf.getIdconsorcio() == idConsorcio){
                 listaUF.add(uf.unidadFuncToDTO());
             }
         }
@@ -214,8 +214,7 @@ public class ControladorUnidadFuncional {
 
     public float calcularSuperficieTotalbyConsorcio(int idconsorcio) {
         int superficieTotal = 0;
-        ConsorcioDTO consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(idconsorcio);
-        ArrayList<UnidadFuncionalDTO> listUF = getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+        ArrayList<UnidadFuncionalDTO> listUF = getUnidadesFuncionalesbyConsorcio(idconsorcio);
         for (UnidadFuncionalDTO uf:listUF){
             superficieTotal+=uf.getSuperficie();
         }

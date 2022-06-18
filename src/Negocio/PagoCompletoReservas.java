@@ -1,7 +1,6 @@
 package Negocio;
 
 import Controllers.ControladorConsorcio;
-import Controllers.ControladorGasto;
 import Controllers.ControladorUnidadFuncional;
 import DTO.ConsorcioDTO;
 import DTO.UnidadFuncionalDTO;
@@ -17,8 +16,7 @@ public class PagoCompletoReservas extends LiquidacionGenerica{
         ArrayList<Integer> gastos = this.calcularGastos(idconsorcio);
 
         if (usarReserva<=saldoDisponible){
-            ConsorcioDTO consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(idconsorcio);
-            ArrayList<UnidadFuncionalDTO> listUF = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(consorcioDTO);
+            ArrayList<UnidadFuncionalDTO> listUF = ControladorUnidadFuncional.getInstance().getUnidadesFuncionalesbyConsorcio(idconsorcio);
             float superficieTotal = ControladorUnidadFuncional.getInstance().calcularSuperficieTotalbyConsorcio(idconsorcio);
             gastos.set(0, gastos.get(0)-(usarReserva/2));
             gastos.set(1, gastos.get(1)-(usarReserva/2));

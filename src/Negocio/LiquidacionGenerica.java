@@ -26,6 +26,8 @@ public abstract class LiquidacionGenerica {
         return gastos;
     }
 
-    public abstract void DivisionExpensas (int idconsorcio, Integer geesenerarRrva, Integer usarReserva);
+    public abstract void DivisionExpensas (int idconsorcio, Integer generarReserva, Integer usarReserva);
+
+    //Descontar del total un valor disponible en el salgo y Dividir el resto entre todas las unidades funcionales y generar sus facturas.
 
 }
