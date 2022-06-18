@@ -28,7 +28,7 @@ public class PanelLogin extends JPanel {
     }
 
     public void armarPanelLogin() {
-
+        this.removeAll();
         ///////////// Panel Base ///////////////////
 
         this.setLayout(new BorderLayout());

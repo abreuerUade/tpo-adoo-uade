@@ -139,8 +139,9 @@ public class PanelUnidadesFuncionales extends JPanel {
 
             public void actionPerformed(ActionEvent e) {
                 UnidadFuncionalDTO uf;
-                int id = (int) tabla.getValueAt(tabla.getSelectedRow(), 0);
-                uf = ControladorUnidadFuncional.getInstance().getUnidadFuncional(id).unidadFuncToDTO();
+                int nroUnidad = (int) tabla.getValueAt(tabla.getSelectedRow(), 0);
+                int idUf = ControladorUnidadFuncional.getInstance().getIdFromUf(consorcioDTO.getId(), nroUnidad);
+                uf = ControladorUnidadFuncional.getInstance().getUnidadFuncional(idUf).unidadFuncToDTO();
 
                 masterFrame.mostrarPanelAltaunidadFuncional(consorcioDTO, uf);
 
