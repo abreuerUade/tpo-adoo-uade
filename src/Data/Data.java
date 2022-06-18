@@ -191,7 +191,7 @@ public class Data {
         gasto5.setTipoExpensas(Expensas.GASTOS_PARTICULARES);
         ControladorGasto.getInstance().crearGasto(gasto5);
 
-        FacturaUnidadFuncional factura1 = new FacturaUnidadFuncional(4234, 234623, 4789,false, new Date());
+        FacturaUnidadFuncional factura1 = new FacturaUnidadFuncional(4234, 234623, 4789);
         ControladorUnidadFuncional.getInstance().agregarFactura(factura1, 1);
     }
 }
