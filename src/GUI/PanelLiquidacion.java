@@ -5,6 +5,7 @@ import Controllers.ControladorGasto;
 import Controllers.ControladorUsuario;
 import DTO.ConsorcioDTO;
 import DTO.UsuarioDTO;
+import Negocio.LiquidacionGenerica;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,7 +43,6 @@ public class PanelLiquidacion extends JPanel {
     private JButton btnSalir;
     private JButton btnLiquidar;
     private JButton btnNotificar;
-
 
 
     public PanelLiquidacion (MasterFrame masterFrame){
@@ -88,7 +88,7 @@ public class PanelLiquidacion extends JPanel {
         panelForm.setBackground(Style.FONDO);
         panelForm.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 80));
 
-        lblLiquidacion = new JLabel("LIQUIDACIÓN DE EXPENSAS");
+        lblLiquidacion = new JLabel("LIQUIDACIÓN DE EXPENSAS: \nPago completo de gastos");
         lblLiquidacion.setFont(new Font(Style.FONT, Font.BOLD, 20));
         lblLiquidacion.setHorizontalAlignment(0);
 
@@ -100,11 +100,11 @@ public class PanelLiquidacion extends JPanel {
         btnPCG.setPreferredSize(new Dimension(180, 40));
         btnPCG.setHorizontalAlignment(0);
 
-        btnPCFR = new JButton("Pago Completo con \n Fondos de Reservas");
+        btnPCFR = new JButton("Pago Completo con Fondos de Reservas");
         btnPCFR.setPreferredSize(new Dimension(180, 40));
         btnPCFR.setHorizontalAlignment(0);
 
-        btnPCGFFR = new JButton("Pago Completo y Generar \n Futuros Fondos de Reservas");
+        btnPCGFFR = new JButton("Pago Completo y Generar Fondos de Reservas");
         btnPCGFFR.setPreferredSize(new Dimension(180, 40));
         btnPCGFFR.setHorizontalAlignment(0);
 
@@ -157,6 +157,13 @@ public class PanelLiquidacion extends JPanel {
         btnLiquidar = new JButton("LIQUIDAR");
         btnLiquidar.setPreferredSize(new Dimension(140, 40));
 
+        txtCargaSaldo.setEnabled(false);
+        txtUsoSaldo.setEnabled(false);
+        lblCargaSaldo.setFont(new Font(Style.FONT, Font.ITALIC, 18));
+        lblCargaSaldo.setForeground(Color.GRAY);
+        lblUsoSaldo.setFont(new Font(Style.FONT, Font.ITALIC, 18));
+        lblUsoSaldo.setForeground(Color.GRAY);
+
         panelBtn.add(btnNotificar);
         panelBtn.add(btnLiquidar);
 
@@ -184,19 +191,36 @@ public class PanelLiquidacion extends JPanel {
 
         btnPCG.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                txtCargaSaldo.setEnabled(false);
+                txtUsoSaldo.setEnabled(false);
+                lblCargaSaldo.setFont(new Font(Style.FONT, Font.ITALIC, 18));
+                lblCargaSaldo.setForeground(Color.GRAY);
+                lblUsoSaldo.setFont(new Font(Style.FONT, Font.ITALIC, 18));
+                lblUsoSaldo.setForeground(Color.GRAY);
             }
         });
 
         btnPCFR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+            lblLiquidacion.setText("LIQUIDACION DE EXPNSAS: \nPago Completo con Fondos de Reservas");
+                txtUsoSaldo.setEnabled(true);
+                txtCargaSaldo.setEnabled(false);
+                lblCargaSaldo.setFont(new Font(Style.FONT, Font.ITALIC, 18));
+                lblCargaSaldo.setForeground(Color.GRAY);
+                lblUsoSaldo.setFont(new Font(Style.FONT, Font.BOLD, 18));
+                lblUsoSaldo.setForeground(Color.BLACK);
             }
         });
 
         btnPCGFFR.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                lblLiquidacion.setText("LIQUIDACION DE EXPNSAS: \nPago Completo y Generar Futuros Fondos de Reservas");
+                txtCargaSaldo.setEnabled(true);
+                txtUsoSaldo.setEnabled(false);
+                lblCargaSaldo.setFont(new Font(Style.FONT, Font.BOLD, 18));
+                lblCargaSaldo.setForeground(Color.BLACK);
+                lblUsoSaldo.setFont(new Font(Style.FONT, Font.ITALIC, 18));
+                lblUsoSaldo.setForeground(Color.GRAY);
             }
         });
 
