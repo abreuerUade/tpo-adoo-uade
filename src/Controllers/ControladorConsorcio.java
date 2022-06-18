@@ -1,18 +1,17 @@
 package Controllers;
 
+import Adapter.AdapterJavaMail;
+import Adapter.AdapterSMSService;
+import Adapter.AdapterWhatsappService;
 import DTO.ConsorcioDTO;
-import DTO.GastoDTO;
 import DTO.UnidadFuncionalDTO;
-import DTO.UsuarioDTO;
 import Negocio.*;
 import Negocio.Comunicacion.Notificacion;
 import Negocio.Comunicacion.NotificacionSMS;
 import Negocio.Comunicacion.NotificacionWS;
-import Negocio.Comunicacion.NotificacionesEmail;
-
-import java.lang.reflect.Array;
+import Negocio.Comunicacion.NotificacionEmail;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class ControladorConsorcio {
     private ArrayList<Consorcio> Consorcios = null;
@@ -48,39 +47,7 @@ public class ControladorConsorcio {
         }
         return false;
     }
-/* NO EXISTE MAS LA LISTA DE GASTOS EN EL CONSORCIO!!!!!!!!
-
-
-    public void agregarGasto(GastoDTO gasto, int id_consorcio){
-        Consorcio consorcio = getConsorcio(id_consorcio);
-        if (consorcio != null) {
-            ArrayList<Gasto> gastos = consorcio.getGastos();
-            Gasto nuevoGasto = new Gasto(gasto);
-            gastos.add(nuevoGasto);
-            consorcio.setGastos(gastos);
-        }
-    }
-
-    public void eliminarGasto(GastoDTO gasto, int id_consorcio) {
-        if(gasto != null) {
-            Consorcio consorcio = getConsorcio(id_consorcio);
-            ArrayList<Gasto> gastos = consorcio.getGastos();
-
-            for(Gasto g : gastos) {
-                if (gasto.getId() == g.getId()) {
-                    gastos.remove(gastos.indexOf(g));
-                }
-                break;
-            }
-
-            consorcio.setGastos(gastos);
-        }
-
-    }
-*/
-
-
-
+/*
     public void agregarUnidadFuncional(UnidadFuncionalDTO uf, int id_consorcio) {
         if(uf != null) {
             Consorcio consorcio = getConsorcio(id_consorcio);
@@ -130,7 +97,7 @@ public class ControladorConsorcio {
             consorcio.setAdmin(admins);
         }
     }
-
+*/
     public void crearConsorcio (ConsorcioDTO datos){
         if (datos!=null){
             Consorcio consorcioVerificar = getConsorcio(datos.getId());
@@ -148,7 +115,7 @@ public class ControladorConsorcio {
                 consorcioEdit.setNombre(datos.getNombre());
                 consorcioEdit.setContacto(datos.getContacto());
                 consorcioEdit.setCuentaBanco(datos.getCuentaBanco());
-                consorcioEdit.setAdmin(datos.getAdmin());
+                //consorcioEdit.setAdmin(datos.getAdmin());
                 consorcioEdit.setBarrio(datos.getBarrio());
                 //consorcioEdit.setGastos(datos.getGastos());
                 //consorcioEdit.setUnidadesFunc(datos.getUnidadesFunc());
@@ -164,7 +131,6 @@ public class ControladorConsorcio {
         if (datos != null){
             Consorcio consorcioRemove = getConsorcio(datos.getId());
             if (consorcioRemove != null){
-                consorcioRemove.setUnidadesFunc(new ArrayList<>());
                 Consorcios.remove(getConsorcio(datos.getId()));
             }
         }
@@ -203,9 +169,9 @@ public class ControladorConsorcio {
                 notificacion.setMensaje("mensaje de prueba");
                 notificacion.setDestinatario(interesado);
                 switch(interesado.getModoDeEnvio()) {
-                    case SMS: notificador.setEstrategia(new NotificacionSMS()); break;
-                    case WHATSAPP: notificador.setEstrategia(new NotificacionWS()); break;
-                    case EMAIL: notificador.setEstrategia(new NotificacionesEmail()); break;
+                    case SMS: notificador.setEstrategia(new NotificacionSMS(new AdapterSMSService())); break;
+                    case WHATSAPP: notificador.setEstrategia(new NotificacionWS(new AdapterWhatsappService())); break;
+                    case EMAIL: notificador.setEstrategia(new NotificacionEmail(new AdapterJavaMail())); break;
                 }
                 notificador.enviar(notificacion);
             }

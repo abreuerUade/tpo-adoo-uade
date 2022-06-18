@@ -8,9 +8,6 @@ public class FacturaUnidadFuncional {
     private UUID codigoFactura;
     private float montoExtraordinario;
     private float montoOrdinario;
-
-
-
     private float reservas;
     private boolean pago;
     private Date fecha;

@@ -1,9 +1,19 @@
 package Negocio.Comunicacion;
+import Adapter.IAdapterNotificacionSMS;
 import interfaces.EstrategiaDeNotificacion;
 
 public class NotificacionSMS implements EstrategiaDeNotificacion {
 
+    private IAdapterNotificacionSMS adapter;
+
+    public NotificacionSMS(IAdapterNotificacionSMS adapter){
+        super();
+        this.adapter = adapter;
+    }
+    public void setAdapter(IAdapterNotificacionSMS adapter){
+        this.adapter = adapter;
+    }
     public void enviar (Notificacion notificacion) {
-        System.out.println("Se mando un sms a "+notificacion.getDestinatario().getTelefono());
+        this.adapter.enviarSMS(notificacion);
     }
 }

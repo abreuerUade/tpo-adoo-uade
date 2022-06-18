@@ -1,10 +1,21 @@
 package Negocio.Comunicacion;
 
+import Adapter.IAdapterNotificacionWS;
 import interfaces.EstrategiaDeNotificacion;
 
 public class NotificacionWS implements EstrategiaDeNotificacion {
 
+    private IAdapterNotificacionWS adapter;
+
+    public NotificacionWS(IAdapterNotificacionWS adapter){
+        super();
+        this.adapter = adapter;
+    }
+    public void setAdapter(IAdapterNotificacionWS adapter){
+        this.adapter = adapter;
+    }
+
     public void enviar (Notificacion notificacion) {
-        System.out.println("Se mando un Whatsapp a "+notificacion.getDestinatario().getTelefono());
+        this.adapter.enviarWhatsapp(notificacion);
     }
 }
