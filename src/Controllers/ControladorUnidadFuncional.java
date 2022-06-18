@@ -174,6 +174,16 @@ public class ControladorUnidadFuncional {
         }
     }
 
+    public ArrayList<FacturaUnidadFuncional> getFacturasbyUf(int idUF) {
+        ArrayList<FacturaUnidadFuncional> facturas = new ArrayList<>();
+        for(UnidadFuncional u : UnidadesFuncionales){
+            if (u.getIdUnidadFuncional() == idUF){
+                facturas = u.getFacturas();
+            }
+        }
+        return facturas;
+    }
+
     public ArrayList<PersonaDTO> getPropietarioByUf(UnidadFuncionalDTO unidadFuncionalDTO){
         ArrayList<PersonaDTO> propietarios = new ArrayList<>();
 
