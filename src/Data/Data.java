@@ -26,8 +26,8 @@ public class Data {
         ControladorUsuario.getInstance().crearUsuario(admin2);
 
         UsuarioDTO admin3 = new UsuarioDTO();
-        admin3.setApellido("test");
-        admin3.setNombre("test");
+        admin3.setApellido("Breuer");
+        admin3.setNombre("Andres");
         admin3.setMail("test");
         ControladorUsuario.getInstance().crearUsuario(admin3);
 

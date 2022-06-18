@@ -264,6 +264,7 @@ public class PanelPrincipal extends JPanel {
                     int selected = (int) tabla.getValueAt(tabla.getSelectedRow(),0);
                     consorcioDTO = ControladorConsorcio.getInstance().getConsorcioDTO(selected);
                     masterFrame.mostrarPanelLiquidacion(consorcioDTO);
+
                 }
                 catch (Exception exception){
                     JOptionPane.showMessageDialog(masterFrame,"Debe seleccionar un consorcio.");
