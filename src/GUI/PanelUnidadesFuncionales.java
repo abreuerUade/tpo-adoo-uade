@@ -18,7 +18,7 @@ public class PanelUnidadesFuncionales extends JPanel {
     private MasterFrame masterFrame;
     private JPanel panelIz;
     private JPanel panelDe;
-
+    private JPanel panelBotones;
     private JLabel lblOpciones;
     private JLabel lblUsuarios;
     private JButton btnAlta;
@@ -26,6 +26,7 @@ public class PanelUnidadesFuncionales extends JPanel {
     private JButton btnModificar;
     private JButton btnAtras;
     private JButton btnSalir;
+    private JButton btnFacturas;
 
     private DefaultTableModel contenidoTabla;
     private JTable tabla;
@@ -74,6 +75,10 @@ public class PanelUnidadesFuncionales extends JPanel {
         btnModificar = new JButton("MODIFICAR");
         btnAtras = new JButton("ATRAS");
         btnSalir = new JButton("SALIR");
+        btnFacturas = new JButton("VER FACTURAS");
+        btnFacturas.setPreferredSize(new Dimension(200,50));
+
+
 
         ////////////// Tabla ////////////////
 
@@ -104,8 +109,13 @@ public class PanelUnidadesFuncionales extends JPanel {
             contenidoTabla.addRow(row);
         }
 
+        panelBotones = new JPanel();
+        panelBotones.add(btnFacturas);
+        panelBotones.setBackground(Style.FONDO);
+
         panelDe.add(lblUsuarios, BorderLayout.NORTH);
         panelDe.add(scrollPane, BorderLayout.CENTER);
+        panelDe.add(panelBotones, BorderLayout.SOUTH);
         panelIz.add(lblOpciones);
         panelIz.add(btnAlta);
         panelIz.add(btnBaja);
@@ -158,6 +168,19 @@ public class PanelUnidadesFuncionales extends JPanel {
 
             public void actionPerformed(ActionEvent e) {
                 masterFrame.mostrarPanelLogin();
+            }
+        });
+
+        btnFacturas.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                UnidadFuncionalDTO uf;
+                int nroUnidad = (int) tabla.getValueAt(tabla.getSelectedRow(), 0);
+                int idUf = ControladorUnidadFuncional.getInstance().getIdFromUf(consorcioDTO.getId(), nroUnidad);
+                uf = ControladorUnidadFuncional.getInstance().getUnidadFuncional(idUf).unidadFuncToDTO();
+
+                masterFrame.mostrarPanelFacturas(consorcioDTO, uf);
+
             }
         });
 

@@ -4,6 +4,7 @@ import static Negocio.ServiciosEnvio.*;
 import Controllers.*;
 import Negocio.Cuenta;
 import Negocio.Expensas;
+import Negocio.FacturaUnidadFuncional;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -189,5 +190,8 @@ public class Data {
         gasto5.setIdconsorcio(1);
         gasto5.setTipoExpensas(Expensas.GASTOS_PARTICULARES);
         ControladorGasto.getInstance().crearGasto(gasto5);
+
+        FacturaUnidadFuncional factura1 = new FacturaUnidadFuncional(4234, 234623, 4789,false, new Date());
+        ControladorUnidadFuncional.getInstance().agregarFactura(factura1, 1);
     }
 }

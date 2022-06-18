@@ -16,12 +16,13 @@ public class FacturaUnidadFuncional {
 
     }
 
-    public FacturaUnidadFuncional(float montoExtraordinario, float montoOrdinario, float reservas) {
+    public FacturaUnidadFuncional(float montoExtraordinario, float montoOrdinario, float reservas, boolean pago, Date fecha) {
         this.codigoFactura = UUID.randomUUID();
         this.montoExtraordinario = montoExtraordinario;
         this.montoOrdinario = montoOrdinario;
-        this.pago = false;
-        this.fecha = new Date();
+        this.reservas = reservas;
+        this.pago = pago;
+        this.fecha = fecha;
     }
 
     public UUID getCodigoFactura() {

@@ -7,7 +7,7 @@ import Negocio.Persona;
 import Negocio.UnidadFuncional;
 import DTO.UnidadFuncionalDTO;
 import java.util.ArrayList;
-
+import java.util.UUID;
 
 
 public class ControladorUnidadFuncional {
@@ -182,6 +182,17 @@ public class ControladorUnidadFuncional {
             }
         }
         return facturas;
+    }
+
+    public FacturaUnidadFuncional getFacturaById(UUID uuid, int idUf){
+        ArrayList<FacturaUnidadFuncional> facturas = this.getFacturasbyUf(idUf);
+        FacturaUnidadFuncional factura;
+        for(FacturaUnidadFuncional f : facturas){
+            if (f.getCodigoFactura().equals(uuid)){
+                return f;
+            }
+        }
+        return null;
     }
 
     public ArrayList<PersonaDTO> getPropietarioByUf(UnidadFuncionalDTO unidadFuncionalDTO){
