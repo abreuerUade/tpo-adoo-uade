@@ -1,12 +1,15 @@
 package Controllers;
 
+import Adapter.AdapterJavaMail;
+import Adapter.AdapterSMSService;
+import Adapter.AdapterWhatsappService;
 import DTO.ConsorcioDTO;
 import DTO.UnidadFuncionalDTO;
 import Negocio.*;
 import Negocio.Comunicacion.Notificacion;
 import Negocio.Comunicacion.NotificacionSMS;
 import Negocio.Comunicacion.NotificacionWS;
-import Negocio.Comunicacion.NotificacionesEmail;
+import Negocio.Comunicacion.NotificacionEmail;
 import java.util.ArrayList;
 
 
@@ -166,9 +169,9 @@ public class ControladorConsorcio {
                 notificacion.setMensaje("mensaje de prueba");
                 notificacion.setDestinatario(interesado);
                 switch(interesado.getModoDeEnvio()) {
-                    case SMS: notificador.setEstrategia(new NotificacionSMS()); break;
-                    case WHATSAPP: notificador.setEstrategia(new NotificacionWS()); break;
-                    case EMAIL: notificador.setEstrategia(new NotificacionesEmail()); break;
+                    case SMS: notificador.setEstrategia(new NotificacionSMS(new AdapterSMSService())); break;
+                    case WHATSAPP: notificador.setEstrategia(new NotificacionWS(new AdapterWhatsappService())); break;
+                    case EMAIL: notificador.setEstrategia(new NotificacionEmail(new AdapterJavaMail())); break;
                 }
                 notificador.enviar(notificacion);
             }
