@@ -247,6 +247,7 @@ public class PanelLiquidacion extends JPanel {
 
         btnNotificar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                ControladorConsorcio.getInstance().notificarLiquidacion(consorcioDTO.getId());
 
             }
         });
@@ -258,6 +259,7 @@ public class PanelLiquidacion extends JPanel {
                 int generarReserva = txtCargaSaldo.getText().equals("") ? 0 : Integer.parseInt(txtCargaSaldo.getText());
                 int usarReserva = txtUsoSaldo.getText().equals("") ? 0 : Integer.parseInt(txtUsoSaldo.getText());
                 ControladorConsorcio.getInstance().liquidarConsorcio(idconsorcio, generarReserva, usarReserva);
+                masterFrame.mostrarPanelLiquidacion(consorcioDTO);
             }
         });
     }
