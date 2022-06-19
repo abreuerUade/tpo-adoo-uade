@@ -13,7 +13,5 @@ public class Main {
         master.armarMaster();
         master.mostrarPanelInicio();
         master.showFrame();
-
     }
-    
 }

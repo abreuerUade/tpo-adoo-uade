@@ -132,7 +132,7 @@ public class ControladorConsorcio {
             ArrayList<Persona> interesados = uf.getInquilinos();
             interesados.addAll(uf.getPropietarios());
             for (Persona interesado:interesados){
-                notificacion.setMensaje("mensaje de prueba");
+                notificacion.setMensaje(ControladorUnidadFuncional.getInstance().printUltimaFacturabyUF(uf.getIdUnidadFuncional()));
                 notificacion.setDestinatario(interesado);
                 switch(interesado.getModoDeEnvio()) {
                     case SMS: notificador.setEstrategia(new NotificacionSMS(new AdapterSMSService())); break;
