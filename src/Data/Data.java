@@ -1,4 +1,5 @@
 package Data;
+import Adapter.AdapterCuenta;
 import DTO.*;
 import static Negocio.ServiciosEnvio.*;
 import Controllers.*;
@@ -128,7 +129,7 @@ public class Data {
 
         ConsorcioDTO consorcio1 = new ConsorcioDTO();
         consorcio1.setNombre("Lima 474");
-        consorcio1.setCuentaBanco(new Cuenta("Lima 474","543215495432",25516f));
+        consorcio1.setCuentaBanco(new Cuenta("Lima 474","543215495432",new AdapterCuenta(25516f)));
         consorcio1.setBarrio("CABA");
         consorcio1.setId(1);
         ControladorConsorcio.getInstance().crearConsorcio(consorcio1);

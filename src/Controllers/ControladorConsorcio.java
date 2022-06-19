@@ -94,10 +94,26 @@ public class ControladorConsorcio {
     public Float saldoConsorcio(int id){
         for (Consorcio c:Consorcios){
             if (c.getId() == id){
-                return c.getCuentaBanco().getSaldo();
+                return c.getCuentaBanco().getSaldo("1A2B3C4F");
             }
         }
         return 0f;
+    }
+
+    public void depositarAConsorcio(int idConsorcio, float deposito){
+        for(Consorcio c : Consorcios){
+            if(c.getId() == idConsorcio){
+                c.getCuentaBanco().depositar(deposito);
+            }
+        }
+    }
+
+    public void pagarDesdeConsorcio(int idConsorcio, float pago){
+        for(Consorcio c : Consorcios){
+            if(c.getId() == idConsorcio){
+                c.getCuentaBanco().pagar(pago);
+            }
+        }
     }
 
     public void liquidarConsorcio(int idConsorcio, int generarReservas, int usarReservas){

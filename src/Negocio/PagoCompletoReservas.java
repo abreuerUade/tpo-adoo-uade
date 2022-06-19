@@ -20,12 +20,15 @@ public class PagoCompletoReservas extends LiquidacionGenerica{
             float superficieTotal = ControladorUnidadFuncional.getInstance().calcularSuperficieTotalbyConsorcio(idconsorcio);
             gastos.set(0, gastos.get(0)-(usarReserva/2));
             gastos.set(1, gastos.get(1)-(usarReserva/2));
+
             for (UnidadFuncionalDTO uf:listUF){
                 float coeficiente = uf.getSuperficie()/superficieTotal;
                 float expensaOrdinaria = gastos.get(0)*coeficiente;
                 float expensaExtraordinaria = gastos.get(1)*coeficiente;
                 Facturador.crearFactura(uf.getIdUnidadFuncional(), expensaOrdinaria, expensaExtraordinaria);;
             }
+
+            ControladorConsorcio.getInstance().pagarDesdeConsorcio(idconsorcio, usarReserva);
         }
     }
 }

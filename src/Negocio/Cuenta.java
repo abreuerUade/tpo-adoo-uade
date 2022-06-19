@@ -1,24 +1,38 @@
 package Negocio;
 
 
-public class Cuenta {
+import Adapter.AdapterCuenta;
+import Adapter.IAdapterCuenta;
 
+import java.util.Date;
+
+public class  Cuenta {
     private String propietario;
     private String CBU;
-    private Float Saldo;
+    private IAdapterCuenta adapter;
 
-    public Cuenta(String propietario, String CBU, Float Saldo) {
+    public Cuenta(String propietario, String CBU, IAdapterCuenta adapter) {
         this.propietario = propietario;
         this.CBU = CBU;
-        this.Saldo = Saldo;
+        this.adapter = adapter;
     }
 
-    public Float getSaldo() {
-        return Saldo;
+    public Float getSaldo(String token) {
+        return adapter.obtenerSaldo(this.CBU, new Date(), token);
     }
 
-    public void setSaldo(Float saldo) {
-        Saldo = saldo;
+    public void pagar(float saldo){
+        this.adapter.pagar(saldo);
+    }
+    public void depositar(float saldo){
+        this.adapter.depositar(saldo);
+    }
+    public IAdapterCuenta getAdapter() {
+        return this.adapter;
+    }
+
+    public void setAdapter(final IAdapterCuenta adapter) {
+        this.adapter = adapter;
     }
 
     public String getPropietario() {
