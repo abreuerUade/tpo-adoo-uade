@@ -14,6 +14,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 public class PanelLiquidacion extends JPanel {
 
@@ -26,6 +27,8 @@ public class PanelLiquidacion extends JPanel {
     private JLabel lblOpciones;
     private JLabel lblLiquidacion;
     private JLabel lblAdmin;
+    private JLabel lblMes;
+    private JLabel lblMesFact;
     private JLabel lblLogged;
     private JLabel lblSaldo;
     private JLabel lblSaldoCuenta;
@@ -87,7 +90,7 @@ public class PanelLiquidacion extends JPanel {
         //////////////////////////////////////////////////////////////////
 
         panelForm = new JPanel();
-        panelForm.setLayout(new GridLayout(5,2, 0, 10));
+        panelForm.setLayout(new GridLayout(6,2, 0, 10));
         panelForm.setBackground(Style.FONDO);
         panelForm.setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 80));
 
@@ -122,6 +125,16 @@ public class PanelLiquidacion extends JPanel {
         lblLogged = new JLabel(admin);
         lblLogged.setFont(new Font(Style.FONT, Font.BOLD, 18));
         lblLogged.setHorizontalAlignment(0);
+
+        lblMes = new JLabel("Mes de Liquidación:   ");
+        lblMes.setFont(new Font(Style.FONT, Font.BOLD, 18));
+        lblMes.setHorizontalAlignment(0);
+
+        Date hoy = new Date();
+        String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+        lblMesFact = new JLabel(meses[(hoy.getMonth() + 1)]);
+        lblMesFact.setFont(new Font(Style.FONT, Font.BOLD, 18));
+        lblMesFact.setHorizontalAlignment(0);
 
         lblSaldo = new JLabel("Saldo en Cuenta:   ");
         lblSaldo.setFont(new Font(Style.FONT, Font.BOLD, 18));
@@ -172,6 +185,8 @@ public class PanelLiquidacion extends JPanel {
 
         panelForm.add(lblAdmin);
         panelForm.add(lblLogged);
+        panelForm.add(lblMes);
+        panelForm.add(lblMesFact);
         panelForm.add(lblSaldo);
         panelForm.add(lblSaldoCuenta);
         panelForm.add(lblTotal);
