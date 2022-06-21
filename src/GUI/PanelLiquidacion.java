@@ -133,7 +133,7 @@ public class PanelLiquidacion extends JPanel {
 
         Date hoy = new Date();
         String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
-        lblMesFact = new JLabel(meses[(hoy.getMonth() + 1)]);
+        lblMesFact = new JLabel(meses[(hoy.getMonth())]);
         lblMesFact.setFont(new Font(Style.FONT, Font.BOLD, 18));
         lblMesFact.setHorizontalAlignment(0);
 

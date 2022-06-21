@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class LiquidacionGenerica {
-    private Consorcio liquidarConsorcio;
-    private Date fechaliquidacion;
 
     public float obtenerSaldo (int idconsorcio) {
         return ControladorConsorcio.getInstance().saldoConsorcio(idconsorcio);
