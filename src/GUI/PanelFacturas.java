@@ -1,5 +1,6 @@
 package GUI;
 
+import Controllers.ControladorConsorcio;
 import Controllers.ControladorUnidadFuncional;
 import DTO.ConsorcioDTO;
 import DTO.UnidadFuncionalDTO;
@@ -127,6 +128,7 @@ public class PanelFacturas extends JPanel {
                         JOptionPane.showMessageDialog(masterFrame,"La factura ya esta paga.");
                     }else{
                         factura.setPago(true);
+                        ControladorConsorcio.getInstance().depositarAConsorcio(consorcioDTO.getId(), factura.getReservas());
                         masterFrame.mostrarPanelFacturas(consorcioDTO, unidadFuncionalDTO);
                     }
                 } catch (Exception ex) {
