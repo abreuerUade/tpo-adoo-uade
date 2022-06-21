@@ -14,6 +14,7 @@ public class Gasto {
     private Integer periodo; //en meses por cuota
     private Integer idconsorcio;
 
+    private boolean liquidado;
     private Expensas tipoExpensas;
 
     public Gasto (GastoDTO gastoDTO) {
@@ -25,6 +26,7 @@ public class Gasto {
         this.periodo = gastoDTO.getPeriodo();
         this.idconsorcio = gastoDTO.getIdconsorcio();
         this.tipoExpensas = gastoDTO.getTipoExpensas();
+        this.liquidado = gastoDTO.isLiquidado();
 
     }
 
@@ -38,6 +40,7 @@ public class Gasto {
         gastoDTO.setPeriodo(this.periodo);
         gastoDTO.setTipoExpensas(this.tipoExpensas);
         gastoDTO.setIdconsorcio(this.idconsorcio);
+        gastoDTO.setLiquidado(this.liquidado);
         return gastoDTO;
     }
 
@@ -103,5 +106,13 @@ public class Gasto {
 
     public void setPeriodo(Integer periodo) {
         this.periodo = periodo;
+    }
+
+    public boolean isLiquidado() {
+        return this.liquidado;
+    }
+
+    public void setLiquidado(final boolean liquidado) {
+        this.liquidado = liquidado;
     }
 }

@@ -1,6 +1,7 @@
 package Negocio;
 
 
+import Controllers.ControladorGasto;
 import DTO.ConsorcioDTO;
 
 import java.lang.reflect.Array;
@@ -42,6 +43,7 @@ public class Consorcio {
         float saldo = this.tipoLiquidacion.obtenerSaldo(this.id);
         ArrayList<Integer> gastos = this.tipoLiquidacion.calcularGastos(this.id);
         this.tipoLiquidacion.DivisionExpensas(this.id, generarReservas, usarReservas);
+        ControladorGasto.getInstance().liquidarGastos(this.id);
     }
 
     public void cambiarCriterio (LiquidacionGenerica liquidacionGenerica) {

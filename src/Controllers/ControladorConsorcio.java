@@ -122,7 +122,6 @@ public class ControladorConsorcio {
                 c.liquidar(generarReservas, usarReservas);
             }
         }
-        //notificarLiquidacion(idConsorcio);
     }
 
     public void notificarLiquidacion(int idConsorcio){

@@ -1,6 +1,7 @@
 package Controllers;
 import DTO.ConsorcioDTO;
 import DTO.PersonaDTO;
+import GUI.MasterFrame;
 import Negocio.Consorcio;
 import Negocio.FacturaUnidadFuncional;
 import Negocio.Persona;
@@ -233,12 +234,16 @@ public class ControladorUnidadFuncional {
     }
 
     public String printUltimaFacturabyUF(int idUnidadFuncional){
+
+        String nombre = ControladorUsuario.getInstance().getUsuario(MasterFrame.loggedUserMail).getNombre();
+        String apellido = ControladorUsuario.getInstance().getUsuario(MasterFrame.loggedUserMail).getApellido();
+
         for (UnidadFuncional ufprint:UnidadesFuncionales){
             if(ufprint.getIdUnidadFuncional()==idUnidadFuncional){
                 if (!ufprint.getFacturas().isEmpty()){
                     FacturaUnidadFuncional ultimaFactura = ufprint.getFacturas().get(ufprint.getFacturas().size()-1);
                     float total = ultimaFactura.getReservas()+ultimaFactura.getMontoOrdinario()+ultimaFactura.getMontoExtraordinario();
-                    return ("\nFacturacion correspondiente al numero de unidad: " + ufprint.getNroUnidad()) + "\nGastos de expensas del mes: " + ultimaFactura.getFecha().getMonth() + "\nMonto expensas Ordinarias: " + ultimaFactura.getMontoOrdinario() + "\nMonto expensas Extraordinarias: " + ultimaFactura.getMontoExtraordinario() + "\nFondos de Reservas: " + ultimaFactura.getReservas()+"\nTotal: " + total+"\n\n";
+                    return ("\nAdministrador: " + nombre + " " + apellido + "\nFacturacion correspondiente al numero de unidad: " + ufprint.getNroUnidad()) + "\nGastos de expensas del mes: " + ultimaFactura.getFecha().getMonth() + "\nMonto expensas Ordinarias: " + ultimaFactura.getMontoOrdinario() + "\nMonto expensas Extraordinarias: " + ultimaFactura.getMontoExtraordinario() + "\nFondos de Reservas: " + ultimaFactura.getReservas()+"\nTotal: " + total+"\n\n";
                 }
             }
         }

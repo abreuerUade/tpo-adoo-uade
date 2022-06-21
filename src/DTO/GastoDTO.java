@@ -14,7 +14,13 @@ public class GastoDTO {
     private Integer cantCuotas;
     private Integer periodo;
     private Integer idconsorcio;
+
+    private boolean liquidado;
     private Expensas tipoExpensas;
+
+    public GastoDTO(){
+        this.liquidado = false;
+    }
 
     public Integer getIdconsorcio() {
         return idconsorcio;
@@ -78,5 +84,13 @@ public class GastoDTO {
 
     public void setTipoExpensas(Expensas tipoExpensas) {
         this.tipoExpensas = tipoExpensas;
+    }
+
+    public boolean isLiquidado() {
+        return this.liquidado;
+    }
+
+    public void setLiquidado(final boolean liquidado) {
+        this.liquidado = liquidado;
     }
 }
