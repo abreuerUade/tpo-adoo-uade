@@ -1,6 +1,6 @@
 package Adapter;
 
-import Negocio.Comunicacion.Notificacion;
+import Negocio.Notificacion;
 
 public class AdapterWhatsappService implements IAdapterNotificacionWS{
     @Override

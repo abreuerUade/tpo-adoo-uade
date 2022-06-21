@@ -1,6 +1,7 @@
 package Negocio.Comunicacion;
 
 import Adapter.IAdapterNotificacionEmail;
+import Negocio.Notificacion;
 import interfaces.EstrategiaDeNotificacion;
 
 public class NotificacionEmail implements EstrategiaDeNotificacion {

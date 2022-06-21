@@ -6,7 +6,7 @@ import Adapter.AdapterWhatsappService;
 import DTO.ConsorcioDTO;
 import DTO.UnidadFuncionalDTO;
 import Negocio.*;
-import Negocio.Comunicacion.Notificacion;
+import Negocio.Notificacion;
 import Negocio.Comunicacion.NotificacionSMS;
 import Negocio.Comunicacion.NotificacionWS;
 import Negocio.Comunicacion.NotificacionEmail;
