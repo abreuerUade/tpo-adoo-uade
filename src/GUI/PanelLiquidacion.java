@@ -2,6 +2,7 @@ package GUI;
 
 import Controllers.ControladorConsorcio;
 import Controllers.ControladorGasto;
+import Controllers.ControladorUnidadFuncional;
 import Controllers.ControladorUsuario;
 import DTO.ConsorcioDTO;
 import DTO.UsuarioDTO;
@@ -270,13 +271,21 @@ public class PanelLiquidacion extends JPanel {
         btnLiquidar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(gasto > 0){
-                    ControladorConsorcio.getInstance().editarConsorcio(consorcioDTO); //updatea el tipo de liquidacion
-                    int idconsorcio = consorcioDTO.getId();
-                    int generarReserva = txtCargaSaldo.getText().equals("") ? 0 : Integer.parseInt(txtCargaSaldo.getText());
-                    int usarReserva = txtUsoSaldo.getText().equals("") ? 0 : Integer.parseInt(txtUsoSaldo.getText());
-                    ControladorConsorcio.getInstance().liquidarConsorcio(idconsorcio, generarReserva, usarReserva);
-                    JOptionPane.showMessageDialog(masterFrame,"Se liquidaron los gastos correctamente.");
-                    masterFrame.mostrarPanelLiquidacion(consorcioDTO);
+
+                    float facturado_mes = ControladorUnidadFuncional.getInstance().totalFacturadoMes(new Date().getMonth());
+                    if(facturado_mes == 0) {
+                        ControladorConsorcio.getInstance().editarConsorcio(consorcioDTO); //updatea el tipo de liquidacion
+                        int idconsorcio = consorcioDTO.getId();
+                        int generarReserva = txtCargaSaldo.getText().equals("") ? 0 : Integer.parseInt(txtCargaSaldo.getText());
+                        int usarReserva = txtUsoSaldo.getText().equals("") ? 0 : Integer.parseInt(txtUsoSaldo.getText());
+                        ControladorConsorcio.getInstance().liquidarConsorcio(idconsorcio, generarReserva, usarReserva);
+                        JOptionPane.showMessageDialog(masterFrame,"Se liquidaron los gastos correctamente.");
+                        masterFrame.mostrarPanelLiquidacion(consorcioDTO);
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(masterFrame,"Los gastos del mes corriente ya fueron liquidados previamente.");
+                    }
+
                 } else {
                     JOptionPane.showMessageDialog(masterFrame,"No hay gastos para liquidar.");
                 }

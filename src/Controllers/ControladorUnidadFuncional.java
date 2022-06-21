@@ -250,4 +250,18 @@ public class ControladorUnidadFuncional {
         return "No tiene Facturas asignada en este periodo";
     }
 
+    public float totalFacturadoMes(int mes) {
+        float total = 0;
+
+        for(UnidadFuncional uf : UnidadesFuncionales) {
+            for(FacturaUnidadFuncional f: uf.getFacturas()){
+                if(f.getFecha().getMonth() == mes) {
+                    float total_fact = f.getReservas() + f.getMontoExtraordinario() + f.getMontoOrdinario();
+                    total += total_fact;
+                }
+            }
+        }
+
+        return total;
+    }
 }
