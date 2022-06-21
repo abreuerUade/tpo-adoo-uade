@@ -231,4 +231,18 @@ public class ControladorUnidadFuncional {
         }
         return superficieTotal;
     }
+
+    public String printUltimaFacturabyUF(int idUnidadFuncional){
+        for (UnidadFuncional ufprint:UnidadesFuncionales){
+            if(ufprint.getIdUnidadFuncional()==idUnidadFuncional){
+                if (!ufprint.getFacturas().isEmpty()){
+                    FacturaUnidadFuncional ultimaFactura = ufprint.getFacturas().get(ufprint.getFacturas().size()-1);
+                    float total = ultimaFactura.getReservas()+ultimaFactura.getMontoOrdinario()+ultimaFactura.getMontoExtraordinario();
+                    return ("\nFacturacion correspondiente al numero de unidad: " + ufprint.getNroUnidad()) + "\nGastos de expensas del mes: " + ultimaFactura.getFecha().getMonth() + "\nMonto expensas Ordinarias: " + ultimaFactura.getMontoOrdinario() + "\nMonto expensas Extraordinarias: " + ultimaFactura.getMontoExtraordinario() + "\nFondos de Reservas: " + ultimaFactura.getReservas()+"\nTotal: " + total+"\n\n";
+                }
+            }
+        }
+        return "No tiene Facturas asignada en este periodo";
+    }
+
 }
