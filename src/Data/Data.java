@@ -72,6 +72,68 @@ public class Data {
         persona4.setServiciosEnvio(SMS);
         ControladorPersona.getInstance().crearPersona(persona4);
 
+        PersonaDTO persona5 = new PersonaDTO();
+        persona5.setDni(23564255);
+        persona5.setApellido("Rolon");
+        persona5.setNombre("Ignacio");
+        persona5.setTelefono(1133224865);
+        persona5.setMail("irolon@gmail.com");
+        persona5.setServiciosEnvio(EMAIL);
+        ControladorPersona.getInstance().crearPersona(persona5);
+
+        PersonaDTO persona6 = new PersonaDTO();
+        persona6.setDni(27564123);
+        persona6.setApellido("Anchorena");
+        persona6.setNombre("Pedro");
+        persona6.setTelefono(1133226689);
+        persona6.setMail("panchorena@gmail.com");
+        persona6.setServiciosEnvio(WHATSAPP);
+        ControladorPersona.getInstance().crearPersona(persona6);
+
+        PersonaDTO persona7 = new PersonaDTO();
+        persona7.setDni(15320597);
+        persona7.setApellido("Iturbe");
+        persona7.setNombre("Pablo");
+        persona7.setTelefono(1133225487);
+        persona7.setMail("piturbe@gmail.com");
+        persona7.setServiciosEnvio(SMS);
+        ControladorPersona.getInstance().crearPersona(persona7);
+
+        PersonaDTO persona8 = new PersonaDTO();
+        persona8.setDni(30512536);
+        persona8.setApellido("Vega");
+        persona8.setNombre("Ignacio");
+        persona8.setTelefono(1133225566);
+        persona8.setMail("ivega@gmail.com");
+        persona8.setServiciosEnvio(EMAIL);
+        ControladorPersona.getInstance().crearPersona(persona8);
+
+        PersonaDTO persona9 = new PersonaDTO();
+        persona9.setDni(20410653);
+        persona9.setApellido("Martinez");
+        persona9.setNombre("Maria");
+        persona9.setTelefono(1133223365);
+        persona9.setMail("mmartinez@gmail.com");
+        persona9.setServiciosEnvio(SMS);
+        ControladorPersona.getInstance().crearPersona(persona9);
+
+        PersonaDTO persona10 = new PersonaDTO();
+        persona10.setDni(15624855);
+        persona10.setApellido("Alvarez");
+        persona10.setNombre("Romina");
+        persona10.setTelefono(1133224498);
+        persona10.setMail("ralvarez@gmail.com");
+        persona10.setServiciosEnvio(WHATSAPP);
+        ControladorPersona.getInstance().crearPersona(persona10);
+
+        PersonaDTO persona11 = new PersonaDTO();
+        persona11.setDni(35214621);
+        persona11.setApellido("Gimenez");
+        persona11.setNombre("Carolina");
+        persona11.setTelefono(1133255668);
+        persona11.setMail("cgimenez@gmail.com");
+        persona11.setServiciosEnvio(SMS);
+        ControladorPersona.getInstance().crearPersona(persona11);
 
         UnidadFuncionalDTO uf1 = new UnidadFuncionalDTO();
         uf1.setIdUnidadFuncional(1);
@@ -88,7 +150,7 @@ public class Data {
         uf2.setNroUnidad(2);
         uf2.setSuperficie(70);
         ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf2);
-        ControladorUnidadFuncional.getInstance().agregarInquilino(persona3,2);
+        ControladorUnidadFuncional.getInstance().agregarPropietario(persona3, 2);
 
         UnidadFuncionalDTO uf3 = new UnidadFuncionalDTO();
         uf3.setIdUnidadFuncional(3);
@@ -96,7 +158,8 @@ public class Data {
         uf3.setNroUnidad(3);
         uf3.setSuperficie(65);
         ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf3);
-        ControladorUnidadFuncional.getInstance().agregarPropietario(persona4,3);
+        ControladorUnidadFuncional.getInstance().agregarPropietario(persona11,3);
+        ControladorUnidadFuncional.getInstance().agregarInquilino(persona4,3);
 
         UnidadFuncionalDTO uf4 = new UnidadFuncionalDTO();
         uf4.setIdUnidadFuncional(4);
@@ -104,7 +167,9 @@ public class Data {
         uf4.setNroUnidad(4);
         uf4.setSuperficie(40);
         ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf4);
-        ControladorUnidadFuncional.getInstance().agregarInquilino(persona4,4);
+        ControladorUnidadFuncional.getInstance().agregarInquilino(persona10,4);
+        ControladorUnidadFuncional.getInstance().agregarPropietario(persona10,4);
+
 
         UnidadFuncionalDTO uf5 = new UnidadFuncionalDTO();
         uf5.setIdUnidadFuncional(5);
@@ -112,6 +177,8 @@ public class Data {
         uf5.setNroUnidad(5);
         uf5.setSuperficie(66);
         ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf5);
+        ControladorUnidadFuncional.getInstance().agregarPropietario(persona9,5);
+        ControladorUnidadFuncional.getInstance().agregarInquilino(persona5,5);
 
         UnidadFuncionalDTO uf6 = new UnidadFuncionalDTO();
         uf6.setIdUnidadFuncional(6);
@@ -119,6 +186,7 @@ public class Data {
         uf6.setNroUnidad(6);
         uf6.setSuperficie(45);
         ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf6);
+        ControladorUnidadFuncional.getInstance().agregarPropietario(persona8,6);
 
         UnidadFuncionalDTO uf7 = new UnidadFuncionalDTO();
         uf7.setIdUnidadFuncional(7);
@@ -126,6 +194,8 @@ public class Data {
         uf7.setNroUnidad(7);
         uf7.setSuperficie(70);
         ControladorUnidadFuncional.getInstance().crearUnidadFuncional(uf7);
+        ControladorUnidadFuncional.getInstance().agregarPropietario(persona7,7);
+        //ControladorUnidadFuncional.getInstance().agregarInquilino(persona7, 7);
 
         ConsorcioDTO consorcio1 = new ConsorcioDTO();
         consorcio1.setNombre("Lima 474");
