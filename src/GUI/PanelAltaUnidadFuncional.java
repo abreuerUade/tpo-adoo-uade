@@ -85,6 +85,7 @@ public class PanelAltaUnidadFuncional extends JPanel {
         panelForm = new JPanel();
         panelForm.setLayout(new GridLayout(2,2,5,40));
         panelForm.setBackground(Style.FONDO);
+        panelForm.setBorder(BorderFactory.createEmptyBorder(50, 50, 100, 80));
 
         lblUnidad = new JLabel("Unidad:   ");
         lblUnidad.setFont(new Font(Style.FONT, Font.PLAIN, 18));

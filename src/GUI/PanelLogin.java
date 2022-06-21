@@ -18,6 +18,11 @@ public class PanelLogin extends JPanel {
     private JLabel lblPanel;
     private JLabel lblUser;
     private JLabel lblPass;
+    private JLabel lblIntegrantes;
+    private JLabel lblMazza;
+    private JLabel lblBreuer;
+    private JLabel lblBarros;
+    private JLabel lblDiaz;
     private JTextField txtUser;
     private JPasswordField passField;
     private JButton btnLogin;
@@ -36,13 +41,13 @@ public class PanelLogin extends JPanel {
         panelIz = new JPanel();
         GridLayout leftLayout = new GridLayout(6,1);
         panelIz.setLayout(leftLayout);
-        panelIz.setPreferredSize(new Dimension(200,500));
+        panelIz.setPreferredSize(new Dimension(250,500));
         panelIz.setBackground(Style.GRIS_CLARO);
 
         panelDe = new JPanel();
         BorderLayout rightLayout = new BorderLayout(30,30);
         panelDe.setLayout(rightLayout);
-        panelDe.setPreferredSize(new Dimension(800,500));
+        panelDe.setPreferredSize(new Dimension(750,500));
         panelDe.setBackground(Style.FONDO);
         panelDe.setBorder(BorderFactory.createEmptyBorder(30, 50, 20, 50));
 
@@ -55,6 +60,21 @@ public class PanelLogin extends JPanel {
 
 
         //////////////////////////////////////////////////////////////////
+
+        lblIntegrantes = new JLabel("Integrantes: ");
+        lblIntegrantes.setFont(new Font(Style.FONT, Font.BOLD, 18));
+
+        lblBarros = new JLabel("Barros, Matias Andres");
+        lblBarros.setFont(new Font(Style.FONT, Font.PLAIN, 16));
+
+        lblBreuer = new JLabel("Breuer, Andres Ivan");
+        lblBreuer.setFont(new Font(Style.FONT, Font.PLAIN, 16));
+
+        lblDiaz = new JLabel("Dias Gestner, Federico");
+        lblDiaz.setFont(new Font(Style.FONT, Font.PLAIN, 16));
+
+        lblMazza = new JLabel("Mazza, Carlos Ilan");
+        lblMazza.setFont(new Font(Style.FONT, Font.PLAIN, 16));
 
         panelForm = new JPanel();
         panelForm.setLayout(new GridLayout(2,2, 30, 30));
@@ -84,6 +104,11 @@ public class PanelLogin extends JPanel {
         btnLogin.setPreferredSize(new Dimension(200, 40));
         btnLogin.setHorizontalAlignment(0);
 
+        panelIz.add(lblIntegrantes);
+        panelIz.add(lblBarros);
+        panelIz.add(lblBreuer);
+        panelIz.add(lblDiaz);
+        panelIz.add(lblMazza);
         panelForm.add(lblUser);
         panelForm.add(txtUser);
         panelForm.add(lblPass);

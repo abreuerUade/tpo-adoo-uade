@@ -12,6 +12,11 @@ public class PanelInicio extends JPanel {
     private JPanel panelDe;
     private JPanel panelBtn;
 
+    private JLabel lblIntegrantes;
+    private JLabel lblMazza;
+    private JLabel lblBreuer;
+    private JLabel lblBarros;
+    private JLabel lblDiaz;
     private JLabel line1;
     private JLabel line2;
     private JLabel line3;
@@ -32,13 +37,13 @@ public class PanelInicio extends JPanel {
         panelIz = new JPanel();
         GridLayout leftLayout = new GridLayout(6,1);
         panelIz.setLayout(leftLayout);
-        panelIz.setPreferredSize(new Dimension(200,500));
+        panelIz.setPreferredSize(new Dimension(250,500));
         panelIz.setBackground(Style.GRIS_CLARO);
 
         panelDe = new JPanel();
         GridLayout rightLayout = new GridLayout(5,1);
         panelDe.setLayout(rightLayout);
-        panelDe.setPreferredSize(new Dimension(800,500));
+        panelDe.setPreferredSize(new Dimension(750,500));
         panelDe.setBackground(Style.FONDO);
 
         panelBtn = new JPanel();
@@ -50,6 +55,21 @@ public class PanelInicio extends JPanel {
 
 
         //////////////////////////////////////////////////////////////////
+
+        lblIntegrantes = new JLabel("Integrantes: ");
+        lblIntegrantes.setFont(new Font(Style.FONT, Font.BOLD, 18));
+
+        lblBarros = new JLabel("Barros, Matias Andres");
+        lblBarros.setFont(new Font(Style.FONT, Font.PLAIN, 16));
+
+        lblBreuer = new JLabel("Breuer, Andres Ivan");
+        lblBreuer.setFont(new Font(Style.FONT, Font.PLAIN, 16));
+
+        lblDiaz = new JLabel("Dias Gestner, Federico");
+        lblDiaz.setFont(new Font(Style.FONT, Font.PLAIN, 16));
+
+        lblMazza = new JLabel("Mazza, Carlos Ilan");
+        lblMazza.setFont(new Font(Style.FONT, Font.PLAIN, 16));
 
         line1 = new JLabel("Proceso de Desarrollo de Software");
         line1.setFont(new Font(Style.FONT, Font.BOLD, 18));
@@ -71,6 +91,12 @@ public class PanelInicio extends JPanel {
         inicioButton.setPreferredSize(new Dimension(200, 40));
         inicioButton.setHorizontalAlignment(0);
 
+
+        panelIz.add(lblIntegrantes);
+        panelIz.add(lblBarros);
+        panelIz.add(lblBreuer);
+        panelIz.add(lblDiaz);
+        panelIz.add(lblMazza);
         panelDe.add(line1);
         panelDe.add(line2);
         panelDe.add(line3);

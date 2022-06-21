@@ -233,7 +233,7 @@ public class PanelAltaPersonas extends JPanel {
                 nuevaPersona.setDni(Integer.parseInt(txtDni.getText()));
                 nuevaPersona.setMail(txtMail.getText());
                 nuevaPersona.setTelefono(Integer.parseInt(txtTelefono.getText()));
-                ServiciosEnvio serviciosEnvio = ServiciosEnvio.SMS;
+                ServiciosEnvio serviciosEnvio = ServiciosEnvio.valueOf(cmbServicioEnvio.getSelectedItem().toString().toUpperCase());
                 nuevaPersona.setServiciosEnvio(serviciosEnvio);
                 String condicion = cmbCondicion.getSelectedItem().toString();
 
