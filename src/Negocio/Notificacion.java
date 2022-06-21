@@ -1,4 +1,4 @@
-package Negocio.Comunicacion;
+package Negocio;
 
 import Negocio.Persona;
 

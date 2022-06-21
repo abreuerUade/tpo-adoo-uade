@@ -1,6 +1,6 @@
 package interfaces;
 
-import Negocio.Comunicacion.*;
+import Negocio.Notificacion;
 
 public interface EstrategiaDeNotificacion {
 

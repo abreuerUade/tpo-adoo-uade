@@ -12,9 +12,6 @@ public class FacturaUnidadFuncional {
     private boolean pago;
     private Date fecha;
 
-    public void confirmarPago() {
-
-    }
 
     public FacturaUnidadFuncional(float montoExtraordinario, float montoOrdinario, float reservas) {
         this.codigoFactura = UUID.randomUUID();

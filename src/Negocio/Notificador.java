@@ -1,6 +1,5 @@
 package Negocio;
 
-import Negocio.Comunicacion.Notificacion;
 import interfaces.EstrategiaDeNotificacion;
 
 public class Notificador {

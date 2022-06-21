@@ -89,31 +89,7 @@ public class Consorcio {
     public void setCuentaBanco(Cuenta cuantaBanco) {
         this.cuentaBanco = cuantaBanco;
     }
-    /*
-        public ArrayList<UnidadFuncional> getUnidadesFunc() {
-            return UnidadesFunc;
-        }
 
-            public void setUnidadesFunc(ArrayList<UnidadFuncional> unidadesFunc) {
-                UnidadesFunc = unidadesFunc;
-            }
-
-                public ArrayList<Gasto> getGastos() {
-                    return gastos;
-                }
-
-                public void setGastos(ArrayList<Gasto> gastos) {
-                    this.gastos = gastos;
-                }
-
-    public ArrayList<Usuario> getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(ArrayList<Usuario> admin) {
-        this.admin = admin;
-    }
- */
     public LiquidacionGenerica getTipoLiquidacion() {
         return tipoLiquidacion;
     }
